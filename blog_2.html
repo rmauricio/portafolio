@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimización de Red LTE</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Menú de Navegación -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="about.html">Resumen</a></li>
+            <li><a href="skills.html">Habilidades</a></li>
+            <li><a href="projects.html">Proyectos</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+<!--            <li><a href="contact.html">Contacto</a></li> -->
+        </ul>
+    </nav>
+
+    <!-- Encabezado -->
+    <header>
+
+    </header>
+
+    <!-- Contenedor de Artículo -->
+    <div class="article-container">
+        <article class="article-card">
+            <div class="article-header">
+                <img src="images/project1.jpg" alt="Portada de artículo" />
+            </div>
+
+            <div class="article-body">
+                <h3>Carga de archivos .Tap/.Shp de Drivetes a QGIS</h3>
+                <p>Publicado el: 8 de agosto de 2022</p>
+                <p> Daremos mayor utilidad a hashtag#qgis cargando un archivo de Drivetest, esto servirá como base para la generación de reportes completos que un ingeniero debe realizar como un análisis rápido de estado de su red siempre que tenga la información ya cargada en su herramienta o proyecto de QGIS.
+                    A continuación iniciaremos con el cargado de una un archivo .tap de nos genera una herramienta de Drivetest para este caso un archivo de LTE- RSRP
+                    El cargado es simple: Seleccionamos el archivo .tap o.shp y arrastramos el archivo al área donde se visualizan las capas, como se muestra en la imagen.
+                </p>
+                
+                <div class="article-images">
+                    <img src="images/blog2.1.png" alt="" />
+                    <img src="images/blog2.2.png" alt="" />
+                </div>
+                <p>
+                    Dependerá de la herramienta de Drivetest que genera la data, si esta tenga la propiedad de exportar los niveles que ya configuraron en su operación para su visualización o de lo contrario deberán crear estos niveles en QGIS, a continuación en caso de crear los niveles esto será lo que observaran luego del cargado de su archivo.
+                 </p>
+                <div class="article-images">
+                    <img src="images/blog2.3.png" alt="" />
+                    <img src="images/blog2.4.png" alt="" />
+                </div>       
+            </p>Al no exportar los niveles de RSRP, crearemos los mismos.
+
+            Realizaremos click derecho en capa de interés en nuestro caso de RSRP, para extender el menú de la capa, y ejecutamos los siguientes pasos.
+            
+            -> Propiedades->1.simbología-> 2.Símbolo Único 
+            
+            Click en ->3.Marcador simple -> 4. Estilo de marca
+            
+            ->4.1 Sin plumilla-> Aplicar->Aceptar.   
+            </p>
+           </p>Con esto obtenemos la ruta realizada sin el contorno o borde oscuro inicial.
+           </p>
+
+           <p>
+            Generaremos los niveles de RSR de la siguiente manera, click derecho sobre la capa:
+
+            ->Propiedades->1.Sinbologia->2.selecionamos “Graduado”->3.Valor “selección el nombre de la columna donde se encuentra los valores para este caso de RSRP”.
+            
+            ->4.Rampa de colores “seleccionamos para este caso uno por defecto Spectral.
+            
+            ->5.Modo “es modo de división de las muestras podemos seleccionar conteo igual (cuantil).
+            
+            ->6. Clases ”indica la cantidad de niveles que se dividirá la muestra , ej:8”.
+            
+            ->7. Clasificar “Se realizara la clasificación de las muestra”
+         </p> 
+        </p>  Edición de niveles y leyendas.
+
+            ->Doble Click en el nivel creado y realizar su cambio de acuerdo a nuestra necesidad.
+
+            ->Aplicar->Aceptar
+        </p>     
+        <div class="article-images">
+            <img src="images/blog2.5.png" alt="" />
+            <img src="images/blog2.6.png" alt="" />
+        </div>       
+ 
+        <p>
+            De la misma forma se realiza el cambio de leyenda.
+        </p> 
+        </p>  
+           Para el borrado de un nivel, presionamos el símbolo menos ->Aplicar-Aceptar
+       </p>     
+        <div class="article-images">
+            <img src="images/blog2.7.png" alt="" />
+            <img src="images/blog2.8.png" alt="" />
+        </div>    
+        <p>
+            Para el borrado de un nivel, presionamos el símbolo menos ->Aplicar-Aceptar
+        </p> 
+        </p>  
+            Guardaremos este estilo como un template de RSRP, ingresando a:
+            ->1.Estilo->2.Guardar Estilo->3. …. “Seleccionar carpeta de repositorio para el estilo y lo almenaremos con el nombre de RSRP”
+            ->Aceptar
+       </p>     
+        <div class="article-images">
+            <img src="images/blog2.9.png" alt="" />
+            <img src="images/blog2.10.png" alt="" />
+        </div>    
+        <p>
+            Para reutilizar el estilo almacenado como template para futuros proyectos, es muy sencillo solo nos vamos a:
+            ->1.Estilo->2.Carga estilo->3. …->4. Template RSRP->5. Abrir.
+        </p> 
+        </p>  
+        Como resultado ya tenemos la ruta con clasificación de niveles que generamos y su onvención de colores seleccionado.
+       </p>     
+        <div class="article-images">
+            <img src="images/blog2.11.png" alt="" />
+            <img src="images/blog2.12.png" alt="" />
+        </div>    
+    </p>  
+    Este proceso para almacenar templates de estilos es de utilidad ya que podemos generar diferentes estilos tanto para RSRP, SINR, RSRQ, etc. A los cuales podemos darle uso para un análisis específico o generación de algún reporte requerido.
+    Espero que sea de su utilidad y compártanlo en su red o con la gente que necesita realizar estas tareas con herramientas abiertas.
+   </p>     
+   <div class="article-image-single">
+        <img src="images/blog2.13.png" alt="" />
+    </div>    
+
+
+                <!-- Enlaces a redes sociales y plataformas -->
+                <div class="social-links">
+                    <p>Además, puedes ver:</p>
+                    <ul>
+                        <li><a href="https://www.linkedin.com/pulse/carga-de-archivos-tapshp-drivetes-qgis-mauricio-cabrera-arias/" target="_blank">LinkedIn</a></li>                        
+                        <li><a href="https://youtu.be/WbEUSQ_VE78" target="_blank">YouTube</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="article-footer">
+                <button><a href="blog.html">Regresar</a></button>
+            </div>
+        </article>
+    </div>
+
+    <!-- Pie de Página -->
+    <footer>
+        <p>&copy; 2024 Mauricio Cabrera. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>

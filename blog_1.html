@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimización de Red LTE</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Menú de Navegación -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="about.html">Resumen</a></li>
+            <li><a href="skills.html">Habilidades</a></li>
+            <li><a href="projects.html">Proyectos</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+<!--            <li><a href="contact.html">Contacto</a></li> -->
+        </ul>
+    </nav>
+
+    <!-- Encabezado -->
+    <header>
+
+    </header>
+
+    <!-- Contenedor de Artículo -->
+    <div class="article-container">
+        <article class="article-card">
+            <div class="article-header">
+                <img src="images/project2.jpg" alt="Portada de artículo" />
+            </div>
+
+            <div class="article-body">
+                <h3>Crear sectores RF con mapa de fondo en QGIS</h3>
+                <p>Publicado el: 2 de Agosto de 2022</p>
+                <p> Actualmente es necesario explotar la utilización de herramientas gratuitas de Sistema de información geográfica una de estas es QGIS, donde podemos graficar una red de manera sencilla, poder realizar visualizaciones de sus sectores y diferentes análisis que también se realizan en herramientas como Map info o ArGIs.
+                    
+                    <ul class="specialization-list">
+                        <li>Tener instalado QGIS, les comparte el enlace si no lo tiene instalado https://qgis.org/es/site/forusers/download.html.
+                        </li>
+                        <li>Instalar el complemento SHAPE TOOLS, se instala de la sigiente manera :
+                            <div class="article-images">
+                                <img src="images/blog_1.1.png" alt="" />
+                                <img src="images/blog1.2.png" alt="" />
+                            </div>                           
+                        </li>
+                        <li> Ingresar a ->Complemento -> Administrador e instalador de complementos 
+
+                            -> “Buscar el complemento shape Tools” -> Instalar complemento.
+                        </li>
+                        <li>Tendremos que qenerar una plantilla en CSV. por celda con los parámetros de nuestra red. Esta tabla estara compuesta por los siguientes campos o culmnas :
+                            <div class="article-image-single">
+                                <img src="images/blog1.3.png" alt="" />
+                            </div>   
+                        </li>
+                        <li> SITE ID,NOMBRE ESTACIÓN, CELL ID, LATITUD, LONGITUD, ALTURA DE TORRE[M], ALTURA ANTENA - AGL, BANDWITH ANTENA ,AZIMUT, TILT ELÉCTRICO, TILIT MECÁNICO, PCI, AC, Carrier, SIZE
+                        </li>
+                        </li> Nota :. En caso de cargar más portadoras en una Tecnología sugiero agregar un campo de tamaño de celda para su visualización, en nuestro template adjunto lo denominaremos “SIZE”. También pueden agregar mayor cantidad de columnas a su necesidad los mismo pueden ser parámetros, KPIs, inventario o cualquier información que consideren de utilidad.
+                              A continuacion mostrare el cargado del este .CSV
+                        </li>                 
+                    </ul>
+                </p>
+                
+                <div class="article-image-single">
+                    <img src="images/blog1.4.png" alt="" />
+                 </div>         
+
+                <p>
+                    ->1. Texto delimitado-> 2.Nombre de archivo” buscar dirección de carpeta del .csv”
+                    -> 2.1. Codificación “ LATINO1” “ este punto opcional para reconoces caracteres especiales del lenguaje en este caso “Ñ”
+                    -> 3.Formato de archivo” seleccionar (; o ,) de acuerdo a la configuración separador decimal de su Widows o Mac.
+                    ->4.Definición de Geometría “seleccionar coordenada del punto y los campos latitud y longitud del documento .csv.”
+                    ->5.SRC de la geometría “seleccionar WGS 84”-> 6.verificar que la tabla se representada correctamente-> Añadir -> Cerrar
+                    Verifiquen se carguen los puntos de sus radio bases. En caso que no visualice como punto su tabla csv, “Deberán cambiar su configuración de separador de decimales de su computador como se muestra en la imagen."
+                </p>
+                <div class="article-image-single">
+                    <img src="images/blog1.5.png" alt="" />
+                </div>
+                </p>->2 buscar el complementos SHAPE TOOL “En el set de herramienta de QGIS es representado por una Donut” ->3 Create pie Wedge
+                 </p>
+                <div class="article-images">
+                    <img src="images/blog1.6.png" alt="" />
+                    <img src="images/blog1.7.png" alt="" />
+                </div>       
+            </p>->4. Verificar que nuestra capa de puntos este selecionada correctamente.
+                ->5. Seleccionar el campo azimut de nuestra tabla de celdas.
+                ->6. Radio “seleccionamos el columna SIZE “
+                Pueden configurar la apertura de az de a cuerdo su antena en ENDING AZIMUTH, para ejercicio lo configuramos en 65°.
+                ->7. Radio Unit “metros” ->Ejecutar     
+            </p>
+
+            <div class="article-image-single">
+                <img src="images/blog1.8.png" alt="" />
+            </div>    
+            </p>
+            Para agregar una mapa de fondo instalaremos el complemento QuickMapServices, seguimos el mismo procedimiento como lo realizamos con el complmento shapeTool:
+             </p>    
+            </p>
+            <div class="article-images">
+                <img src="images/blog1.9.png" alt="" />
+                <img src="images/blog1.10.png" alt="" />
+            </div>       
+            </p>Luego de instalar el complemento habilitaremos los mapas gratiutos de la sigueinte manera
+            ->Web -> QuickMapServices-> Settings->More services->Get contributed Pack-> Guardar
+            Activamos el Mapa de fondo de Google:
+            ->Web -> QuickMapServices->Google->Google Satellite  
+            </p>
+            <div class="article-images">
+                <img src="images/blog1.11.png" alt="" />
+                <img src="images/blog1.12.png" alt="" />
+            </div>       
+            </p>Y como resultado final tenemos nuestras celdas con mapa de fondo de Google.
+            </p>
+            </p>Espero que sea de su utilidad y compártanlo en su red o con la gente que necesita realizar estas tareas con herramientas abiertas.
+            </p>
+
+                <!-- Enlaces a redes sociales y plataformas -->
+                <div class="social-links">
+                    <p>Además, puedes ver:</p>
+                    <ul>
+                        <li><a href="https://www.linkedin.com/pulse/crear-sectores-rf-con-mapa-de-fondo-en-qgis-mauricio-cabrera-arias/?trackingId=rh29FtEQRjmhfo0G2tePgg%3D%3D" target="_blank">LinkedIn</a></li>                        
+                        <li><a href="https://www.youtube.com/watch?v=6R29ntKiu5U" target="_blank">YouTube</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="article-footer">
+                <button><a href="blog.html">Regresar</a></button>
+            </div>
+        </article>
+    </div>
+
+    <!-- Pie de Página -->
+    <footer>
+        <p>&copy; 2024 Mauricio Cabrera. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>

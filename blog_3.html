@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimización de Red LTE</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Menú de Navegación -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="about.html">Resumen</a></li>
+            <li><a href="skills.html">Habilidades</a></li>
+            <li><a href="projects.html">Proyectos</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+<!--            <li><a href="contact.html">Contacto</a></li> -->
+        </ul>
+    </nav>
+
+    <!-- Encabezado -->
+    <header>
+
+    </header>
+
+    <!-- Contenedor de Artículo -->
+    <div class="article-container">
+        <article class="article-card">
+            <div class="article-header">
+                <img src="images/blog3.png" alt="Portada de artículo" />
+            </div>
+
+            <div class="article-body">
+                <h3>Visualización del Best Server y celdas LTE a partir de un log de Drive Test utilizando Python y QGIS</h3>
+                <p>Publicado el: 24 de Diciembre de 2024</p>
+                <p> En el campo de las telecomunicaciones, identificar los servidores preferidos (“best servers”) es crucial para entender la distribución y rendimiento de la red. Hoy quiero compartir un script que desarrollé utilizando Python en QGIS para representar gráficamente las muestras de PCI recolectadas en campo y las celdas LTE que comparten el mismo identificador, asignándoles colores coincidentes. Este enfoque automatizado mejora la interpretación de datos y optimiza el proceso de análisis.
+                <p> El Desafío La visualización de datos de drive test junto con las celdas definidas en una red LTE puede ser un reto cuando se busca identificar las relaciones entre ellos. Este script simplifica el proceso asignando colores iguales a las muestras de PCI y a las celdas LTE correspondientes, lo que facilita la identificación de “best servers”.  
+                </p>
+                <p>A continuación, presento el código dividido en secciones, junto con una explicación de cada bloque:
+                </p>
+                <div class="article-images">
+                    <img src="images/blog3.1.JPG" alt="" />
+                    <img src="images/blog3.2.JPG" alt="" />
+                </div>
+                <p>Importamos los módulos necesarios para interactuar con QGIS y manejar colores en los estilos de capas.
+                </p>
+                <p>Definimos los nombres de las capas y los campos que contienen los identificadores PCI en cada capa.
+                </p>
+                <p>Identificamos los índices de los campos relevantes en cada capa.</p>
+                <div class="article-images">
+                    <img src="images/blog3.3.JPG" alt="" />
+                    <img src="images/blog3.4.JPG" alt="" />
+                </div>
+                <p>
+                    Obtenemos todas las características (geometrías y atributos) de ambas capas para procesarlas juntas.
+                    Extraemos todos los valores únicos de PCI (muestras y celdas) para asignar colores.
+                    Generamos colores únicos para cada PCI utilizando un hash del valor.
+                    Creamos un renderizador categorizado para la capa de puntos, asignando un color único a cada PCI.
+                </p>
+                <div class="article-image-single">
+                    <img src="images/blog3.5.JPG" alt="" />
+                </div>    
+                <p>Repetimos el proceso para la capa de polígonos, garantizando que las celdas LTE tengan el mismo color que sus muestras correspondientes.
+                    Refrescamos las capas para que los cambios sean visibles en QGIS.
+                </p>  
+                <p>Beneficios del Script </p>  
+                <p>
+                    Eficiencia: Automatiza la identificación de “best servers”, reduciendo errores manuales.
+                    Claridad Visual: Facilita la interpretación de relaciones entre muestras y celdas.
+                    Flexibilidad: Puede ser adaptado para otros casos de uso geoespacial.
+                </p>
+                <p> Este script demuestra cómo Python y QGIS pueden trabajar juntos para resolver problemas específicos en telecomunicaciones. </p>
+
+
+            </p>
+
+                <!-- Enlaces a redes sociales y plataformas -->
+                <div class="social-links">
+                    <p>Además, puedes ver:</p>
+                    <ul>
+                        <li><a href="https://www.linkedin.com/pulse/visualizaci%C3%B3n-del-best-server-y-celdas-lte-partir-de-un-mauricio-zcije/?trackingId=SsJFxZB%2FRJaVWWZAfN%2F9BQ%3D%3D" target="_blank">LinkedIn</a></li>                        
+                        <li><a href="https://www.youtube.com/watch?v=UzofYkkp534" target="_blank">YouTube</a></li>
+                        <li><a href="https://github.com/rmauricio/Best_server_pyqgis/blob/main/Best_server_DT.py" target="_blank">Code</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="article-footer">
+                <button><a href="blog.html">Regresar</a></button>
+            </div>
+        </article>
+    </div>
+
+    <!-- Pie de Página -->
+    <footer>
+        <p>&copy; 2024 Mauricio Cabrera. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>

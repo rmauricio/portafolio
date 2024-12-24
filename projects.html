@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habilidades - Mauricio Cabrera</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Menú de Navegación -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="about.html">Resumen</a></li>
+            <li><a href="skills.html">Habilidades</a></li>
+            <li><a href="projects.html">Proyectos</a></li>
+            <li><a href="blog.html">Blog</a></li>
+     <!--           <li><a href="contact.html">Contacto</a></li> -->
+        </ul>
+    </nav>
+
+    <header>
+    </header>
+
+    <section id="projects">
+        <div class="projects-container">
+            <!-- Agrega más proyectos aquí --> 
+            <!-- Proyecto 13 -->
+            <div class="project-card" data-date="2024-12">
+                <a href="#" target="_blank">
+                    <img src="images/proj_ONDB.JPG" alt="Proyecto 13">
+                </a>
+                <div class="project-description">
+                    <h3>OptiNetDB (Base de Datos de Optimización de Redes)</h3>
+                    <p class="justified-text">
+                        Desarrollé OptiNetDB como una iniciativa personal para optimizar mi trabajo en la red. Usando PostgreSQL PostGIS, almacené información clave como KPIs de RF, parámetros de redes (Nokia, Huawei, ZTE), simulaciones de cobertura y datos de Drive Test. La herramienta permite el monitoreo histórico, validación de cambios y visualización geoespacial en GIS.
+                        Utilicé JavaScript para el procesamiento de archivos XML de red y Python para el desarrollo de la aplicación y procesos ETL. Además, integré la visualización de KPIs en herramientas de BI como Superset, mejorando la eficiencia en los análisis de red.
+                    </p>
+                    
+                    <!-- Uso de iframe para video de YouTube -->
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
+                        <iframe 
+                            src="https://www.youtube.com/embed/yLlwaKMPIcs" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen 
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+                    
+            <!-- Proyecto 12 -->
+            <div class="project-card" data-date="2023-12">
+                <a href=" " target="_blank">
+                    <img src="images/proj_eventos espciales_inhouse.JPG" alt="Proyecto 12">
+                </a>
+                <div class="project-description">
+                    <h3>Nuevos Sitios y Expansiones para Eventos Especiales</h3>
+                    <p class="justified-text">Realicé simulaciones de cobertura en 3G y LTE para identificar huecos de cobertura y determinar la capacidad necesaria según los KPIs de eventos pasados. Planifiqué, comisioné e integré nuevas soluciones, como sitios adicionales o expansiones en segundas portadoras. Tras la puesta en servicio, optimicé los KPIs activando features como balanceo de carga, reparametrización de reselección de celdas y ajustes para eventos masivos de voz en 3G.</p>
+                </div>
+            </div>               
+            <!-- Proyecto 11 -->
+            <div class="project-card" data-date="2023-06">
+                <a href=" " target="_blank">
+                    <img src="images/proj_simulacion de red.JPG" alt="Proyecto 11">
+                </a>
+                <div class="project-description">
+                    <h3>Simulación de Red para Análisis de Nuevos Sitios</h3>
+                    <p class="justified-text">Se realizaron simulaciones de cobertura en todas las tecnologías del operador para identificar huecos de cobertura que podrían corregirse mediante optimizaciones físicas en la red. Además, se identificaron áreas de interés para planificar nuevos sitios. Para ello, se utilizó la herramienta Asset Radio de Teoco, lo que permitió obtener datos precisos sobre la cobertura y el rendimiento de la red, optimizando el proceso de planificación y expansión.</p>
+                </div>
+            </div>              
+             
+            <!-- Proyecto 10 -->
+            <div class="project-card" data-date="2023-06">
+                <a href=" " target="_blank">
+                    <img src="images/proj_LTE camping_inhouse.JPG" alt="Proyecto 10">
+                </a>
+                <div class="project-description">
+                    <h3>Optimización de Conexión LTE en Áreas Urbanas</h3>
+                    <p class="justified-text">Se realizó un análisis de fallas en la red LTE en áreas urbanas, específicamente en zonas con congestión de PRB o niveles bajos de señal durante las horas pico. Se identificó que los sitios realizaban reselección debido a que la red estaba configurada con umbrales subóptimos para calidad de señal. Después de un análisis detallado, se definieron nuevas configuraciones para mejorar la percepción de los usuarios conectados a LTE en zonas urbanas. Se ajustaron parámetros de histeresis en la medición de RSRQ, lo que permitió un control más efectivo de la reselección de usuarios hacia otras tecnologías, mejorando la estabilidad y calidad de la conexión en la red LTE.</p>
+                </div>
+            </div>                 
+            <!-- Proyecto 9 -->
+            <div class="project-card" data-date="2022-06">
+                <a href=" " target="_blank">
+                    <img src="images/proj_LTE Erab fail cmm.JPG" alt="Proyecto 9">
+                </a>
+                <div class="project-description">
+                    <h3>Análisis de Degradación en ERAB Setup y Optimización de la Red LTE </h3>
+                    <p class="justified-text">Identifiqué y analicé una degradación en el proceso de ERAB Setup en la red LTE. En la región de Nokia, se detectaron eventos de liberación de contexto de UE (M8006C339 y M8013C108) originados por el MME, mientras que en la región de Huawei se observó un incremento en los L.E-RAB.FailEst.MME debido a fallas en las interfaces S1 de los CMM a nivel de hardware. Tras realizar las gestiones necesarias y coordinar las correcciones en el Core, el problema se resolvió satisfactoriamente. Además, realicé el análisis de KPIs, asegurando la restauración de los indicadores clave y la mejora general de la calidad de la red.</p>
+                </div>
+            </div>               
+            <!-- Proyecto 8 -->
+            <div class="project-card" data-date="2022-06">
+                <a href=" " target="_blank">
+                    <img src="images/proj_LTE_10-15Mhz_inhouse.JPG" alt="Proyecto 8">
+                </a>
+                <div class="project-description">
+                    <h3>LTE bandwidth expansion 10-15MHZ </h3>
+                    <p class="justified-text">Lideré y ejecuté iniciativas de optimización de ancho de banda en LTE, logrando la expansión de 10 a 15 MHz mediante el análisis y la reparametrización de sitios LTE del operador. Elaboré reportes detallados, realicé análisis de parámetros base y gestioné personalmente el troubleshooting de fallas detectadas, asegurando la restauración de los KPIs clave. Esta iniciativa, realizada de manera in-house, no solo generó un ahorro significativo en los costos operativos, sino que también aumentó el tráfico de la red, incrementando los ingresos y la rentabilidad del operador.</p>
+                </div>
+            </div>     
+       
+            <!-- Proyecto 7 -->
+            <div class="project-card" data-date="2022-10">
+                <a href=" " target="_blank">
+                    <img src="images/proj_LTE_10-15Mhz_inhouse.JPG" alt="Proyecto 7">
+                </a>
+                <div class="project-description">
+                    <h3>LTE bandwidth expansion 10-15MHZ </h3>
+                    <p class="justified-text">Lideré y ejecuté iniciativas de optimización de ancho de banda en LTE, logrando la expansión de 10 a 15 MHz mediante el análisis y la reparametrización de sitios LTE del operador. Elaboré reportes detallados, realicé análisis de parámetros base y gestioné personalmente el troubleshooting de fallas detectadas, asegurando la restauración de los KPIs clave. Esta iniciativa, realizada de manera in-house, no solo generó un ahorro significativo en los costos operativos, sino que también aumentó el tráfico de la red, incrementando los ingresos y la rentabilidad del operador.</p>
+                </div>
+            </div>     
+            <!-- Proyecto 6 -->
+            <div class="project-card" data-date="2018-01">
+                <a href=" " target="_blank">
+                    <img src="images/proj_3g_inhouse.JPG" alt="Proyecto 6">
+                </a>
+                <div class="project-description">
+                    <h3>Expansión de cobertura a Nivel Nacional</h3>
+                    <p class="justified-text">Responsable de la optimización de sitios de rollout a nivel nacional, realizando la integración, análisis y optimización de nuevos sitios. Elaboré reportes de drive tests y análisis de parámetros base, gestioné el troubleshooting de fallas detectadas y aseguré la restauración de los KPIs clave. Participé en la planificación y documentación técnica, además de colaborar en la preparación de proyectos de expansión de cobertura, generando predicciones de cobertura y análisis para apoyar decisiones estratégicas.</p>
+                </div>
+            </div>              
+            <!-- Proyecto 5 -->
+            <div class="project-card" data-date="2015-01">
+                <a href=" " target="_blank">
+                    <img src="images/proj-ENTEL.JPG" alt="Proyecto 5">
+                </a>
+                <div class="project-description">
+                    <h3>Expansión de Red GSM/UMTS/HSDPA+ a Nivel Nacional</h3>
+                    <p class="justified-text">Responsable del rollout de 551 sitios GSM/UMTS/HSDPA+ a nivel nacional, incluyendo planificación, integración y optimización. Gestioné recursos, presupuesto y proveedores, asegurando el cumplimiento de los estándares de la empresa. Realicé análisis de documentos técnicos y KPIs, y participé en la preparación de nuevos proyectos de expansión de cobertura GSM/UMTS/LTE, además de generar predicciones de cobertura en ASSET.</p>
+                </div>
+            </div>              
+            <!-- Proyecto 4 -->
+            <div class="project-card" data-date="2014-01">
+                <a href=" " target="_blank">
+                    <img src="images/proj-roollout LTE.JPG" alt="Proyecto 4">
+                </a>
+                <div class="project-description">
+                    <h3>Rollout de Sitios LTE – Expansión de Red</h3>
+                    <p class="justified-text">Fui Líder Nacional del equipo de RF Drivetest en las ciudades de Cochabamba, La Paz, Santa Cruz, Sucre, Tarija, Oruro, Potosí, Beni y Pando, y además me desempeñé como Ingeniero de RF Drivetest para la recolección de datos en la optimización de la red de acceso LTE.</p>
+                </div>
+            </div> 
+            <!-- Proyecto 3 -->
+            <div class="project-card" data-date="2013-01">
+                <a href=" " target="_blank">
+                    <img src="images/proj-roollout 3G.JPG" alt="Proyecto 3">
+                </a>
+                <div class="project-description">
+                    <h3>Rollout de Sitios UMTS/HSPDA+ – Expansión de Red</h3>
+                    <p class="justified-text">Fui Líder Nacional del equipo de RF Drivetest en las ciudades de Cochabamba, La Paz, Santa Cruz, Sucre, Tarija, Oruro, Potosí, Beni y Pando, y además me desempeñé como Ingeniero de RF Drivetest para la recolección de datos en la optimización de la red de acceso GSM, UMTS/WCDMA, HSDPA, HSDPA+, HSPA+ Second Carrier y HSPA+ Third Carrier.</p>
+                </div>
+            </div>
+            <!-- Proyecto 2 -->
+            <div class="project-card" data-date="2012-11">
+                <a href=" " target="_blank">
+                    <img src="images/proj-roollout 2G.JPG" alt="Proyecto 2">
+                </a>
+                <div class="project-description">
+                    <h3>Rollout de Sitios GSM – Expansión de Red</h3>
+                    <p class="justified-text">Realicé tareas de Drive Test y posprocesamiento de datos para el rollout de sitios GSM en un proyecto de expansión de red. Mi trabajo consistió en recolectar datos de rendimiento y cobertura, los cuales fueron utilizados para apoyar las optimizaciones de la red en nuevas ubicaciones, mejorando la cobertura en áreas urbanas y rurales.</p>
+                </div>
+            </div>
+            <!-- Proyecto 1 -->
+            <div class="project-card" data-date="2012-04">
+                <a href=" " target="_blank">
+                    <img src="images/proj_bechmarking.JPG" alt="Proyecto 1">
+                </a>
+                <div class="project-description">
+                    <h3>Benchmarking de Red – Drive Test y Posproceso de Datos</h3>
+                    <p class="justified-text">Lideré un equipo en el análisis de rendimiento de la red de un operador de Bolivia utilizando herramientas como TEMS. Realizamos Drive Tests y posprocesamiento de datos, identificando áreas críticas que resultaron en un aumento del 10% en la eficiencia de la red, mejorando la calidad de señal y cobertura en zonas urbanas.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Pie de Página -->
+    <footer>
+        <p>&copy; 2024 Mauricio Cabrera. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Enlace al archivo de JavaScript -->
+    <script src="scripts.js"></script>
+</body>
+</html>

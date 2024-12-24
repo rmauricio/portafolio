@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Mauricio Cabrera</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Menú de Navegación -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="about.html">Resumen</a></li>
+            <li><a href="skills.html">Habilidades</a></li>
+            <li><a href="projects.html">Proyectos</a></li>
+            <li><a href="blog.html">Blog</a></li>
+  <!--          <li><a href="contact.html">Contacto</a></li> -->
+        </ul>
+    </nav>
+
+    <!-- Encabezado -->
+    <header>
+
+    </header>
+
+    <!-- Contenedor Principal -->
+    <div class="blog-container">
+        <!-- Barra Lateral de Filtrado -->
+        <aside class="sidebar">
+            <h2>Categorías</h2>
+            <ul>
+                <li><a href="#" onclick="filterCategory('')">Todas</a></li>  
+                <li><a href="#" onclick="filterCategory('QGIS')">QGIS</a></li>
+<!-- Nueva categoría                <li><a href="#" onclick="filterCategory('nuevas-tecnologias')">Nuevas Tecnologías</a></li>
+                <li><a href="#" onclick="filterCategory('benchmarking')">Benchmarking</a></li>
+                <li><a href="#" onclick="filterCategory('gestion-proyectos')">Gestión de Proyectos</a></li> -->
+            </ul>
+        </aside>
+
+        <!-- Sección Principal de Artículos -->
+        <section id="blog-posts">
+
+            <div class="blog-card" data-category="QGIS">
+                <a href="blog_3.html">
+                    <img src="images/blog3.png" alt="Portada de artículo">
+                    <h3>Visualización del Best Server y celdas LTE a partir de un log de Drive Test utilizando Python y QGIS</h3>
+                </a>
+                <p>🚀 Visualización del Best Server y celdas LTE con Python y QGIS 🌐
+                    En telecomunicaciones, identificar los "best servers" es esencial para optimizar la red. Aquí comparto un script que asigna colores coincidentes a muestras de PCI y celdas LTE en QGIS, facilitando la interpretación de datos.
+                    Espero que les resulte útil. 
+                    hashtag#Telecomunicaciones hashtag#Python hashtag#QGIS hashtag#LTE
+                </p>
+                <button><a href="blog_3.html">Leer más</a></button>
+            </div>
+
+           
+            <div class="blog-card" data-category="QGIS">
+                <a href="blog_1.html">
+                    <img src="images/project2.jpg" alt="Portada de artículo">
+                    <h3>Crear sectores RF con mapa de fondo en QGIS</h3>
+                </a>
+                <p>Actualmente, es fundamental aprovechar herramientas gratuitas de Sistemas de Información Geográfica (SIG), como QGIS, para graficar y analizar redes de manera eficiente. Con QGIS, se pueden visualizar sectores específicos y realizar diversos análisis, funciones similares a las que ofrecen herramientas como MapInfo o ArcGIS. A continuación, te mostraré cómo realizar estos procesos en QGIS.</p>
+                <button><a href="blog_1.html">Leer más</a></button>
+            </div>
+
+            <div class="blog-card" data-category="QGIS">
+                <a href="blog_2.html">
+                    <img src="images/project1.jpg" alt="Portada de artículo">
+                    <h3>Carga de archivos .Tap/.Shp de Drivetes a QGIS</h3>
+                </a>
+                <p>Optimizaremos el uso de #QGIS cargando un archivo de Drive Test, que servirá como base para generar reportes completos. Esto permitirá a los ingenieros realizar un análisis rápido del estado de la red, siempre que la información esté previamente cargada en su herramienta o proyecto de QGIS.
+                    A continuación, procederemos a cargar un archivo .tap generado por una herramienta de Drive Test, en este caso, un archivo de LTE-RSRP.
+                </p>
+                <button><a href="blog_2.html">Leer más</a></button>
+            </div>
+
+
+        </section>
+    </div>
+
+    <!-- Pie de Página -->
+    <footer>
+        <p>&copy; 2024 Mauricio Cabrera. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Script para Filtrado -->
+    <script>
+        function filterCategory(category) {
+            const posts = document.querySelectorAll('.blog-card');
+            posts.forEach(post => {
+                if (category === '' || post.dataset.category === category) {
+                    post.style.display = 'block';
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
