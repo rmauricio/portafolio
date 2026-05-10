@@ -3,153 +3,732 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Optimización de Red LTE</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Tutorial: Cómo cargar archivos .Tap/.Shp de Drive Test en QGIS para análisis de redes LTE. Incluye creación de niveles RSRP, estilos reutilizables y generación de reportes.">
+    <meta name="keywords" content="QGIS, Drive Test, LTE-RSRP, .Tap files, RF Analysis, Tutorial, Telecomunicaciones">
+    <meta name="author" content="Mauricio Cabrera">
+    
+    <!-- Open Graph / LinkedIn Sharing -->
+    <meta property="og:title" content="Carga de archivos .Tap/.Shp de Drive Test a QGIS | Blog Técnico">
+    <meta property="og:description" content="Aprende a importar, visualizar y estilizar datos de Drive Test LTE en QGIS. Tutorial con plantilla de estilos descargable.">
+    <meta property="og:image" content="https://tu-dominio.com/images/project1.jpg">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2022-08-08">
+    <meta property="article:author" content="Mauricio Cabrera">
+    
+    <title>Carga de archivos .Tap/.Shp de Drive Test a QGIS | Blog Técnico - Mauricio Cabrera</title>
+    
+    <!-- Fuentes y Iconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Carga de archivos .Tap/.Shp de Drive Test a QGIS",
+      "description": "Tutorial paso a paso para importar y visualizar datos de Drive Test LTE en QGIS",
+      "author": { "@type": "Person", "name": "Mauricio Cabrera" },
+      "datePublished": "2022-08-08",
+      "articleSection": "Drive Test & QGIS",
+      "keywords": ["QGIS", "Drive Test", "LTE", "RSRP", "Tutorial"]
+    }
+    </script>
+
+    <!-- CSS INTERNO PARA ESTE ARTÍCULO (Garantiza funcionamiento sin modificar styles.css) -->
+    <style>
+        /* Navbar avanzado - mismo estilo que blog_1.html */
+        .navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(26,26,46,0.95); backdrop-filter: blur(10px); z-index: 1000; padding: 1rem 0; }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+        .nav-logo span { color: #1abc9c; }
+        .nav-menu { display: flex; list-style: none; gap: 0.5rem; }
+        .nav-link { color: rgba(255,255,255,0.85); text-decoration: none; padding: 0.5rem 1rem; border-radius: 12px; font-weight: 500; transition: 0.3s; }
+        .nav-link:hover, .nav-link.active { color: #fff; background: rgba(255,255,255,0.1); }
+        .nav-toggle { display: none; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
+        
+        /* Article Header */
+        .article-header { background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%); padding: 6rem 2rem 3rem; color: #fff; margin-top: 70px; }
+        .breadcrumb { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.9rem; color: rgba(255,255,255,0.7); }
+        .breadcrumb a { color: #1abc9c; text-decoration: none; }
+        .article-meta { display: flex; gap: 1.5rem; margin-bottom: 1rem; flex-wrap: wrap; font-size: 0.9rem; }
+        .article-meta span { display: flex; align-items: center; gap: 0.375rem; }
+        .article-category { background: #1abc9c; color: #fff; padding: 0.375rem 0.875rem; border-radius: 50px; font-weight: 500; }
+        .article-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; line-height: 1.3; }
+        .article-subtitle { font-size: 1.25rem; color: rgba(255,255,255,0.9); margin-bottom: 2rem; max-width: 700px; }
+        .article-actions-bar { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.2); flex-wrap: wrap; gap: 1rem; }
+        .author-info { display: flex; align-items: center; gap: 0.75rem; }
+        .author-avatar { width: 48px; height: 48px; border-radius: 50%; border: 2px solid #1abc9c; }
+        .author-name { font-weight: 600; color: #fff; }
+        .author-role { font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+        .share-buttons { display: flex; align-items: center; gap: 0.5rem; }
+        .share-btn { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); border: none; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.3s; font-size: 1rem; }
+        .share-btn:hover { background: #0D8ABC; transform: translateY(-2px); }
+
+        /* Article Layout */
+        .article-layout { padding: 5rem 0; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .article-grid { display: grid; grid-template-columns: 1fr 320px; gap: 3rem; align-items: start; }
+        
+        /* Article Content */
+        .article-content { background: #fff; padding: 2.5rem; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .featured-image { margin: -2.5rem -2.5rem 2rem; border-radius: 20px 20px 0 0; overflow: hidden; }
+        .featured-image img { width: 100%; height: auto; display: block; }
+        .featured-image figcaption { padding: 0.75rem 1.5rem; background: rgba(0,0,0,0.7); color: #fff; font-size: 0.9rem; text-align: center; }
+        .article-intro { font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 2rem; }
+        .article-intro p { margin-bottom: 1rem; }
+        
+        /* Info Boxes */
+        .info-box, .tip-box, .warning-box, .success-box { display: flex; gap: 1rem; padding: 1.25rem; border-radius: 12px; margin: 1.5rem 0; }
+        .info-box { background: rgba(13,138,188,0.1); border-left: 4px solid #0D8ABC; }
+        .tip-box { background: rgba(26,188,156,0.1); border-left: 4px solid #1abc9c; }
+        .warning-box { background: rgba(230,126,34,0.1); border-left: 4px solid #e67e22; }
+        .success-box { background: rgba(16,185,129,0.1); border-left: 4px solid #10b981; }
+        .info-box i, .tip-box i, .warning-box i, .success-box i { font-size: 1.5rem; flex-shrink: 0; }
+        .info-box strong, .tip-box strong, .warning-box strong, .success-box strong { display: block; margin-bottom: 0.5rem; color: #1a1a2e; }
+        .info-box ul { margin: 0; padding-left: 1.25rem; }
+        .info-box li { font-size: 0.95rem; color: #666; margin-bottom: 0.25rem; }
+
+        /* Table of Contents */
+        .article-toc { background: #f8f9fa; padding: 1.5rem; border-radius: 12px; margin: 2rem 0; }
+        .article-toc h3 { font-size: 1.1rem; margin-bottom: 1rem; color: #1a1a2e; display: flex; align-items: center; gap: 0.5rem; }
+        .article-toc ol { margin: 0; padding-left: 1.5rem; }
+        .article-toc li { margin-bottom: 0.5rem; }
+        .article-toc a { color: #0D8ABC; text-decoration: none; font-size: 0.95rem; transition: 0.2s; }
+        .article-toc a:hover { color: #0A6B94; text-decoration: underline; }
+
+        /* Article Sections */
+        .article-section { margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid #eee; }
+        .article-section:last-of-type { border-bottom: none; }
+        .article-section h2 { font-size: 1.75rem; margin-bottom: 1.5rem; color: #1a1a2e; display: flex; align-items: center; gap: 0.75rem; }
+        .step-number { background: #0D8ABC; color: #fff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem; flex-shrink: 0; }
+        .step-list { margin: 1rem 0; padding-left: 1.5rem; }
+        .step-list li { margin-bottom: 0.75rem; color: #555; line-height: 1.6; }
+        .step-list code { background: #f1f3f5; padding: 0.125rem 0.375rem; border-radius: 4px; font-family: monospace; font-size: 0.9em; color: #0D8ABC; }
+
+        /* Images */
+        .image-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin: 1.5rem 0; }
+        .image-gallery figure { margin: 0; }
+        .image-gallery img { width: 100%; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: 0.3s; }
+        .image-gallery img:hover { transform: scale(1.02); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .image-gallery figcaption, .image-single figcaption { display: block; text-align: center; font-size: 0.85rem; color: #666; margin-top: 0.5rem; font-style: italic; }
+        .image-single { text-align: center; margin: 2rem 0; }
+        .image-single img { max-width: 100%; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+
+        /* Table & Code */
+        .table-container { overflow-x: auto; margin: 1.5rem 0; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        .data-table th, .data-table td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid #eee; }
+        .data-table th { background: #f8f9fa; font-weight: 600; color: #1a1a2e; }
+        .data-table tr:hover { background: rgba(13,138,188,0.05); }
+        .data-table code { background: #f1f3f5; padding: 0.125rem 0.375rem; border-radius: 4px; font-family: monospace; color: #0D8ABC; }
+        .code-block { background: #1a1a2e; border-radius: 12px; padding: 1.25rem; margin: 1.5rem 0; overflow-x: auto; }
+        .code-block pre { margin: 0; color: #f8f8f2; font-family: monospace; font-size: 0.9rem; line-height: 1.5; }
+        .download-link { color: #1abc9c; text-decoration: none; font-family: monospace; word-break: break-all; display: flex; align-items: center; gap: 0.5rem; }
+        .download-link:hover { text-decoration: underline; }
+
+        /* Download Section */
+        .download-section { text-align: center; padding: 2rem; background: linear-gradient(135deg, rgba(13,138,188,0.1), rgba(26,188,156,0.1)); border-radius: 12px; margin: 2rem 0; }
+        .download-section .btn { margin-bottom: 0.75rem; }
+        .download-note { display: block; font-size: 0.85rem; color: #666; }
+
+        /* Check List */
+        .check-list { list-style: none; padding: 0; }
+        .check-list li { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.75rem; color: #555; }
+        .check-list i { color: #1abc9c; margin-top: 0.25rem; }
+
+        /* Conclusion */
+        .article-conclusion { background: #f8f9fa; padding: 2rem; border-radius: 12px; margin: 2rem 0; }
+        .article-conclusion h2 { margin-bottom: 1rem; color: #1a1a2e; }
+
+        /* Tags & Share */
+        .article-tags-share { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; margin: 2rem 0; flex-wrap: wrap; gap: 1rem; }
+        .article-tags { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+        .article-tags span { color: #666; font-size: 0.9rem; }
+        .tag { padding: 0.375rem 0.875rem; background: #f1f3f5; color: #0D8ABC; border-radius: 50px; font-size: 0.85rem; text-decoration: none; transition: 0.2s; }
+        .tag:hover { background: #0D8ABC; color: #fff; }
+
+        /* Article Navigation */
+        .article-navigation { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0; }
+        .article-navigation a { display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: #f8f9fa; border-radius: 12px; text-decoration: none; color: #333; transition: 0.3s; }
+        .article-navigation a:hover { background: #0D8ABC; color: #fff; transform: translateY(-2px); }
+        .article-navigation .nav-prev { text-align: left; }
+        .article-navigation .nav-next { text-align: right; justify-content: flex-end; }
+        .article-navigation strong { display: block; font-size: 1rem; margin-top: 0.25rem; }
+        .article-navigation span { font-size: 0.85rem; opacity: 0.8; }
+
+        /* Author Box */
+        .author-box { display: flex; gap: 1.5rem; padding: 2rem; background: #f8f9fa; border-radius: 12px; margin: 2rem 0; }
+        .author-avatar-lg { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #0D8ABC; flex-shrink: 0; }
+        .author-bio h4 { margin-bottom: 0.5rem; color: #1a1a2e; }
+        .author-bio p { color: #666; margin-bottom: 1rem; font-size: 0.95rem; }
+        .author-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .author-links a { color: #0D8ABC; text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 0.375rem; transition: 0.2s; }
+        .author-links a:hover { color: #0A6B94; }
+
+        /* Comments */
+        .comments-section { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #eee; }
+        .comments-section h3 { margin-bottom: 1rem; color: #1a1a2e; display: flex; align-items: center; gap: 0.5rem; }
+        .comments-placeholder { color: #666; padding: 1.5rem; background: #f8f9fa; border-radius: 12px; display: flex; align-items: center; gap: 0.75rem; }
+        .comments-placeholder a { color: #0D8ABC; text-decoration: none; }
+
+        /* Sidebar */
+        .article-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+        .sidebar-widget { background: #fff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .toc-sticky { position: sticky; top: 100px; }
+        .sidebar-widget h4 { font-size: 1.1rem; font-weight: 600; color: #1a1a2e; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; padding-bottom: 0.75rem; border-bottom: 2px solid #eee; }
+        .toc-list { list-style: none; padding: 0; }
+        .toc-list li { margin-bottom: 0.5rem; }
+        .toc-list a { color: #666; text-decoration: none; font-size: 0.9rem; padding: 0.375rem 0; display: block; transition: 0.2s; border-left: 2px solid transparent; padding-left: 0.75rem; }
+        .toc-list a:hover, .toc-list a.active { color: #0D8ABC; border-left-color: #0D8ABC; }
+        .toc-list a.highlight { color: #1abc9c; font-weight: 500; }
+        .resource-list { list-style: none; padding: 0; }
+        .resource-list li { margin-bottom: 0.75rem; }
+        .resource-list a { color: #666; text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; transition: 0.2s; padding: 0.375rem 0; }
+        .resource-list a:hover { color: #0D8ABC; }
+        .resource-list i { width: 16px; color: #0D8ABC; }
+        .related-posts { display: flex; flex-direction: column; gap: 1rem; }
+        .related-post { display: block; padding: 1rem; background: #f8f9fa; border-radius: 12px; text-decoration: none; color: #333; transition: 0.3s; }
+        .related-post:hover { background: #0D8ABC; color: #fff; transform: translateX(4px); }
+        .related-category { display: inline-block; background: rgba(13,138,188,0.1); color: #0D8ABC; padding: 0.25rem 0.625rem; border-radius: 50px; font-size: 0.75rem; font-weight: 500; margin-bottom: 0.5rem; }
+        .related-post:hover .related-category { background: rgba(255,255,255,0.2); color: #fff; }
+        .related-post strong { display: block; font-size: 0.95rem; margin-bottom: 0.375rem; line-height: 1.4; }
+        .related-meta { font-size: 0.8rem; opacity: 0.8; display: flex; align-items: center; gap: 0.375rem; }
+        .newsletter-widget p { font-size: 0.9rem; color: #666; margin-bottom: 1rem; }
+        .newsletter-form { display: flex; flex-direction: column; gap: 0.75rem; }
+        .newsletter-form input { padding: 0.75rem 1rem; border: 2px solid #e0e0e0; border-radius: 12px; font-size: 0.95rem; }
+        .newsletter-form input:focus { outline: none; border-color: #0D8ABC; }
+        .newsletter-form .btn { width: 100%; justify-content: center; }
+
+        /* CTA Section */
+        .cta-section { background: linear-gradient(135deg, #0D8ABC 0%, #0A6B94 100%); padding: 4rem 0; text-align: center; color: #fff; }
+        .cta-section h2 { font-size: 2rem; margin-bottom: 1rem; }
+        .cta-section p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.75rem; font-weight: 500; text-decoration: none; border-radius: 12px; transition: 0.3s; cursor: pointer; border: none; font-size: 1rem; }
+        .btn-primary { background: linear-gradient(135deg, #0D8ABC, #0A6B94); color: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+        .btn-secondary { background: #fff; color: #0D8ABC; border: 2px solid #0D8ABC; }
+        .btn-secondary:hover { background: #0D8ABC; color: #fff; }
+        .btn-large { padding: 1rem 2.5rem; font-size: 1.1rem; }
+
+        /* Footer */
+        .footer { background: #1a1a2e; color: rgba(255,255,255,0.7); padding: 4rem 0 2rem; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+        .footer-brand .footer-logo { font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
+        .footer-brand .footer-logo span { color: #1abc9c; }
+        .footer-brand p { font-size: 0.95rem; line-height: 1.6; }
+        .footer-links h4, .footer-contact h4 { color: #fff; font-size: 1.1rem; margin-bottom: 1rem; }
+        .footer-links ul, .footer-contact ul { list-style: none; }
+        .footer-links li, .footer-contact li { margin-bottom: 0.5rem; }
+        .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; transition: 0.2s; }
+        .footer-links a:hover { color: #1abc9c; }
+        .footer-contact li { display: flex; align-items: center; gap: 0.5rem; }
+        .footer-contact i { color: #0D8ABC; width: 20px; }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.875rem; }
+        .footer-bottom i { color: #ef4444; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .article-grid { grid-template-columns: 1fr; }
+            .article-sidebar { flex-direction: row; flex-wrap: wrap; }
+            .sidebar-widget { flex: 1; min-width: 250px; }
+            .toc-sticky { position: static; }
+            .image-gallery { grid-template-columns: 1fr; }
+            .article-navigation { grid-template-columns: 1fr; }
+            .author-box { flex-direction: column; text-align: center; }
+            .author-links { justify-content: center; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .footer-contact li { justify-content: center; }
+        }
+        @media (max-width: 768px) {
+            .nav-menu { position: fixed; top: 70px; left: 0; right: 0; background: #1a1a2e; flex-direction: column; padding: 1rem; gap: 0; transform: translateY(-150%); transition: 0.3s; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+            .nav-menu.active { transform: translateY(0); }
+            .nav-link { padding: 1rem; width: 100%; text-align: center; border-radius: 0; }
+            .nav-toggle { display: block; }
+            .article-header { padding: 4rem 0 2rem; margin-top: 60px; }
+            .article-title { font-size: 2rem; }
+            .article-subtitle { font-size: 1.1rem; }
+            .article-actions-bar { flex-direction: column; align-items: flex-start; }
+            .article-content { padding: 1.5rem; }
+            .featured-image { margin: -1.5rem -1.5rem 1.5rem; }
+            .article-section h2 { font-size: 1.5rem; }
+            .sidebar-widget { min-width: 100%; }
+            .cta-actions { flex-direction: column; align-items: center; }
+            .cta-actions .btn { width: 100%; max-width: 300px; justify-content: center; }
+        }
+        @media (max-width: 480px) {
+            .article-meta { flex-direction: column; gap: 0.5rem; }
+            .article-tags-share { flex-direction: column; align-items: flex-start; }
+            .article-navigation a { flex-direction: column; text-align: center; }
+            .article-navigation .nav-next { justify-content: center; }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Menú de Navegación -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="about.html">Resumen</a></li>
-            <li><a href="skills.html">Habilidades</a></li>
-            <li><a href="projects.html">Proyectos</a></li>
-            <li><a href="blog.html" class="active">Blog</a></li>
-<!--            <li><a href="contact.html">Contacto</a></li> -->
-        </ul>
+    <!-- Barra de Navegación (IDÉNTICA a blog_1.html) -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-satellite-dish"></i> MCabrera<span>.RF</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Inicio</a></li>
+                <li><a href="about.html" class="nav-link">Perfil</a></li>
+                <li><a href="skills.html" class="nav-link">Competencias</a></li>
+                <li><a href="projects.html" class="nav-link">Proyectos</a></li>
+                <li><a href="blog.html" class="nav-link active">Blog Técnico</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
     </nav>
 
-    <!-- Encabezado -->
-    <header>
-
+    <!-- Header del Artículo -->
+    <header class="article-header">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html">Inicio</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="blog.html">Blog</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Carga de Drive Test en QGIS</span>
+            </nav>
+            <div class="article-meta">
+                <span class="article-category"><i class="fas fa-hard-drive"></i> Drive Test & QGIS</span>
+                <span class="article-date"><i class="far fa-calendar"></i> 8 de Agosto, 2022</span>
+                <span class="article-readtime"><i class="far fa-clock"></i> 7 min de lectura</span>
+            </div>
+            <h1 class="article-title">Carga de archivos .Tap/.Shp de Drive Test a QGIS</h1>
+            <p class="article-subtitle">Importa, visualiza y estiliza datos de LTE-RSRP para análisis rápido y generación de reportes profesionales</p>
+            <div class="article-actions-bar">
+                <div class="author-info">
+                    <img src="images/profile.jpg" alt="Mauricio Cabrera" class="author-avatar" onerror="this.src='https://ui-avatars.com/api/?name=Mauricio+Cabrera&size=64&background=0D8ABC&color=fff'">
+                    <div class="author-details">
+                        <span class="author-name">Mauricio Cabrera</span>
+                        <span class="author-role">RF Optimization Engineer | MBA</span>
+                    </div>
+                </div>
+                <div class="share-buttons">
+                    <span>Compartir:</span>
+                    <button class="share-btn" onclick="sharePost('linkedin')" title="Compartir en LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                    <button class="share-btn" onclick="sharePost('twitter')" title="Compartir en X/Twitter"><i class="fab fa-twitter"></i></button>
+                    <button class="share-btn" onclick="sharePost('whatsapp')" title="Compartir en WhatsApp"><i class="fab fa-whatsapp"></i></button>
+                    <button class="share-btn" onclick="copyLink()" title="Copiar enlace"><i class="fas fa-link"></i></button>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <!-- Contenedor de Artículo -->
-    <div class="article-container">
-        <article class="article-card">
-            <div class="article-header">
-                <img src="images/project1.jpg" alt="Portada de artículo" />
-            </div>
-
-            <div class="article-body">
-                <h3>Carga de archivos .Tap/.Shp de Drivetes a QGIS</h3>
-                <p>Publicado el: 8 de agosto de 2022</p>
-                <p> Daremos mayor utilidad a hashtag#qgis cargando un archivo de Drivetest, esto servirá como base para la generación de reportes completos que un ingeniero debe realizar como un análisis rápido de estado de su red siempre que tenga la información ya cargada en su herramienta o proyecto de QGIS.
-                    A continuación iniciaremos con el cargado de una un archivo .tap de nos genera una herramienta de Drivetest para este caso un archivo de LTE- RSRP
-                    El cargado es simple: Seleccionamos el archivo .tap o.shp y arrastramos el archivo al área donde se visualizan las capas, como se muestra en la imagen.
-                </p>
+    <!-- Contenido Principal -->
+    <main class="article-layout">
+        <div class="container">
+            <div class="article-grid">
                 
-                <div class="article-images">
-                    <img src="images/blog2.1.png" alt="" />
-                    <img src="images/blog2.2.png" alt="" />
+                <!-- Contenido del Artículo -->
+                <article class="article-content" id="articleContent">
+                    
+                    <!-- Imagen Destacada -->
+                    <figure class="featured-image">
+                        <img src="images/project1.jpg" alt="Visualización de ruta de Drive Test LTE-RSRP en QGIS" loading="lazy" onerror="this.src='https://via.placeholder.com/800x400/e67e22/ffffff?text=DriveTest+QGIS'">
+                        <figcaption>Figura 1: Ruta de Drive Test con niveles de LTE-RSRP visualizados en QGIS</figcaption>
+                    </figure>
+                    
+                    <!-- Introducción -->
+                    <div class="article-intro">
+                        <p>Daremos mayor utilidad a <strong>QGIS</strong> cargando archivos de <strong>Drive Test</strong> (.tap/.shp), lo que servirá como base para la generación de reportes completos y análisis rápidos del estado de la red.</p>
+                        <p>Este flujo de trabajo permite a ingenieros de optimización visualizar métricas clave como <strong>RSRP, SINR y RSRQ</strong> de forma geoespacial, facilitando la identificación de problemas de cobertura, interferencia y calidad de servicio.</p>
+                        <div class="info-box">
+                            <i class="fas fa-lightbulb"></i>
+                            <div><strong>💡 ¿Por qué usar QGIS para Drive Test?</strong><ul><li>✅ Visualización geoespacial intuitiva de rutas y métricas</li><li>✅ Integración con capas base (Google Satellite, OpenStreetMap)</li><li>✅ Estilos reutilizables para RSRP, SINR, RSRQ, etc.</li><li>✅ Exportación profesional a PDF, imágenes o dashboards</li></ul></div>
+                        </div>
+                    </div>
+
+                    <!-- Índice de Contenidos -->
+                    <nav class="article-toc">
+                        <h3><i class="fas fa-list"></i> Contenido del Tutorial</h3>
+                        <ol>
+                            <li><a href="#step1">1. Importar archivo .Tap/.Shp en QGIS</a></li>
+                            <li><a href="#step2">2. Configuración inicial de la capa</a></li>
+                            <li><a href="#step3">3. Crear niveles de RSRP personalizados</a></li>
+                            <li><a href="#step4">4. Editar leyendas y rangos de color</a></li>
+                            <li><a href="#step5">5. Guardar estilo como plantilla reutilizable</a></li>
+                            <li><a href="#step6">6. Resultado final y exportación</a></li>
+                            <li><a href="#download">📥 Descargar plantilla de estilos QGIS</a></li>
+                        </ol>
+                    </nav>
+
+                    <!-- Paso 1 -->
+                    <section id="step1" class="article-section">
+                        <h2><span class="step-number">1</span> Importar archivo .Tap/.Shp en QGIS</h2>
+                        <p>El proceso de carga es sencillo y compatible con múltiples herramientas de Drive Test (TEMS, Nemo, Dingli, etc.):</p>
+                        <ol class="step-list">
+                            <li>Abre QGIS y localiza el panel <strong>Browser</strong> o el explorador de archivos</li>
+                            <li>Navega hasta la carpeta que contiene tu archivo <code>.tap</code> o <code>.shp</code></li>
+                            <li><strong>Arrastra y suelta</strong> el archivo directamente sobre el área de capas de QGIS</li>
+                            <li>Alternativamente: <code>Capa → Añadir capa → Añadir capa vectorial</code></li>
+                        </ol>
+                        <div class="image-gallery">
+                            <figure><img src="images/blog2.1.png" alt="Arrastrar archivo .tap a QGIS" loading="lazy" onerror="this.src='https://via.placeholder.com/400x250/e0e0e0/666?text=Drag+Drop+Tap+File'"><figcaption>Figura 2: Importación por arrastre del archivo .tap</figcaption></figure>
+                            <figure><img src="images/blog2.2.png" alt="Capa cargada en QGIS" loading="lazy" onerror="this.src='https://via.placeholder.com/400x250/e0e0e0/666?text=Layer+Loaded'"><figcaption>Figura 3: Capa de Drive Test cargada exitosamente</figcaption></figure>
+                        </div>
+                        <div class="tip-box"><i class="fas fa-info-circle"></i><p><strong>Nota:</strong> Si tu herramienta de Drive Test exporta niveles preconfigurados, estos se cargarán automáticamente. Si no, continuamos con los pasos siguientes para crearlos manualmente.</p></div>
+                    </section>
+
+                    <!-- Paso 2 -->
+                    <section id="step2" class="article-section">
+                        <h2><span class="step-number">2</span> Configuración inicial de la capa</h2>
+                        <p>Si la capa se visualiza con contorno oscuro o símbolos no deseados, personaliza la apariencia base:</p>
+                        <ol class="step-list">
+                            <li>Click derecho sobre la capa de interés (ej: <code>RSRP</code>) → <strong>Propiedades</strong></li>
+                            <li>Ve a la pestaña <strong>Simbología</strong></li>
+                            <li>Selecciona <strong>Símbolo único</strong> → <strong>Marcador simple</strong></li>
+                            <li>En <strong>Estilo de marca</strong>, selecciona <strong>Sin plumilla</strong> (para quitar el borde)</li>
+                            <li>Haz clic en <strong>Aplicar</strong> → <strong>Aceptar</strong></li>
+                        </ol>
+                        <div class="image-gallery">
+                            <figure><img src="images/blog2.3.png" alt="Configuración de simbología en QGIS" loading="lazy" onerror="this.src='https://via.placeholder.com/400x250/e0e0e0/666?text=Symbology+Settings'"><figcaption>Figura 4: Configuración de símbolo sin contorno</figcaption></figure>
+                            <figure><img src="images/blog2.4.png" alt="Resultado sin borde oscuro" loading="lazy" onerror="this.src='https://via.placeholder.com/400x250/e0e0e0/666?text=Clean+Route+View'"><figcaption>Figura 5: Ruta visualizada sin contorno oscuro</figcaption></figure>
+                        </div>
+                    </section>
+
+                    <!-- Paso 3 -->
+                    <section id="step3" class="article-section">
+                        <h2><span class="step-number">3</span> Crear niveles de RSRP personalizados</h2>
+                        <p>Para visualizar los niveles de señal LTE-RSRP con una rampa de colores intuitiva:</p>
+                        <ol class="step-list">
+                            <li>Click derecho sobre la capa → <strong>Propiedades → Simbología</strong></li>
+                            <li>Cambia el tipo de renderizado a <strong>Graduado</strong></li>
+                            <li><strong>Valor:</strong> Selecciona la columna que contiene los valores de RSRP</li>
+                            <li><strong>Rampa de colores:</strong> Selecciona <code>Spectral</code> (recomendado para métricas de señal)</li>
+                            <li><strong>Modo:</strong> Elige <code>Cuantil (conteo igual)</code> para distribución equilibrada</li>
+                            <li><strong>Clases:</strong> Define la cantidad de niveles (ej: <code>8</code> para RSRP típico)</li>
+                            <li>Haz clic en <strong>Clasificar</strong> para generar los rangos automáticos</li>
+                        </ol>
+                        <div class="code-block"><pre><code class="language-text"># Rangos típicos para LTE-RSRP (dBm):
+Clase 1: [-∞, -120]  → Rojo oscuro (Sin señal)
+Clase 2: [-120, -110] → Rojo (Muy débil)
+Clase 3: [-110, -100] → Naranja (Débil)
+Clase 4: [-100, -90]  → Amarillo (Regular)
+Clase 5: [-90, -80]   → Verde claro (Bueno)
+Clase 6: [-80, -70]   → Verde (Muy bueno)
+Clase 7: [-70, -60]   → Verde azulado (Excelente)
+Clase 8: [-60, +∞]    → Azul (Óptimo)</code></pre></div>
+                        <div class="image-gallery">
+                            <figure><img src="images/blog2.5.png" alt="Configuración de niveles graduados" loading="lazy" onerror="this.src='https://via.placeholder.com/400x250/e0e0e0/666?text=Graduated+Symbology'"><figcaption>Figura 6: Configuración de simbología graduada para RSRP</figcaption></figure>
+                            <figure><img src="images/blog2.6.png" alt="Rangos clasificados automáticamente" loading="lazy" onerror="this.src='https://via.placeholder.com/400x250/e0e0e0/666?text=Classified+Ranges'"><figcaption>Figura 7: Rangos de RSRP clasificados con rampa Spectral</figcaption></figure>
+                        </div>
+                    </section>
+
+                    <!-- Paso 4 -->
+                    <section id="step4" class="article-section">
+                        <h2><span class="step-number">4</span> Editar leyendas y rangos de color</h2>
+                        <p>Personaliza los rangos y etiquetas para alinearse con los estándares de tu operador:</p>
+                        <ol class="step-list">
+                            <li><strong>Doble clic</strong> sobre un rango en la lista de símbolos</li>
+                            <li>Ajusta los valores <strong>Valor</strong> y <strong>Etiqueta</strong> según necesidad</li>
+                            <li>Para cambiar el color: haz clic en el cuadro de color y selecciona uno personalizado</li>
+                            <li>Para <strong>eliminar un nivel</strong>: selecciónalo y presiona el botón <strong>−</strong> (menos)</li>
+                            <li>Haz clic en <strong>Aplicar</strong> → <strong>Aceptar</strong> para guardar cambios</li>
+                        </ol>
+                        <div class="image-gallery">
+                            <figure><img src="images/blog2.7.png" alt="Edición de niveles de RSRP" loading="lazy" onerror="this.src='https://via.placeholder.com/400x250/e0e0e0/666?text=Edit+Legend+Levels'"><figcaption>Figura 8: Edición manual de rangos y etiquetas</figcaption></figure>
+                            <figure><img src="images/blog2.8.png" alt="Eliminación de niveles no deseados" loading="lazy" onerror="this.src='https://via.placeholder.com/400x250/e0e0e0/666?text=Remove+Levels'"><figcaption>Figura 9: Eliminación de niveles con el botón "−"</figcaption></figure>
+                        </div>
+                        <div class="warning-box"><i class="fas fa-exclamation-triangle"></i><p><strong>⚠️ Buenas prácticas:</strong> Mantén consistencia en los rangos de color entre proyectos para facilitar la comparación visual. Documenta tus convenciones en un archivo de estilo compartido.</p></div>
+                    </section>
+
+                    <!-- Paso 5 -->
+                    <section id="step5" class="article-section">
+                        <h2><span class="step-number">5</span> Guardar estilo como plantilla reutilizable</h2>
+                        <p>Para no repetir la configuración en futuros proyectos, guarda tu estilo como plantilla:</p>
+                        <ol class="step-list">
+                            <li>Con la capa seleccionada, ve a <strong>Estilo → Guardar estilo</strong></li>
+                            <li>Elige formato <code>QGIS Layer Style File (.qml)</code></li>
+                            <li>Navega a tu carpeta de repositorio de estilos (ej: <code>QGIS_Styles/RF/</code>)</li>
+                            <li>Nombre del archivo: <code>RSRP_Spectral_8classes.qml</code></li>
+                            <li>Haz clic en <strong>Guardar</strong></li>
+                        </ol>
+                        <div class="image-gallery">
+                            <figure><img src="images/blog2.9.png" alt="Guardar estilo como archivo .qml" loading="lazy" onerror="this.src='https://via.placeholder.com/400x250/e0e0e0/666?text=Save+Style+File'"><figcaption>Figura 10: Diálogo de guardado de estilo .qml</figcaption></figure>
+                            <figure><img src="images/blog2.10.png" alt="Estructura de carpeta de estilos" loading="lazy" onerror="this.src='https://via.placeholder.com/400x250/e0e0e0/666?text=Styles+Folder+Structure'"><figcaption>Figura 11: Organización recomendada de plantillas de estilo</figcaption></figure>
+                        </div>
+                        <h3>🔄 Reutilizar estilo en futuros proyectos:</h3>
+                        <ol class="step-list">
+                            <li>Click derecho sobre la capa → <strong>Propiedades → Simbología</strong></li>
+                            <li>Ve a <strong>Estilo → Cargar estilo</strong></li>
+                            <li>Navega hasta tu archivo <code>.qml</code> guardado</li>
+                            <li>Selecciona y haz clic en <strong>Abrir</strong> → <strong>Aplicar</strong></li>
+                        </ol>
+                        <div class="success-box"><i class="fas fa-rocket"></i><p><strong>🚀 Tip avanzado:</strong> Crea plantillas para <code>SINR.qml</code>, <code>RSRQ.qml</code>, <code>Throughput.qml</code> y compártelas con tu equipo vía Git o carpeta compartida para estandarizar reportes.</p></div>
+                    </section>
+
+                    <!-- Paso 6 -->
+                    <section id="step6" class="article-section">
+                        <h2><span class="step-number">6</span> Resultado final y exportación</h2>
+                        <p>¡Listo! Ahora tienes una visualización profesional de tu ruta de Drive Test con niveles de RSRP claramente diferenciados:</p>
+                        <div class="image-gallery">
+                            <figure><img src="images/blog2.11.png" alt="Resultado final con niveles de RSRP" loading="lazy" onerror="this.src='https://via.placeholder.com/400x250/e67e22/ffffff?text=Final+RSRP+Visualization'"><figcaption>Figura 12: Visualización final con rampa de colores Spectral</figcaption></figure>
+                            <figure><img src="images/blog2.12.png" alt="Leyenda personalizada de RSRP" loading="lazy" onerror="this.src='https://via.placeholder.com/400x250/e67e22/ffffff?text=Custom+Legend'"><figcaption>Figura 13: Leyenda con rangos y etiquetas personalizadas</figcaption></figure>
+                        </div>
+                        <h3>📤 Opciones de exportación:</h3>
+                        <ul class="check-list">
+                            <li><i class="fas fa-check-circle"></i> <strong>Imagen PNG/JPG:</strong> <code>Proyecto → Importar/Exportar → Exportar mapa como imagen</code></li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Reporte PDF:</strong> Usa el <strong>Compositor de Impresión</strong> para layouts con leyenda, escala y north arrow</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Web map:</strong> Exporta a <code>qgis2web</code> para visualización interactiva en navegador</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Datos procesados:</strong> Exporta a GeoJSON/CSV para integración con dashboards Python/Tableau</li>
+                        </ul>
+                        <div class="image-single">
+                            <img src="images/blog2.13.png" alt="Ejemplo de reporte exportado desde QGIS" loading="lazy" onerror="this.src='https://via.placeholder.com/800x400/e67e22/ffffff?text=Exported+Report+Example'">
+                            <figcaption>Figura 14: Ejemplo de reporte profesional exportado desde QGIS</figcaption>
+                        </div>
+                    </section>
+
+                    <!-- Conclusión -->
+                    <section class="article-conclusion">
+                        <h2>Conclusión</h2>
+                        <p>Dominar la carga y estilización de archivos de Drive Test en QGIS permite agilizar significativamente el análisis de cobertura y calidad de red. Al crear plantillas de estilo reutilizables, estandarizas la visualización de métricas clave (RSRP, SINR, RSRQ) y facilitas la generación de reportes consistentes para toma de decisiones técnicas.</p>
+                        <p>Este flujo de trabajo open-source es una alternativa poderosa a herramientas propietarias, con la ventaja de ser gratuito, flexible y compatible con múltiples formatos de datos.</p>
+                        <p>Espero que este tutorial sea de utilidad para tu trabajo diario. ¡Compártelo con colegas que también trabajen con análisis de Drive Test!</p>
+                    </section>
+
+                    <!-- Tags y Compartir -->
+                    <div class="article-tags-share">
+                        <div class="article-tags">
+                            <span><i class="fas fa-tag"></i> Tags:</span>
+                            <a href="blog.html?tag=qgis" class="tag">QGIS</a>
+                            <a href="blog.html?tag=drive-test" class="tag">Drive Test</a>
+                            <a href="blog.html?tag=lte" class="tag">LTE</a>
+                            <a href="blog.html?tag=rsrp" class="tag">RSRP</a>
+                            <a href="blog.html?tag=tutorial" class="tag">Tutorial</a>
+                        </div>
+                        <div class="share-buttons">
+                            <span>Compartir:</span>
+                            <button class="share-btn" onclick="sharePost('linkedin')"><i class="fab fa-linkedin-in"></i></button>
+                            <button class="share-btn" onclick="sharePost('twitter')"><i class="fab fa-twitter"></i></button>
+                            <button class="share-btn" onclick="sharePost('whatsapp')"><i class="fab fa-whatsapp"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Navegación entre artículos -->
+                    <nav class="article-navigation">
+                        <a href="blog_1.html" class="nav-prev"><i class="fas fa-arrow-left"></i><div><span>Artículo anterior</span><strong>Crear sectores RF en QGIS</strong></div></a>
+                        <a href="blog_3.html" class="nav-next"><div><span>Siguiente artículo</span><strong>Visualización de Best Server LTE</strong></div><i class="fas fa-arrow-right"></i></a>
+                    </nav>
+
+                    <!-- Sección de Autor -->
+                    <div class="author-box">
+                        <img src="images/profile.jpg" alt="Mauricio Cabrera" class="author-avatar-lg" onerror="this.src='https://ui-avatars.com/api/?name=Mauricio+Cabrera&size=128&background=0D8ABC&color=fff'">
+                        <div class="author-bio">
+                            <h4>Sobre el autor</h4>
+                            <p><strong>Mauricio Cabrera</strong> es Ingeniero en Telecomunicaciones con MBA, especializado en optimización de redes LTE/5G y automatización con Python. Ha liderado proyectos para operadores y vendors como Nokia, Huawei y ZTE en Latinoamérica.</p>
+                            <div class="author-links">
+                                <a href="https://www.linkedin.com/in/mauricio-cabrera-arias-361a4246" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                                <a href="https://github.com/rmauricio" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="about.html"><i class="fas fa-user"></i> Ver perfil completo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comentarios (Placeholder) -->
+                    <section class="comments-section">
+                        <h3><i class="fas fa-comments"></i> Comentarios</h3>
+                        <p class="comments-placeholder"><i class="fas fa-info-circle"></i> Los comentarios están deshabilitados temporalmente. Para preguntas técnicas, contáctame directamente por <a href="mailto:r.mauricio.cabrera@gmail.com">email</a> o <a href="https://www.linkedin.com/in/mauricio-cabrera-arias-361a4246" target="_blank">LinkedIn</a>.</p>
+                    </section>
+
+                </article>
+
+                <!-- Sidebar del Artículo -->
+                <aside class="article-sidebar">
+                    <div class="sidebar-widget toc-sticky">
+                        <h4><i class="fas fa-list"></i> En este artículo</h4>
+                        <ul class="toc-list">
+                            <li><a href="#step1">Importar archivo .Tap</a></li>
+                            <li><a href="#step2">Configuración inicial</a></li>
+                            <li><a href="#step3">Niveles de RSRP</a></li>
+                            <li><a href="#step4">Editar leyendas</a></li>
+                            <li><a href="#step5">Guardar plantilla</a></li>
+                            <li><a href="#step6">Exportación</a></li>
+                            <li><a href="#download" class="highlight">📥 Descargar estilos</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-widget">
+                        <h4><i class="fas fa-link"></i> Recursos Útiles</h4>
+                        <ul class="resource-list">
+                            <li><a href="https://qgis.org/es/site/" target="_blank"><i class="fas fa-external-link-alt"></i> Sitio oficial de QGIS</a></li>
+                            <li><a href="https://plugins.qgis.org/plugins/qgis2web/" target="_blank"><i class="fas fa-external-link-alt"></i> Plugin qgis2web</a></li>
+                            <li><a href="https://github.com/rmauricio/qgis-rf-styles" target="_blank"><i class="fab fa-github"></i> Plantillas de estilo RF en GitHub</a></li>
+                            <li><a href="projects.html#ondb"><i class="fas fa-project-diagram"></i> OptiNetDB - Integración de Drive Test</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-widget">
+                        <h4><i class="fas fa-bookmark"></i> También te puede interesar</h4>
+                        <div class="related-posts">
+                            <a href="blog_1.html" class="related-post"><span class="related-category">QGIS</span><strong>Crear sectores RF con mapa de fondo</strong><span class="related-meta"><i class="far fa-clock"></i> 8 min</span></a>
+                            <a href="blog_3.html" class="related-post"><span class="related-category">Python + QGIS</span><strong>Visualización de Best Server LTE</strong><span class="related-meta"><i class="far fa-clock"></i> 8 min</span></a>
+                            <a href="projects.html#qgis-lte" class="related-post"><span class="related-category">Proyecto</span><strong>Dashboard de KPIs en QGIS</strong><span class="related-meta"><i class="fas fa-folder-open"></i> Ver caso</span></a>
+                        </div>
+                    </div>
+                    <div class="sidebar-widget newsletter-widget">
+                        <h4><i class="fas fa-envelope"></i> Suscríbete al Blog</h4>
+                        <p>Recibe notificaciones cuando publique nuevos tutoriales de optimización RF y automatización.</p>
+                        <form class="newsletter-form" onsubmit="handleSubscribe(event); return false;"><input type="email" placeholder="tu@email.com" required><button type="submit" class="btn btn-sm btn-primary">Suscribirme</button></form>
+                    </div>
+                </aside>
+                
+            </div>
+        </div>
+    </main>
+
+    <!-- Sección: Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>¿Encontraste útil este tutorial?</h2>
+            <p>Si trabajas en análisis de Drive Test y quieres automatizar la generación de reportes con Python, hablemos sobre cómo puedo aportar valor a tu equipo.</p>
+            <div class="cta-actions">
+                <a href="mailto:r.mauricio.cabrera@gmail.com?subject=Consulta sobre tutorial Drive Test QGIS" class="btn btn-primary btn-large"><i class="fas fa-envelope"></i> Contactar para Colaboración</a>
+                <a href="projects.html" class="btn btn-secondary btn-large"><i class="fas fa-folder-open"></i> Ver Proyectos Relacionados</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Consistente con todas las páginas) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo"><i class="fas fa-satellite-dish"></i> MCabrera<span>.RF</span></a>
+                    <p>Portafolio profesional de Mauricio Cabrera - Especialista en Optimización RF y Análisis de Datos para Telecomunicaciones.</p>
                 </div>
-                <p>
-                    Dependerá de la herramienta de Drivetest que genera la data, si esta tenga la propiedad de exportar los niveles que ya configuraron en su operación para su visualización o de lo contrario deberán crear estos niveles en QGIS, a continuación en caso de crear los niveles esto será lo que observaran luego del cargado de su archivo.
-                 </p>
-                <div class="article-images">
-                    <img src="images/blog2.3.png" alt="" />
-                    <img src="images/blog2.4.png" alt="" />
-                </div>       
-            </p>Al no exportar los niveles de RSRP, crearemos los mismos.
-
-            Realizaremos click derecho en capa de interés en nuestro caso de RSRP, para extender el menú de la capa, y ejecutamos los siguientes pasos.
-            
-            -> Propiedades->1.simbología-> 2.Símbolo Único 
-            
-            Click en ->3.Marcador simple -> 4. Estilo de marca
-            
-            ->4.1 Sin plumilla-> Aplicar->Aceptar.   
-            </p>
-           </p>Con esto obtenemos la ruta realizada sin el contorno o borde oscuro inicial.
-           </p>
-
-           <p>
-            Generaremos los niveles de RSR de la siguiente manera, click derecho sobre la capa:
-
-            ->Propiedades->1.Sinbologia->2.selecionamos “Graduado”->3.Valor “selección el nombre de la columna donde se encuentra los valores para este caso de RSRP”.
-            
-            ->4.Rampa de colores “seleccionamos para este caso uno por defecto Spectral.
-            
-            ->5.Modo “es modo de división de las muestras podemos seleccionar conteo igual (cuantil).
-            
-            ->6. Clases ”indica la cantidad de niveles que se dividirá la muestra , ej:8”.
-            
-            ->7. Clasificar “Se realizara la clasificación de las muestra”
-         </p> 
-        </p>  Edición de niveles y leyendas.
-
-            ->Doble Click en el nivel creado y realizar su cambio de acuerdo a nuestra necesidad.
-
-            ->Aplicar->Aceptar
-        </p>     
-        <div class="article-images">
-            <img src="images/blog2.5.png" alt="" />
-            <img src="images/blog2.6.png" alt="" />
-        </div>       
- 
-        <p>
-            De la misma forma se realiza el cambio de leyenda.
-        </p> 
-        </p>  
-           Para el borrado de un nivel, presionamos el símbolo menos ->Aplicar-Aceptar
-       </p>     
-        <div class="article-images">
-            <img src="images/blog2.7.png" alt="" />
-            <img src="images/blog2.8.png" alt="" />
-        </div>    
-        <p>
-            Para el borrado de un nivel, presionamos el símbolo menos ->Aplicar-Aceptar
-        </p> 
-        </p>  
-            Guardaremos este estilo como un template de RSRP, ingresando a:
-            ->1.Estilo->2.Guardar Estilo->3. …. “Seleccionar carpeta de repositorio para el estilo y lo almenaremos con el nombre de RSRP”
-            ->Aceptar
-       </p>     
-        <div class="article-images">
-            <img src="images/blog2.9.png" alt="" />
-            <img src="images/blog2.10.png" alt="" />
-        </div>    
-        <p>
-            Para reutilizar el estilo almacenado como template para futuros proyectos, es muy sencillo solo nos vamos a:
-            ->1.Estilo->2.Carga estilo->3. …->4. Template RSRP->5. Abrir.
-        </p> 
-        </p>  
-        Como resultado ya tenemos la ruta con clasificación de niveles que generamos y su onvención de colores seleccionado.
-       </p>     
-        <div class="article-images">
-            <img src="images/blog2.11.png" alt="" />
-            <img src="images/blog2.12.png" alt="" />
-        </div>    
-    </p>  
-    Este proceso para almacenar templates de estilos es de utilidad ya que podemos generar diferentes estilos tanto para RSRP, SINR, RSRQ, etc. A los cuales podemos darle uso para un análisis específico o generación de algún reporte requerido.
-    Espero que sea de su utilidad y compártanlo en su red o con la gente que necesita realizar estas tareas con herramientas abiertas.
-   </p>     
-   <div class="article-image-single">
-        <img src="images/blog2.13.png" alt="" />
-    </div>    
-
-
-                <!-- Enlaces a redes sociales y plataformas -->
-                <div class="social-links">
-                    <p>Además, puedes ver:</p>
-                    <ul>
-                        <li><a href="https://www.linkedin.com/pulse/carga-de-archivos-tapshp-drivetes-qgis-mauricio-cabrera-arias/" target="_blank">LinkedIn</a></li>                        
-                        <li><a href="https://youtu.be/WbEUSQ_VE78" target="_blank">YouTube</a></li>
-
-                    </ul>
+                <div class="footer-links">
+                    <h4>Navegación</h4>
+                    <ul><li><a href="index.html">Inicio</a></li><li><a href="about.html">Perfil</a></li><li><a href="skills.html">Competencias</a></li><li><a href="projects.html">Proyectos</a></li><li><a href="blog.html">Blog</a></li></ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <ul><li><i class="fas fa-envelope"></i> r.mauricio.cabrera@gmail.com</li><li><i class="fab fa-linkedin"></i> linkedin.com/in/mauricio-cabrera</li><li><i class="fab fa-github"></i> github.com/rmauricio</li></ul>
                 </div>
             </div>
-            <div class="article-footer">
-                <button><a href="blog.html">Regresar</a></button>
-            </div>
-        </article>
-    </div>
-
-    <!-- Pie de Página -->
-    <footer>
-        <p>&copy; 2024 Mauricio Cabrera. Todos los derechos reservados.</p>
+            <div class="footer-bottom"><p>&copy; 2024 Mauricio Cabrera. Todos los derechos reservados. | Diseñado con <i class="fas fa-heart"></i> para la comunidad RF</p></div>
+        </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="scripts.js"></script>
+    
+    <!-- Script específico para artículo de blog -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Smooth scroll para enlaces del TOC
+        document.querySelectorAll('.article-toc a, .toc-list a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 100;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // Highlight del TOC según scroll
+        const sections = document.querySelectorAll('.article-section');
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        function highlightTOC() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                if (window.pageYOffset >= sectionTop) current = section.getAttribute('id');
+            });
+            tocLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
+            });
+        }
+        window.addEventListener('scroll', highlightTOC);
+        
+        // Funciones de compartir
+        window.sharePost = function(platform) {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            const text = encodeURIComponent('Tutorial útil sobre QGIS y Drive Test: ');
+            const shareUrls = {
+                linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
+                twitter: `https://twitter.com/intent/tweet?text=${text}&url=${url}`,
+                whatsapp: `https://wa.me/?text=${text}%20${url}`,
+                facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`
+            };
+            if (shareUrls[platform]) window.open(shareUrls[platform], '_blank', 'width=600,height=400');
+        };
+        
+        // Copiar enlace al portapapeles
+        window.copyLink = function() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                const btn = event.currentTarget;
+                const originalIcon = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check"></i>';
+                btn.style.background = '#10b981';
+                setTimeout(() => { btn.innerHTML = originalIcon; btn.style.background = ''; }, 2000);
+            });
+        };
+        
+        // Suscripción al newsletter (demo)
+        window.handleSubscribe = function(e) {
+            e.preventDefault();
+            const email = e.target.querySelector('input[type="email"]').value;
+            alert(`✅ ¡Gracias por suscribirte!\nRecibirás actualizaciones en: ${email}\n\n📧 Próximamente: Automatización de reportes de Drive Test con Python`);
+            e.target.reset();
+        };
+        
+        // Lazy loading fallback
+        if ('loading' in HTMLImageElement.prototype === false) {
+            document.querySelectorAll('img[loading="lazy"]').forEach(img => { img.src = img.dataset.src; });
+        }
+        
+        // Animación de aparición
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.article-section, .image-gallery, .info-box').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(15px)';
+            el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            observer.observe(el);
+        });
+        
+        // Mobile menu toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.querySelector('.nav-menu');
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const icon = navToggle.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+        }
+        
+        // Console message
+        console.log('%c📡 Artículo: Carga de Drive Test en QGIS', 'color: #e67e22; font-size: 14px; font-weight: bold;');
+        console.log('%c🔧 Tags: QGIS, Drive Test, LTE, RSRP, Tutorial', 'color: #666;');
+        console.log('%c👨‍💻 Autor: Mauricio Cabrera | RF Optimization Engineer', 'color: #0D8ABC;');
+        console.log('%c📧 Contacto: r.mauricio.cabrera@gmail.com', 'color: #1abc9c;');
+    });
+    </script>
 </body>
 </html>
