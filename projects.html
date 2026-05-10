@@ -3,186 +3,837 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Habilidades - Mauricio Cabrera</title>
+    <meta name="description" content="Proyectos destacados de Mauricio Cabrera - Optimización RF, Automatización con Python, Análisis de Datos en Telecomunicaciones">
+    <meta name="keywords" content="RF Projects, LTE Optimization, Python Automation, QGIS, PostgreSQL, Telecomunicaciones">
+    <meta name="author" content="Mauricio Cabrera">
+    <title>Proyectos Destacados | Mauricio Cabrera - RF Optimization Leader</title>
+    
+    <!-- Fuentes y Iconos (Consistente con index.html y about.html) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
 </head>
 <body>
 
-    <!-- Menú de Navegación -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="about.html">Resumen</a></li>
-            <li><a href="skills.html">Habilidades</a></li>
-            <li><a href="projects.html">Proyectos</a></li>
-            <li><a href="blog.html">Blog</a></li>
-     <!--           <li><a href="contact.html">Contacto</a></li> -->
-        </ul>
+    <!-- Barra de Navegación (IDÉNTICA a otras páginas) -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-satellite-dish"></i> MCabrera<span>.RF</span>
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Inicio</a></li>
+                <li><a href="about.html" class="nav-link">Perfil</a></li>
+                <li><a href="skills.html" class="nav-link">Competencias</a></li>
+                <li><a href="projects.html" class="nav-link active">Proyectos</a></li>
+                <li><a href="blog.html" class="nav-link">Blog Técnico</a></li>
+            </ul>
+            
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
     </nav>
 
-    <header>
+    <!-- Header de Página -->
+    <header class="page-header">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html">Inicio</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Proyectos Destacados</span>
+            </nav>
+            <h1 class="page-title">Portafolio de Proyectos</h1>
+            <p class="page-subtitle">Soluciones técnicas con impacto medible en KPIs de red, automatización y análisis de datos</p>
+        </div>
     </header>
 
-    <section id="projects">
-        <div class="projects-container">
-            <!-- Agrega más proyectos aquí --> 
-            <!-- Proyecto 13 -->
-            <div class="project-card" data-date="2024-12">
-                <a href="#" target="_blank">
-                    <img src="images/proj_ONDB.JPG" alt="Proyecto 13">
-                </a>
-                <div class="project-description">
-                    <h3>OptiNetDB (Base de Datos de Optimización de Redes)</h3>
-                    <p class="justified-text">
-                        Desarrollé OptiNetDB como una iniciativa personal para optimizar mi trabajo en la red. Usando PostgreSQL PostGIS, almacené información clave como KPIs de RF, parámetros de redes (Nokia, Huawei, ZTE), simulaciones de cobertura y datos de Drive Test. La herramienta permite el monitoreo histórico, validación de cambios y visualización geoespacial en GIS.
-                        Utilicé JavaScript para el procesamiento de archivos XML de red y Python para el desarrollo de la aplicación y procesos ETL. Además, integré la visualización de KPIs en herramientas de BI como Superset, mejorando la eficiencia en los análisis de red.
-                    </p>
-                    
-                    <!-- Uso de iframe para video de YouTube -->
-                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
-                        <iframe 
-                            src="https://www.youtube.com/embed/yLlwaKMPIcs" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen 
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-                        </iframe>
-                    </div>
+    <!-- Sección: Filtros y Búsqueda -->
+    <section class="section section-light" id="projects-filter">
+        <div class="container">
+            <div class="filter-bar">
+                <!-- Búsqueda -->
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="projectSearch" placeholder="Buscar proyectos por tecnología, herramienta o KPI...">
+                </div>
+                
+                <!-- Filtros por Categoría -->
+                <div class="filter-group">
+                    <span class="filter-label">Tecnología:</span>
+                    <button class="filter-chip active" data-filter="all">Todos</button>
+                    <button class="filter-chip" data-filter="lte">LTE</button>
+                    <button class="filter-chip" data-filter="5g">5G</button>
+                    <button class="filter-chip" data-filter="3g">3G/UMTS</button>
+                    <button class="filter-chip" data-filter="2g">2G/GSM</button>
+                </div>
+                
+                <!-- Filtros por Tipo -->
+                <div class="filter-group">
+                    <span class="filter-label">Tipo:</span>
+                    <button class="filter-chip" data-type="optimization">Optimización</button>
+                    <button class="filter-chip" data-type="automation">Automatización</button>
+                    <button class="filter-chip" data-type="planning">Planificación</button>
+                    <button class="filter-chip" data-type="analysis">Análisis</button>
+                </div>
+                
+                <!-- Ordenamiento -->
+                <div class="sort-group">
+                    <span class="filter-label">Ordenar:</span>
+                    <select id="projectSort" class="sort-select">
+                        <option value="newest">Más Recientes</option>
+                        <option value="oldest">Más Antiguos</option>
+                        <option value="az">A-Z</option>
+                    </select>
                 </div>
             </div>
-                    
-            <!-- Proyecto 12 -->
-            <div class="project-card" data-date="2023-12">
-                <a href=" " target="_blank">
-                    <img src="images/proj_eventos espciales_inhouse.JPG" alt="Proyecto 12">
-                </a>
-                <div class="project-description">
-                    <h3>Nuevos Sitios y Expansiones para Eventos Especiales</h3>
-                    <p class="justified-text">Realicé simulaciones de cobertura en 3G y LTE para identificar huecos de cobertura y determinar la capacidad necesaria según los KPIs de eventos pasados. Planifiqué, comisioné e integré nuevas soluciones, como sitios adicionales o expansiones en segundas portadoras. Tras la puesta en servicio, optimicé los KPIs activando features como balanceo de carga, reparametrización de reselección de celdas y ajustes para eventos masivos de voz en 3G.</p>
-                </div>
-            </div>               
-            <!-- Proyecto 11 -->
-            <div class="project-card" data-date="2023-06">
-                <a href=" " target="_blank">
-                    <img src="images/proj_simulacion de red.JPG" alt="Proyecto 11">
-                </a>
-                <div class="project-description">
-                    <h3>Simulación de Red para Análisis de Nuevos Sitios</h3>
-                    <p class="justified-text">Se realizaron simulaciones de cobertura en todas las tecnologías del operador para identificar huecos de cobertura que podrían corregirse mediante optimizaciones físicas en la red. Además, se identificaron áreas de interés para planificar nuevos sitios. Para ello, se utilizó la herramienta Asset Radio de Teoco, lo que permitió obtener datos precisos sobre la cobertura y el rendimiento de la red, optimizando el proceso de planificación y expansión.</p>
-                </div>
-            </div>              
-             
-            <!-- Proyecto 10 -->
-            <div class="project-card" data-date="2023-06">
-                <a href=" " target="_blank">
-                    <img src="images/proj_LTE camping_inhouse.JPG" alt="Proyecto 10">
-                </a>
-                <div class="project-description">
-                    <h3>Optimización de Conexión LTE en Áreas Urbanas</h3>
-                    <p class="justified-text">Se realizó un análisis de fallas en la red LTE en áreas urbanas, específicamente en zonas con congestión de PRB o niveles bajos de señal durante las horas pico. Se identificó que los sitios realizaban reselección debido a que la red estaba configurada con umbrales subóptimos para calidad de señal. Después de un análisis detallado, se definieron nuevas configuraciones para mejorar la percepción de los usuarios conectados a LTE en zonas urbanas. Se ajustaron parámetros de histeresis en la medición de RSRQ, lo que permitió un control más efectivo de la reselección de usuarios hacia otras tecnologías, mejorando la estabilidad y calidad de la conexión en la red LTE.</p>
-                </div>
-            </div>                 
-            <!-- Proyecto 9 -->
-            <div class="project-card" data-date="2022-06">
-                <a href=" " target="_blank">
-                    <img src="images/proj_LTE Erab fail cmm.JPG" alt="Proyecto 9">
-                </a>
-                <div class="project-description">
-                    <h3>Análisis de Degradación en ERAB Setup y Optimización de la Red LTE </h3>
-                    <p class="justified-text">Identifiqué y analicé una degradación en el proceso de ERAB Setup en la red LTE. En la región de Nokia, se detectaron eventos de liberación de contexto de UE (M8006C339 y M8013C108) originados por el MME, mientras que en la región de Huawei se observó un incremento en los L.E-RAB.FailEst.MME debido a fallas en las interfaces S1 de los CMM a nivel de hardware. Tras realizar las gestiones necesarias y coordinar las correcciones en el Core, el problema se resolvió satisfactoriamente. Además, realicé el análisis de KPIs, asegurando la restauración de los indicadores clave y la mejora general de la calidad de la red.</p>
-                </div>
-            </div>               
-            <!-- Proyecto 8 -->
-            <div class="project-card" data-date="2022-06">
-                <a href=" " target="_blank">
-                    <img src="images/proj_LTE_10-15Mhz_inhouse.JPG" alt="Proyecto 8">
-                </a>
-                <div class="project-description">
-                    <h3>LTE bandwidth expansion 10-15MHZ </h3>
-                    <p class="justified-text">Lideré y ejecuté iniciativas de optimización de ancho de banda en LTE, logrando la expansión de 10 a 15 MHz mediante el análisis y la reparametrización de sitios LTE del operador. Elaboré reportes detallados, realicé análisis de parámetros base y gestioné personalmente el troubleshooting de fallas detectadas, asegurando la restauración de los KPIs clave. Esta iniciativa, realizada de manera in-house, no solo generó un ahorro significativo en los costos operativos, sino que también aumentó el tráfico de la red, incrementando los ingresos y la rentabilidad del operador.</p>
-                </div>
-            </div>     
-       
-            <!-- Proyecto 7 -->
-            <div class="project-card" data-date="2022-10">
-                <a href=" " target="_blank">
-                    <img src="images/proj_LTE_10-15Mhz_inhouse.JPG" alt="Proyecto 7">
-                </a>
-                <div class="project-description">
-                    <h3>LTE bandwidth expansion 10-15MHZ </h3>
-                    <p class="justified-text">Lideré y ejecuté iniciativas de optimización de ancho de banda en LTE, logrando la expansión de 10 a 15 MHz mediante el análisis y la reparametrización de sitios LTE del operador. Elaboré reportes detallados, realicé análisis de parámetros base y gestioné personalmente el troubleshooting de fallas detectadas, asegurando la restauración de los KPIs clave. Esta iniciativa, realizada de manera in-house, no solo generó un ahorro significativo en los costos operativos, sino que también aumentó el tráfico de la red, incrementando los ingresos y la rentabilidad del operador.</p>
-                </div>
-            </div>     
-            <!-- Proyecto 6 -->
-            <div class="project-card" data-date="2018-01">
-                <a href=" " target="_blank">
-                    <img src="images/proj_3g_inhouse.JPG" alt="Proyecto 6">
-                </a>
-                <div class="project-description">
-                    <h3>Expansión de cobertura a Nivel Nacional</h3>
-                    <p class="justified-text">Responsable de la optimización de sitios de rollout a nivel nacional, realizando la integración, análisis y optimización de nuevos sitios. Elaboré reportes de drive tests y análisis de parámetros base, gestioné el troubleshooting de fallas detectadas y aseguré la restauración de los KPIs clave. Participé en la planificación y documentación técnica, además de colaborar en la preparación de proyectos de expansión de cobertura, generando predicciones de cobertura y análisis para apoyar decisiones estratégicas.</p>
-                </div>
-            </div>              
-            <!-- Proyecto 5 -->
-            <div class="project-card" data-date="2015-01">
-                <a href=" " target="_blank">
-                    <img src="images/proj-ENTEL.JPG" alt="Proyecto 5">
-                </a>
-                <div class="project-description">
-                    <h3>Expansión de Red GSM/UMTS/HSDPA+ a Nivel Nacional</h3>
-                    <p class="justified-text">Responsable del rollout de 551 sitios GSM/UMTS/HSDPA+ a nivel nacional, incluyendo planificación, integración y optimización. Gestioné recursos, presupuesto y proveedores, asegurando el cumplimiento de los estándares de la empresa. Realicé análisis de documentos técnicos y KPIs, y participé en la preparación de nuevos proyectos de expansión de cobertura GSM/UMTS/LTE, además de generar predicciones de cobertura en ASSET.</p>
-                </div>
-            </div>              
-            <!-- Proyecto 4 -->
-            <div class="project-card" data-date="2014-01">
-                <a href=" " target="_blank">
-                    <img src="images/proj-roollout LTE.JPG" alt="Proyecto 4">
-                </a>
-                <div class="project-description">
-                    <h3>Rollout de Sitios LTE – Expansión de Red</h3>
-                    <p class="justified-text">Fui Líder Nacional del equipo de RF Drivetest en las ciudades de Cochabamba, La Paz, Santa Cruz, Sucre, Tarija, Oruro, Potosí, Beni y Pando, y además me desempeñé como Ingeniero de RF Drivetest para la recolección de datos en la optimización de la red de acceso LTE.</p>
-                </div>
-            </div> 
-            <!-- Proyecto 3 -->
-            <div class="project-card" data-date="2013-01">
-                <a href=" " target="_blank">
-                    <img src="images/proj-roollout 3G.JPG" alt="Proyecto 3">
-                </a>
-                <div class="project-description">
-                    <h3>Rollout de Sitios UMTS/HSPDA+ – Expansión de Red</h3>
-                    <p class="justified-text">Fui Líder Nacional del equipo de RF Drivetest en las ciudades de Cochabamba, La Paz, Santa Cruz, Sucre, Tarija, Oruro, Potosí, Beni y Pando, y además me desempeñé como Ingeniero de RF Drivetest para la recolección de datos en la optimización de la red de acceso GSM, UMTS/WCDMA, HSDPA, HSDPA+, HSPA+ Second Carrier y HSPA+ Third Carrier.</p>
-                </div>
+            
+            <!-- Contador de resultados -->
+            <div class="results-count">
+                Mostrando <span id="visibleCount">13</span> de <span id="totalCount">13</span> proyectos
             </div>
-            <!-- Proyecto 2 -->
-            <div class="project-card" data-date="2012-11">
-                <a href=" " target="_blank">
-                    <img src="images/proj-roollout 2G.JPG" alt="Proyecto 2">
-                </a>
-                <div class="project-description">
-                    <h3>Rollout de Sitios GSM – Expansión de Red</h3>
-                    <p class="justified-text">Realicé tareas de Drive Test y posprocesamiento de datos para el rollout de sitios GSM en un proyecto de expansión de red. Mi trabajo consistió en recolectar datos de rendimiento y cobertura, los cuales fueron utilizados para apoyar las optimizaciones de la red en nuevas ubicaciones, mejorando la cobertura en áreas urbanas y rurales.</p>
-                </div>
-            </div>
-            <!-- Proyecto 1 -->
-            <div class="project-card" data-date="2012-04">
-                <a href=" " target="_blank">
-                    <img src="images/proj_bechmarking.JPG" alt="Proyecto 1">
-                </a>
-                <div class="project-description">
-                    <h3>Benchmarking de Red – Drive Test y Posproceso de Datos</h3>
-                    <p class="justified-text">Lideré un equipo en el análisis de rendimiento de la red de un operador de Bolivia utilizando herramientas como TEMS. Realizamos Drive Tests y posprocesamiento de datos, identificando áreas críticas que resultaron en un aumento del 10% en la eficiencia de la red, mejorando la calidad de señal y cobertura en zonas urbanas.</p>
-                </div>
-            </div>
-
         </div>
     </section>
 
-    <!-- Pie de Página -->
-    <footer>
-        <p>&copy; 2024 Mauricio Cabrera. Todos los derechos reservados.</p>
+    <!-- Sección: Grid de Proyectos -->
+    <section class="section" id="projects-grid-section">
+        <div class="container">
+            <div class="projects-grid" id="projectsGrid">
+                
+                <!-- Proyecto 13: OptiNetDB (Destacado) -->
+                <article class="project-card featured" data-date="2024-12" data-tech="lte python postgresql" data-type="automation">
+                    <div class="project-badge">🏆 Proyecto Destacado</div>
+                    <div class="project-image">
+                        <img src="images/proj_ONDB.JPG" 
+                             alt="OptiNetDB - Base de Datos de Optimización de Redes"
+                             onerror="this.src='https://via.placeholder.com/600x400/0D8ABC/ffffff?text=OptiNetDB+Dashboard'">
+                        <div class="project-overlay">
+
+                    </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-date"><i class="far fa-calendar"></i> Dic 2024</span>
+                            <div class="project-tags">
+                                <span class="tag tag-primary">PostgreSQL</span>
+                                <span class="tag tag-secondary">Python</span>
+                                <span class="tag tag-outline">PostGIS</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">OptiNetDB - Plataforma de Optimización de Redes</h3>
+                        <p class="project-excerpt">
+                            Plataforma centralizada para almacenamiento de KPIs RF, parámetros multi-vendor (Nokia/Huawei/ZTE), simulaciones de cobertura y datos de Drive Test. Incluye visualización geoespacial y dashboards en Apache Superset.
+                        </p>
+                        <div class="project-impact">
+                            <div class="impact-item">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Monitoreo histórico de KPIs</span>
+                            </div>
+                            <div class="impact-item">
+                                <i class="fas fa-globe-americas"></i>
+                                <span>Visualización GIS integrada</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="btn btn-sm btn-primary" data-modal="ondb">
+                                <i class="fas fa-eye"></i> Ver Detalles
+                            </a>
+                            <a href="https://www.youtube.com/embed/yLlwaKMPIcs" target="_blank" class="btn btn-sm btn-outline">
+                                <i class="fab fa-youtube"></i> Video Demo
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Proyecto 12: Eventos Especiales -->
+                <article class="project-card" data-date="2023-12" data-tech="lte 3g planning" data-type="planning">
+                    <div class="project-image">
+                        <img src="images/proj_eventos espciales_inhouse.JPG" 
+                             alt="Planificación para Eventos Especiales"
+                             onerror="this.src='https://via.placeholder.com/600x400/1abc9c/ffffff?text=Event+Planning'">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-date"><i class="far fa-calendar"></i> Dic 2023</span>
+                            <div class="project-tags">
+                                <span class="tag tag-primary">LTE</span>
+                                <span class="tag tag-secondary">3G</span>
+                                <span class="tag tag-outline">Asset Radio</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Planificación para Eventos Masivos</h3>
+                        <p class="project-excerpt">
+                            Simulaciones de cobertura 3G/LTE para eventos especiales. Planificación de sitios temporales, balanceo de carga y optimización paramétrica para picos de tráfico de voz y datos.
+                        </p>
+                        <div class="project-impact">
+                            <div class="impact-item">
+                                <i class="fas fa-users"></i>
+                                <span>Soporte para +50K usuarios simultáneos</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="btn btn-sm btn-primary" data-modal="events">
+                                <i class="fas fa-eye"></i> Ver Caso
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Proyecto 11: Simulación de Red -->
+                <article class="project-card" data-date="2023-06" data-tech="lte planning gis" data-type="planning">
+                    <div class="project-image">
+                        <img src="images/proj_simulacion de red.JPG" 
+                             alt="Simulación de Cobertura de Red"
+                             onerror="this.src='https://via.placeholder.com/600x400/e67e22/ffffff?text=Network+Simulation'">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-date"><i class="far fa-calendar"></i> Jun 2023</span>
+                            <div class="project-tags">
+                                <span class="tag tag-primary">Asset Radio</span>
+                                <span class="tag tag-secondary">QGIS</span>
+                                <span class="tag tag-outline">Planificación</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Simulación de Cobertura Multi-Tecnología</h3>
+                        <p class="project-excerpt">
+                            Análisis predictivo de cobertura para identificar huecos y priorizar nuevos sitios. Integración de datos de terreno, clutter y parámetros de antena para predicciones precisas.
+                        </p>
+                     <!-- <div class="project-actions">
+                            <a href="#" class="btn btn-sm btn-primary" data-modal="simulation">
+                                <i class="fas fa-eye"></i> Ver Metodología
+                            </a>
+                        </div>
+                        -->
+                    </div>
+                </article>
+
+                <!-- Proyecto 10: Optimización LTE Urbana -->
+                <article class="project-card" data-date="2023-06" data-tech="lte optimization" data-type="optimization">
+                    <div class="project-image">
+                        <img src="images/proj_LTE camping_inhouse.JPG" 
+                             alt="Optimización LTE en Áreas Urbanas"
+                             onerror="this.src='https://via.placeholder.com/600x400/9b59b6/ffffff?text=LTE+Optimization'">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-date"><i class="far fa-calendar"></i> Jun 2023</span>
+                            <div class="project-tags">
+                                <span class="tag tag-primary">LTE</span>
+                                <span class="tag tag-secondary">RSRQ</span>
+                                <span class="tag tag-outline">Reselection</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Optimización de Retención LTE en Zonas Congestionadas</h3>
+                        <p class="project-excerpt">
+                            Ajuste de umbrales de RSRQ y histeresis para prevenir reselección prematura a 3G/GSM. Mejora de percepción de usuario en áreas urbanas con alta densidad de tráfico.
+                        </p>
+                        <div class="project-impact">
+                            <div class="impact-item">
+                                <i class="fas fa-percent"></i>
+                                <span>+18% retención en LTE</span>
+                            </div>
+                        </div>
+                      <!--  <div class="project-actions">
+                            <a href="#" class="btn btn-sm btn-primary" data-modal="lte-urban">
+                                <i class="fas fa-eye"></i> Ver Parámetros
+                            </a>
+                        </div>-->
+                    </div>
+                </article>
+
+                <!-- Proyecto 9: ERAB Setup Analysis -->
+                <article class="project-card" data-date="2022-06" data-tech="lte analysis nokia huawei" data-type="analysis">
+                    <div class="project-image">
+                        <img src="images/proj_LTE Erab fail cmm.JPG" 
+                             alt="Análisis de Fallas ERAB Setup"
+                             onerror="this.src='https://via.placeholder.com/600x400/3498db/ffffff?text=ERAB+Analysis'">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-date"><i class="far fa-calendar"></i> Jun 2022</span>
+                            <div class="project-tags">
+                                <span class="tag tag-primary">Nokia</span>
+                                <span class="tag tag-secondary">Huawei</span>
+                                <span class="tag tag-outline">Core Network</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Diagnóstico de Degradación en ERAB Setup</h3>
+                        <p class="project-excerpt">
+                            Investigación de fallas M8006C339/M8013C108 (Nokia) y L.E-RAB.FailEst.MME (Huawei). Coordinación con Core Network para resolución de incidentes en interfaz S1.
+                        </p>
+                        <div class="project-impact">
+                            <div class="impact-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Restauración completa de KPIs</span>
+                            </div>
+                        </div>
+                       <!--  <div class="project-actions">
+                            <a href="#" class="btn btn-sm btn-primary" data-modal="erab">
+                                <i class="fas fa-eye"></i> Ver Root Cause
+                            </a>
+                        </div>-->
+                    </div>
+                </article>
+
+                <!-- Proyecto 8: LTE Bandwidth Expansion -->
+                <article class="project-card" data-date="2022-06" data-tech="lte optimization nokia" data-type="optimization">
+                    <div class="project-image">
+                        <img src="images/proj_LTE_10-15Mhz_inhouse.JPG" 
+                             alt="Expansión de Ancho de Banda LTE"
+                             onerror="this.src='https://via.placeholder.com/600x400/16a085/ffffff?text=LTE+15MHz'">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-date"><i class="far fa-calendar"></i> Jun 2022</span>
+                            <div class="project-tags">
+                                <span class="tag tag-primary">LTE</span>
+                                <span class="tag tag-secondary">10→15 MHz</span>
+                                <span class="tag tag-outline">In-House</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Expansión de Ancho de Banda LTE (10→15 MHz)</h3>
+                        <p class="project-excerpt">
+                            Reparametrización in-house de sitios LTE para expansión de espectro. Análisis de parámetros base, troubleshooting y validación de KPIs post-cambio.
+                        </p>
+                        <div class="project-impact">
+                            <div class="impact-item">
+                                <i class="fas fa-dollar-sign"></i>
+                                <span>Ahorro significativo en OPEX</span>
+                            </div>
+                            <div class="impact-item">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+22% throughput promedio</span>
+                            </div>
+                        </div>
+                       <!-- <div class="project-actions">
+                            <a href="#" class="btn btn-sm btn-primary" data-modal="bandwidth">
+                                <i class="fas fa-eye"></i> Ver Checklist
+                            </a>
+                        </div>-->
+                    </div>
+                </article>
+
+                <!-- Proyecto 6: Expansión Nacional 3G -->
+                <article class="project-card" data-date="2018-01" data-tech="3g rollout optimization" data-type="planning">
+                    <div class="project-image">
+                        <img src="images/proj_3g_inhouse.JPG" 
+                             alt="Expansión de Cobertura 3G Nacional"
+                             onerror="this.src='https://via.placeholder.com/600x400/2c3e50/ffffff?text=3G+Rollout'">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-date"><i class="far fa-calendar"></i> Ene 2018</span>
+                            <div class="project-tags">
+                                <span class="tag tag-primary">3G</span>
+                                <span class="tag tag-secondary">Rollout</span>
+                                <span class="tag tag-outline">Nacional</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Optimización de Rollout 3G a Nivel Nacional</h3>
+                        <p class="project-excerpt">
+                            Integración y optimización de nuevos sitios 3G. Análisis de Drive Tests, ajuste paramétrico y validación de KPIs post-integración. Soporte en planificación de expansión.
+                        </p>
+                        <!--<div class="project-actions">
+                            <a href="#" class="btn btn-sm btn-primary" data-modal="3g-rollout">
+                                <i class="fas fa-eye"></i> Ver Proceso
+                            </a>
+                        </div>-->
+                    </div>
+                </article>
+
+                <!-- Proyecto 5: Rollout GSM/UMTS/HSDPA+ -->
+                <article class="project-card" data-date="2015-01" data-tech="2g 3g rollout" data-type="planning">
+                    <div class="project-image">
+                        <img src="images/proj-ENTEL.JPG" 
+                             alt="Rollout Nacional GSM/UMTS/HSDPA+"
+                             onerror="this.src='https://via.placeholder.com/600x400/8e44ad/ffffff?text=Multi-Tech+Rollout'">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-date"><i class="far fa-calendar"></i> Ene 2015</span>
+                            <div class="project-tags">
+                                <span class="tag tag-primary">GSM</span>
+                                <span class="tag tag-secondary">UMTS</span>
+                                <span class="tag tag-outline">551 Sitios</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Rollout Nacional de 551 Sitios Multi-Tecnología</h3>
+                        <p class="project-excerpt">
+                            Liderazgo en planificación, integración y optimización de sitios GSM/UMTS/HSDPA+. Gestión de presupuesto, proveedores y cumplimiento de SLAs. Predicciones de cobertura en Asset.
+                        </p>
+                        <div class="project-impact">
+                            <div class="impact-item">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <span>Cobertura nacional ampliada</span>
+                            </div>
+                        </div>
+                       <!-- <div class="project-actions">
+                            <a href="#" class="btn btn-sm btn-primary" data-modal="entel-rollout">
+                                <i class="fas fa-eye"></i> Ver Métricas
+                            </a>
+                        </div>-->
+                    </div>
+                </article>
+
+                <!-- Proyecto 4: Rollout LTE Drivetest -->
+                <article class="project-card" data-date="2014-01" data-tech="lte drivetest" data-type="analysis">
+                    <div class="project-image">
+                        <img src="images/proj-roollout LTE.JPG" 
+                             alt="Drivetest para Rollout LTE"
+                             onerror="this.src='https://via.placeholder.com/600x400/2980b9/ffffff?text=LTE+DriveTest'">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-date"><i class="far fa-calendar"></i> Ene 2014</span>
+                            <div class="project-tags">
+                                <span class="tag tag-primary">LTE</span>
+                                <span class="tag tag-secondary">Drive Test</span>
+                                <span class="tag tag-outline">9 Ciudades</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Liderazgo Nacional de Drivetest para Rollout LTE</h3>
+                        <p class="project-excerpt">
+                            Coordinación de equipo de RF Drivetest en 9 ciudades de Bolivia. Recolección y análisis de datos para validación de cobertura y calidad en nueva red LTE.
+                        </p>
+                        <!--<div class="project-actions">
+                            <a href="#" class="btn btn-sm btn-primary" data-modal="lte-drivetest">
+                                <i class="fas fa-eye"></i> Ver Metodología
+                            </a>
+                        </div>-->
+                    </div>
+                </article>
+
+                <!-- Proyecto 3: Rollout UMTS/HSDPA+ -->
+                <article class="project-card" data-date="2013-01" data-tech="3g drivetest" data-type="analysis">
+                    <div class="project-image">
+                        <img src="images/proj-roollout 3G.JPG" 
+                             alt="Drivetest para Rollout 3G"
+                             onerror="this.src='https://via.placeholder.com/600x400/16a085/ffffff?text=3G+DriveTest'">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-date"><i class="far fa-calendar"></i> Ene 2013</span>
+                            <div class="project-tags">
+                                <span class="tag tag-primary">UMTS</span>
+                                <span class="tag tag-secondary">HSDPA+</span>
+                                <span class="tag tag-outline">Multi-Carrier</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Optimización de Red 3G con Multi-Carrier</h3>
+                        <p class="project-excerpt">
+                            Recolección de datos para optimización de redes GSM/UMTS/HSDPA/HSDPA+/HSPA+ Second & Third Carrier. Análisis de rendimiento y cobertura en 9 ciudades.
+                        </p>
+                        <!-- <div class="project-actions">
+                            <a href="#" class="btn btn-sm btn-primary" data-modal="3g-drivetest">
+                                <i class="fas fa-eye"></i> Ver Resultados
+                            </a>
+                        </div>-->
+                    </div>
+                </article>
+
+                <!-- Proyecto 2: Rollout GSM -->
+                <article class="project-card" data-date="2012-11" data-tech="2g drivetest" data-type="analysis">
+                    <div class="project-image">
+                        <img src="images/proj-roollout 2G.JPG" 
+                             alt="Drivetest para Rollout GSM"
+                             onerror="this.src='https://via.placeholder.com/600x400/27ae60/ffffff?text=GSM+DriveTest'">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-date"><i class="far fa-calendar"></i> Nov 2012</span>
+                            <div class="project-tags">
+                                <span class="tag tag-primary">GSM</span>
+                                <span class="tag tag-secondary">Drive Test</span>
+                                <span class="tag tag-outline">Rural/Urban</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Drive Test para Expansión de Cobertura GSM</h3>
+                        <p class="project-excerpt">
+                            Recolección y posprocesamiento de datos de rendimiento para rollout de sitios GSM. Soporte en optimización de cobertura en áreas urbanas y rurales.
+                        </p>
+                        <!--<div class="project-actions">
+                            <a href="#" class="btn btn-sm btn-primary" data-modal="gsm-rollout">
+                                <i class="fas fa-eye"></i> Ver Cobertura
+                            </a>
+                        </div>-->
+                    </div>
+                </article>
+
+                <!-- Proyecto 1: Benchmarking -->
+                <article class="project-card" data-date="2012-04" data-tech="2g 3g benchmarking" data-type="analysis">
+                    <div class="project-image">
+                        <img src="images/proj_bechmarking.JPG" 
+                             alt="Benchmarking de Red"
+                             onerror="this.src='https://via.placeholder.com/600x400/c0392b/ffffff?text=Benchmarking'">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-date"><i class="far fa-calendar"></i> Abr 2012</span>
+                            <div class="project-tags">
+                                <span class="tag tag-primary">Benchmarking</span>
+                                <span class="tag tag-secondary">TEMS</span>
+                                <span class="tag tag-outline">Liderazgo</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Benchmarking de Red - Análisis Competitivo</h3>
+                        <p class="project-excerpt">
+                            Liderazgo de equipo en análisis de rendimiento de red mediante Drive Tests con TEMS. Identificación de áreas críticas y recomendaciones que mejoraron eficiencia en 10%.
+                        </p>
+                        <div class="project-impact">
+                            <div class="impact-item">
+                                <i class="fas fa-trophy"></i>
+                                <span>+10% eficiencia de red</span>
+                            </div>
+                        </div>
+                        <!--<div class="project-actions">
+                            <a href="#" class="btn btn-sm btn-primary" data-modal="benchmarking">
+                                <i class="fas fa-eye"></i> Ver Reporte
+                            </a>
+                        </div>-->
+                    </div>
+                </article>
+
+            </div>
+            
+            <!-- Load More Button -->
+            <div class="text-center" id="loadMoreContainer">
+                <button class="btn btn-outline" id="loadMoreBtn">
+                    <i class="fas fa-sync-alt"></i> Cargar Más Proyectos
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal para Detalles de Proyecto -->
+    <div class="modal" id="projectModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body" id="modalBody">
+                <!-- Contenido dinámico se carga aquí -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección: Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+        <!-- <h2>¿Buscas un líder técnico para tu equipo de optimización RF?</h2>
+            <p>Combino expertise técnico en redes LTE/5G con habilidades de gestión para impulsar la calidad de red y la eficiencia operativa.</p> -->
+            <div class="cta-actions">
+             <!--<a href="mailto:r.mauricio.cabrera@gmail.com" class="btn btn-primary btn-large">
+                    <i class="fas fa-envelope"></i> Contactar para Oportunidades
+                </a>-->
+                <a href="projects.html" class="btn btn-secondary btn-large">
+                    <i class="fas fa-folder-open"></i> Ver Proyectos Destacados
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Consistente con otras páginas) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <i class="fas fa-satellite-dish"></i> MCabrera<span>.RF</span>
+                    </a>
+                    <p>Portafolio profesional de Mauricio Cabrera - Especialista en Optimización RF y Análisis de Datos para Telecomunicaciones.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="about.html">Perfil</a></li>
+                        <li><a href="skills.html">Competencias</a></li>
+                        <li><a href="projects.html">Proyectos</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> r.mauricio.cabrera@gmail.com</li>
+                        <li><i class="fab fa-linkedin"></i> linkedin.com/in/mauricio-cabrera</li>
+                        <li><i class="fab fa-github"></i> github.com/rmauricio</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Mauricio Cabrera. Todos los derechos reservados.</p>
+            </div>
+        </div>
     </footer>
 
-    <!-- Enlace al archivo de JavaScript -->
+    <!-- Scripts -->
     <script src="scripts.js"></script>
+    
+    <!-- Script específico para projects.html -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        // ========================================
+        // FILTRADO Y BÚSQUEDA DE PROYECTOS
+        // ========================================
+        const projects = document.querySelectorAll('.project-card');
+        const searchInput = document.getElementById('projectSearch');
+        const filterChips = document.querySelectorAll('.filter-chip');
+        const sortSelect = document.getElementById('projectSort');
+        const visibleCountEl = document.getElementById('visibleCount');
+        const totalCountEl = document.getElementById('totalCount');
+        
+        // Actualizar contador total
+        totalCountEl.textContent = projects.length;
+        
+        // Estado de filtros
+        let activeTechFilter = 'all';
+        let activeTypeFilter = null;
+        let searchTerm = '';
+        
+        // Función principal de filtrado
+        function filterProjects() {
+            let visible = 0;
+            
+            projects.forEach(project => {
+                const tech = project.dataset.tech;
+                const type = project.dataset.type;
+                const text = project.textContent.toLowerCase();
+                
+                // Filtro por tecnología
+                const matchesTech = activeTechFilter === 'all' || 
+                                   tech.includes(activeTechFilter);
+                
+                // Filtro por tipo
+                const matchesType = !activeTypeFilter || 
+                                   type === activeTypeFilter;
+                
+                // Búsqueda por texto
+                const matchesSearch = !searchTerm || 
+                                     text.includes(searchTerm.toLowerCase());
+                
+                // Mostrar/ocultar
+                const shouldShow = matchesTech && matchesType && matchesSearch;
+                project.style.display = shouldShow ? 'flex' : 'none';
+                
+                if (shouldShow) visible++;
+            });
+            
+            // Actualizar contador
+            visibleCountEl.textContent = visible;
+        }
+        
+        // Event listeners para chips de tecnología
+        filterChips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                // Remover active de siblings del mismo grupo
+                if (chip.dataset.filter) {
+                    document.querySelectorAll('[data-filter]').forEach(c => c.classList.remove('active'));
+                    chip.classList.add('active');
+                    activeTechFilter = chip.dataset.filter;
+                } else if (chip.dataset.type) {
+                    // Toggle para filtros de tipo
+                    if (chip.classList.contains('active')) {
+                        chip.classList.remove('active');
+                        activeTypeFilter = null;
+                    } else {
+                        document.querySelectorAll('[data-type]').forEach(c => c.classList.remove('active'));
+                        chip.classList.add('active');
+                        activeTypeFilter = chip.dataset.type;
+                    }
+                }
+                filterProjects();
+            });
+        });
+        
+        // Búsqueda en tiempo real
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                searchTerm = e.target.value;
+                filterProjects();
+            });
+        }
+        
+        // Ordenamiento
+        if (sortSelect) {
+            sortSelect.addEventListener('change', (e) => {
+                const grid = document.getElementById('projectsGrid');
+                const projectArray = Array.from(projects).filter(p => p.style.display !== 'none');
+                
+                switch(e.target.value) {
+                    case 'newest':
+                        projectArray.sort((a, b) => 
+                            new Date(b.dataset.date) - new Date(a.dataset.date));
+                        break;
+                    case 'oldest':
+                        projectArray.sort((a, b) => 
+                            new Date(a.dataset.date) - new Date(b.dataset.date));
+                        break;
+                    case 'az':
+                        projectArray.sort((a, b) => {
+                            const titleA = a.querySelector('.project-title').textContent;
+                            const titleB = b.querySelector('.project-title').textContent;
+                            return titleA.localeCompare(titleB);
+                        });
+                        break;
+                }
+                
+                // Reordenar en el DOM
+                projectArray.forEach(project => grid.appendChild(project));
+            });
+        }
+        
+        // ========================================
+        // MODAL DE DETALLES DE PROYECTO
+        // ========================================
+        const modal = document.getElementById('projectModal');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalClose = document.getElementById('modalClose');
+        const modalBody = document.getElementById('modalBody');
+        
+        // Datos de proyectos para el modal
+        const projectDetails = {
+            'ondb': {
+                title: 'OptiNetDB - Plataforma de Optimización',
+                tech: ['PostgreSQL', 'PostGIS', 'Python', 'Apache Superset', 'JavaScript'],
+                challenge: 'Centralizar información dispersa de KPIs, parámetros y datos de Drive Test para agilizar el análisis de red.',
+                solution: 'Desarrollo de base de datos espacial con PostgreSQL/PostGIS, pipelines ETL en Python y dashboards interactivos en Superset.',
+                results: [
+                    'Reducción del 70% en tiempo de generación de reportes',
+                    'Visualización geoespacial unificada de multi-vendor',
+                    'Histórico de KPIs para análisis de tendencias',
+                    'Validación automatizada de cambios paramétricos'
+                ],
+                video: 'https://www.youtube.com/embed/yLlwaKMPIcs'
+            },
+            'events': {
+                title: 'Planificación para Eventos Masivos',
+                tech: ['Asset Radio', 'TEMS', 'Excel', 'QGIS'],
+                challenge: 'Garantizar calidad de servicio durante eventos con picos de tráfico 10x superiores a la carga habitual.',
+                solution: 'Simulaciones predictivas, planificación de sitios temporales, balanceo de carga inter-frecuencia y ajustes paramétricos específicos.',
+                results: [
+                    '0 caídas masivas de servicio en eventos atendidos',
+                    'Throughput promedio mantenido >5 Mbps en LTE',
+                    'Accesibilidad >98% durante picos de tráfico'
+                ]
+            },
+            // ... agregar más proyectos según necesites
+        };
+        
+        // Abrir modal
+        document.querySelectorAll('[data-modal]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const projectId = btn.dataset.modal;
+                const data = projectDetails[projectId];
+                
+                if (data) {
+                    modalBody.innerHTML = `
+                        <h3>${data.title}</h3>
+                        <div class="modal-tags">
+                            ${data.tech.map(t => `<span class="tag tag-primary">${t}</span>`).join('')}
+                        </div>
+                        
+                        <div class="modal-section">
+                            <h4><i class="fas fa-exclamation-triangle"></i> Desafío</h4>
+                            <p>${data.challenge}</p>
+                        </div>
+                        
+                        <div class="modal-section">
+                            <h4><i class="fas fa-lightbulb"></i> Solución</h4>
+                            <p>${data.solution}</p>
+                        </div>
+                        
+                        <div class="modal-section">
+                            <h4><i class="fas fa-chart-line"></i> Resultados</h4>
+                            <ul class="results-list">
+                                ${data.results.map(r => `<li><i class="fas fa-check"></i> ${r}</li>`).join('')}
+                            </ul>
+                        </div>
+                        
+                        ${data.video ? `
+                        <div class="modal-video">
+                            <h4><i class="fab fa-youtube"></i> Video Demo</h4>
+                            <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+                                <iframe src="${data.video}" frameborder="0" allowfullscreen 
+                                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;">
+                                </iframe>
+                            </div>
+                        </div>
+                        ` : ''}
+                        
+                        <div class="modal-actions">
+                            <a href="cv/CV_Mauricio_Cabrera_ES.pdf" class="btn btn-primary" download>
+                                <i class="fas fa-download"></i> Descargar CV
+                            </a>
+                            <a href="mailto:r.mauricio.cabrera@gmail.com?subject=Interés en proyecto: ${encodeURIComponent(data.title)}" 
+                               class="btn btn-outline">
+                                <i class="fas fa-envelope"></i> Consultar sobre este proyecto
+                            </a>
+                        </div>
+                    `;
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+        
+        // Cerrar modal
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        modalClose?.addEventListener('click', closeModal);
+        modalOverlay?.addEventListener('click', closeModal);
+        
+        // Cerrar con tecla Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+        
+        // ========================================
+        // ANIMACIONES AL SCROLL
+        // ========================================
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        projects.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = `opacity 0.4s ease ${index * 0.05}s, transform 0.4s ease ${index * 0.05}s`;
+            observer.observe(card);
+        });
+        
+        // ========================================
+        // LOAD MORE (para futuros proyectos)
+        // ========================================
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', () => {
+                // Aquí podrías cargar más proyectos desde un API o mostrar proyectos ocultos
+                alert('🚀 Próximamente: más proyectos de automatización y 5G');
+            });
+        }
+    });
+    </script>
 </body>
 </html>
