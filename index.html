@@ -3,76 +3,514 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio de Mauricio Cabrera</title>
+    <meta name="description" content="Portafolio de Mauricio Cabrera - Ingeniero en Telecomunicaciones | Especialista en Optimización RF LTE | Líder Técnico">
+    <meta name="keywords" content="RF Optimization, LTE, 5G, Python, QGIS, Telecomunicaciones, Liderazgo Técnico">
+    <meta name="author" content="Mauricio Cabrera">
+    <meta property="og:title" content="Mauricio Cabrera | RF Optimization Leader">
+    <meta property="og:description" content="Ingeniero en Telecomunicaciones especializado en Optimización RF, Automatización y Análisis de Datos">
+    <title>Mauricio Cabrera | RF Optimization Leader & Data Analytics</title>
+    
+    <!-- Fuentes y Iconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
+    
+    <!-- Estilos adicionales para mejorar visualización (sin interferir con styles.css) -->
+    <style>
+        /* Project Card Image Placeholder */
+        .project-image-placeholder {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #0D8ABC 0%, #1abc9c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 3rem;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: 1rem;
+        }
+        .project-image-placeholder.lte { background: linear-gradient(135deg, #0D8ABC, #0A6B94); }
+        .project-image-placeholder.analysis { background: linear-gradient(135deg, #1abc9c, #16a085); }
+        .project-image-placeholder.planning { background: linear-gradient(135deg, #e67e22, #d35400); }
+        
+        /* Project Meta & Tags */
+        .project-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; font-size: 0.85rem; color: #666; flex-wrap: wrap; gap: 0.5rem; }
+        .project-tags { display: flex; gap: 0.375rem; flex-wrap: wrap; }
+        .tag { padding: 0.25rem 0.625rem; border-radius: 50px; font-size: 0.75rem; font-weight: 500; }
+        .tag-primary { background: rgba(13,138,188,0.1); color: #0D8ABC; }
+        .tag-secondary { background: rgba(26,188,156,0.1); color: #1abc9c; }
+        .tag-outline { background: transparent; color: #666; border: 1px solid #e0e0e0; }
+        
+        /* Project Impact */
+        .project-impact { margin: 1rem 0; }
+        .impact-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: #333; font-weight: 500; }
+        .impact-item i { color: #1abc9c; }
+        
+        /* Project Actions */
+        .project-actions { margin-top: auto; padding-top: 1rem; border-top: 1px solid #eee; }
+        .btn-sm { padding: 0.5rem 1rem; font-size: 0.875rem; }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .project-meta { flex-direction: column; align-items: flex-start; }
+            .project-actions { flex-direction: column; }
+            .project-actions .btn { width: 100%; justify-content: center; }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Menú de Navegación -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="about.html">Resumen</a></li>
-            <li><a href="skills.html">Habilidades</a></li>
-            <li><a href="projects.html">Proyectos</a></li>
-            <li><a href="blog.html">Blog</a></li>
-          <!--  <li><a href="contact.html">Contacto</a></li> -->
-        </ul>
+    <!-- Barra de Navegación -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-satellite-dish"></i> MCabrera<span>.RF</span>
+            </a>
+            
+            <!-- Menú Desktop -->
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">Inicio</a></li>
+                <li><a href="about.html" class="nav-link">Perfil</a></li>
+                <li><a href="skills.html" class="nav-link">Competencias</a></li>
+                <li><a href="projects.html" class="nav-link">Proyectos</a></li>
+                <li><a href="blog.html" class="nav-link">Blog Técnico</a></li>
+            </ul>
+            
+            <!-- Botón Menú Mobile -->
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
     </nav>
 
-    <!-- Sección de Inicio (Imagen de Perfil + Texto) -->
-    <section id="home" class="home-container">
-        <div class="profile-section">
-            <img src="images/profile.jpg" alt="Foto de perfil" class="profile-img">
-            <div class="profile-text">
-                <h1>Richard Mauricio Cabrera Arias</h1>
-                <p>Telecommunications Engineer | MBA | Radio Access Planning & Optimization Engineer|
-                    Data Analytics & Data Science Enthusiast </p>
-
-            </div>
-    <!-- Sección de Redes Sociales (Debajo de la imagen de perfil) -->
-            <section id="social-media">
-                <h2>Sígueme</h2>
-                <div class="social-icons">
-                    <a href="https://www.linkedin.com/in/mauricio-cabrera-arias-361a4246" target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/rmauricio" target="_blank" class="social-icon github"><i class="fab fa-github"></i></a>
-                    <a href="https://www.youtube.com/@mauriciocabrera4098" target="_blank" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
-        <!--       <a href="mailto:r.mauricio.cabrera@gmail.com" class="social-icon email"><i class="fas fa-envelope"></i></a> -->
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="hero-badge">🎯 Disponible para nuevos desafíos</span>
+                <h1 class="hero-title">
+                    Richard Mauricio <span class="highlight">Cabrera Arias</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Telecommunications Engineer | MBA | RF Optimization Leader & Data Analytics
+                </p>
+                <p class="hero-description">
+                    Especialista en optimización de redes LTE/5G, automatización con Python y análisis de datos para maximizar KPIs de red. Experiencia liderando equipos técnicos en proyectos de alta complejidad.
+                </p>
+                
+                <div class="hero-actions">
+                    <a href="about.html" class="btn btn-primary">
+                        <i class="fas fa-user"></i> Ver Perfil Completo
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                        <i class="fas fa-folder-open"></i> Proyectos Destacados
+                    </a>
                 </div>
-            </section>            
+                
+                <!-- Redes Sociales -->
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/mauricio-cabrera-arias-361a4246" target="_blank" class="social-link linkedin" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/rmauricio" target="_blank" class="social-link github" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@mauriciocabrera4098" target="_blank" class="social-link youtube" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="mailto:r.mauricio.cabrera@gmail.com" class="social-link email" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <div class="profile-card">
+                    <img src="images/profile.jpg" alt="Mauricio Cabrera - RF Optimization Engineer" class="profile-img" onerror="this.src='https://ui-avatars.com/api/?name=Mauricio+Cabrera&size=256&background=0D8ABC&color=fff'">
+                    <div class="profile-status">
+                        <span class="status-dot"></span> Open to Leadership Roles
+                    </div>
+                </div>
+            </div>
         </div>
+        
+        <!-- Scroll Indicator -->
+        <a href="#about" class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </header>
 
-        <!-- Sección "Sobre mí" a la derecha -->
-        <div class="about-section">
-            <h2>Sobre mí</h2>
-            <p>Soy Ingeniero en Telecomunicaciones con un MBA y certificaciones en LTE RF Planning & Optimización, SCRUM y CCNA de Cisco. Poseo experiencia en el diseño y optimización de redes 2G/3G/LTE FDD-TDD para proveedores como Nokia, Huawei y ZTE. Tengo conocimientos en la automatización de procesos, análisis de capacidad y rendimiento utilizando herramientas como Tableau, QGIS, Python y PostgreSQL.</p>
-            <button><a href="about.html">Leer más</a></button>
+    <!-- Sección: Sobre Mí (Executive Summary) -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Perfil Ejecutivo</h2>
+                <p class="section-subtitle">Liderazgo técnico con impacto en KPIs de red</p>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-content">
+                    <p class="about-text">
+                        Ingeniero en Telecomunicaciones con <strong>MBA</strong> y +8 años de experiencia en diseño, planificación y optimización de redes 2G/3G/LTE/5G. Certificado en <strong>LTE RF Planning & Optimization</strong>, <strong>SCRUM</strong> y <strong>CCNA Cisco</strong>.
+                    </p>
+                    <p class="about-text">
+                        He liderado equipos técnicos en proyectos para operadores <strong> Entel, Viva y Tigo</strong>, y trabajando con diferentes vendors como <strong>Nokia</strong>, logrando mejoras significativas en accesibilidad, retenibilidad y throughput mediante automatización con Python, análisis avanzado en PostgreSQL y visualización geoespacial con QGIS.
+                    </p>
+                    
+                    <!-- Highlights -->
+                    <div class="highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-chart-line"></i>
+                            <div>
+                                <strong>+15%</strong>
+                                <span>Mejora promedio en KPIs de red</span>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <strong>5+</strong>
+                                <span>Equipos técnicos liderados</span>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-robot"></i>
+                            <div>
+                                <strong>10+</strong>
+                                <span>Scripts de automatización en producción</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="about.html" class="btn btn-outline">Leer experiencia completa <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-certificate"></i>
+                        <h4>Certificaciones</h4>
+                        <ul>
+                            <li>LTE RF Optimization</li>
+                            <li>Gestión de Proyectos</li>
+                            <li>SCRUM Master</li>
+                            <li>CCNA Cisco</li>
+                            <li>MBA - Gestión Estratégica</li>
+                        </ul>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-tools"></i>
+                        <h4>Expertise Técnico</h4>
+                        <ul>
+                            <li>Multi-vendor: Nokia/Huawei/Ericsson/ZTE</li>
+                            <li>Python & PostgreSQL</li>
+                            <li>QGIS & Tableau</li>
+                            <li>Drive Test Analysis</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Sección de Logos de Empresas (Antes de Redes Sociales) -->
-    <section id="company-logos">
-        <h2>Herramientas utilizadas</h2>
-        <div class="logos-container">
-            <img src="images/tool_nokia.jpg" alt="Nokia" class="company-logo">
-            <img src="images/tool_huawei.jpg" alt="Huawei" class="company-logo">
-            <img src="images/tool_zte.jpg" alt="Zte" class="company-logo">
-            <img src="images/tool_teoco.jpg" alt="Teoco" class="company-logo">
-            <img src="images/tool_nemo.jpg" alt="Keysight" class="company-logo">
-            <img src="images/tool_infovista.jpg" alt="Infovista" class="company-logo">
-            <img src="images/tool_dingli.jpg" alt="Dingli" class="company-logo">
-            <img src="images/tool_Cisco.jpg" alt="Cisco" class="company-logo">
-            <img src="images/tool_Qgis.jpg" alt="Agis" class="company-logo">
+    <!-- Sección: Herramientas & Tecnologías -->
+    <section class="section section-dark" id="tools">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title text-white">Stack Tecnológico</h2>
+                <p class="section-subtitle text-white-op">Herramientas que domino para entregar resultados</p>
+            </div>
+            
+            <div class="tools-grid">
+                <!-- Vendor Tools -->
+                <div class="tools-category">
+                    <h3><i class="fas fa-network-wired"></i> Vendor Platforms</h3>
+                    <div class="tools-list">
+                        <span class="tool-tag">Ericsson ENM/OSS-RC</span>
+                        <span class="tool-tag">Nokia NetAct</span>
+                        <span class="tool-tag">Huawei U2000/MAE</span>
+                        <span class="tool-tag">ZTE NetNumen</span>
+                    </div>
+                </div>
+                
+                <!-- Analytics & Automation -->
+                <div class="tools-category">
+                    <h3><i class="fas fa-code"></i> Data & Automation</h3>
+                    <div class="tools-list">
+                        <span class="tool-tag">Python (Pandas, NumPy)</span>
+                        <span class="tool-tag">PostgreSQL / PostGIS</span>
+                        <span class="tool-tag">Apache Airflow</span>
+                        <span class="tool-tag">Power BI / Tableau</span>
+                    </div>
+                </div>
+                
+                <!-- GIS & RF Tools -->
+                <div class="tools-category">
+                    <h3><i class="fas fa-map-marked-alt"></i> GIS & RF Analysis</h3>
+                    <div class="tools-list">
+                        <span class="tool-tag">QGIS / ArcGIS</span>
+                        <span class="tool-tag">TEMS / Nemo Outdoor</span>
+                        <span class="tool-tag">Infovista Atoll</span>
+                        <span class="tool-tag">Dingli Pioneer</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- Sección: Proyectos Destacados -->
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Proyectos Destacados</h2>
+                <p class="section-subtitle">Soluciones técnicas con impacto medible</p>
+            </div>
+            
+            <div class="projects-grid">
+                
+                <!-- Project 1: Optimización LTE Urbana -->
+                <article class="project-card" data-date="2023-06" data-tech="lte optimization" data-type="optimization">
+                    <div class="project-image-placeholder lte">
+                        <i class="fas fa-signal"></i>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <div class="project-tags">
+                                <span class="tag tag-primary">LTE</span>
+                                <span class="tag tag-secondary">RSRQ</span>
+                                <span class="tag tag-outline">Reselection</span>
+                            </div>
+                            <time>2023</time>
+                        </div>
+                        <h3 class="project-title">Optimización de Retención LTE en Zonas Congestionadas</h3>
+                        <p class="project-excerpt">
+                            Ajuste de umbrales de RSRQ y histeresis para prevenir reselección prematura a 3G/GSM. Mejora de percepción de usuario en áreas urbanas con alta densidad de tráfico.
+                        </p>
+                        <div class="project-impact">
+                            <div class="impact-item">
+                                <i class="fas fa-percent"></i>
+                                <span>+18% retención en LTE</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="btn btn-sm btn-primary" onclick="alert('📋 Parámetros clave:\n• RSRQ threshold: -18dB → -20dB\n• Hysteresis: 2dB → 3dB\n• TimeToTrigger: 320ms → 480ms'); return false;">
+                                <i class="fas fa-eye"></i> Ver Parámetros
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Project 2: ERAB Setup Analysis -->
+                <article class="project-card" data-date="2022-06" data-tech="lte analysis nokia huawei" data-type="analysis">
+                    <div class="project-image-placeholder analysis">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <div class="project-tags">
+                                <span class="tag tag-primary">Nokia</span>
+                                <span class="tag tag-secondary">Huawei</span>
+                                <span class="tag tag-outline">Core Network</span>
+                            </div>
+                            <time>2022</time>
+                        </div>
+                        <h3 class="project-title">Diagnóstico de Degradación en ERAB Setup</h3>
+                        <p class="project-excerpt">
+                            Investigación de fallas M8006C339/M8013C108 (Nokia) y L.E-RAB.FailEst.MME (Huawei). Coordinación con Core Network para resolución de incidentes en interfaz S1.
+                        </p>
+                        <div class="project-impact">
+                            <div class="impact-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Restauración completa de KPIs</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="btn btn-sm btn-primary" onclick="alert('🔍 Root Cause:\n• Timeout en S1-AP\n• Congestión en MME pool\n• Solución: Rebalanceo de TACs'); return false;">
+                                <i class="fas fa-eye"></i> Ver Root Cause
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Project 3: Eventos Especiales -->
+                <article class="project-card" data-date="2023-12" data-tech="lte 3g planning" data-type="planning">
+                    <div class="project-image-placeholder planning">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <div class="project-tags">
+                                <span class="tag tag-primary">LTE</span>
+                                <span class="tag tag-secondary">3G</span>
+                                <span class="tag tag-outline">Asset Radio</span>
+                            </div>                    
+                            <time>2023</time>
+                        </div>
+                        <h3 class="project-title">Planificación para Eventos Masivos</h3>
+                        <p class="project-excerpt">
+                            Simulaciones de cobertura 3G/LTE para eventos especiales. Planificación de sitios temporales, balanceo de carga y optimización paramétrica para picos de tráfico de voz y datos.
+                        </p>
+                        <div class="project-impact">
+                            <div class="impact-item">
+                                <i class="fas fa-users"></i>
+                                <span>Soporte para +50K usuarios simultáneos</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="btn btn-sm btn-primary" onclick="alert('📊 Métricas clave:\n• Throughput pico: 2.3 Gbps\n• Call success rate: 99.2%\n• Handover success: 98.7%'); return false;">
+                                <i class="fas fa-eye"></i> Ver Caso
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                
+            </div>
+            
+            <div class="text-center">
+                <a href="projects.html" class="btn btn-primary">Ver todos los proyectos</a>
+            </div>
+        </div>
+    </section>
 
+    <!-- Sección: Blog Técnico -->
+    <section class="section section-light" id="blog-preview">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Blog Técnico</h2>
+                <p class="section-subtitle">Contenido especializado en optimización RF y análisis de datos</p>
+            </div>
+            
+            <div class="blog-grid">
+                <!-- Blog Post 1 -->
+                <article class="blog-card">
+                    <div class="blog-meta">
+                        <span class="category">QGIS</span>
+                        <time>2024</time>
+                    </div>
+                    <h3><a href="blog_3.html" style="color:inherit;text-decoration:none">Visualización del Best Server LTE con Python y QGIS</a></h3>
+                    <p>Metodología para asignar colores dinámicos a muestras de PCI y facilitar la interpretación de datos de drive test en entornos geoespaciales.</p>
+                    <a href="blog_3.html" class="read-more">Leer artículo <i class="fas fa-arrow-right"></i></a>
+                </article>
+                
+                <!-- Blog Post 2 -->
+                <article class="blog-card">
+                    <div class="blog-meta">
+                        <span class="category">Automatización</span>
+                        <time>2024</time>
+                    </div>
+                    <h3><a href="blog_2.html" style="color:inherit;text-decoration:none">Carga y Procesamiento de Archivos .Tap en QGIS</a></h3>
+                    <p>Guía práctica para ingenieros de optimización: cómo importar, procesar y visualizar datos de drive test LTE-RSRP eficientemente.</p>
+                    <a href="blog_2.html" class="read-more">Leer artículo <i class="fas fa-arrow-right"></i></a>
+                </article>
+                
+                <!-- Blog Post 3 -->
+                <article class="blog-card">
+                    <div class="blog-meta">
+                        <span class="category">GIS</span>
+                        <time>2024</time>
+                    </div>
+                    <h3><a href="blog_1.html" style="color:inherit;text-decoration:none">Creación de Sectores RF con Mapa de Fondo en QGIS</a></h3>
+                    <p>Tutorial paso a paso para representar sectores de antena con precisión geoespacial usando herramientas open-source.</p>
+                    <a href="blog_1.html" class="read-more">Leer artículo <i class="fas fa-arrow-right"></i></a>
+                </article>
+            </div>
+            
+            <div class="text-center">
+                <a href="blog.html" class="btn btn-outline">Explorar blog completo</a>
+            </div>
+        </div>
+    </section>
 
-    <!-- Pie de Página -->
-    <footer>
-        <p>&copy; 2024 Mauricio Cabrera. Todos los derechos reservados.</p>
+    <!-- Sección: Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+  <!--      <h2>¿Buscas un líder técnico para tu equipo de optimización RF?</h2>
+            <p>Combino expertise técnico en redes LTE/5G con habilidades de gestión para impulsar la calidad de red y la eficiencia operativa.</p>
+            -->
+            <div class="cta-actions">
+             <!-- <a href="mailto:r.mauricio.cabrera@gmail.com" class="btn btn-primary btn-large">
+                    <i class="fas fa-envelope"></i> Contactar para Oportunidades
+                </a>
+                <a href="#" class="btn btn-secondary btn-large" download>
+                    <i class="fas fa-download"></i> Descargar CV (PDF)
+                </a>
+              -->  
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <i class="fas fa-satellite-dish"></i> MCabrera<span>.RF</span>
+                    </a>
+                    <p>Portafolio profesional de Mauricio Cabrera - Especialista en Optimización RF y Análisis de Datos para Telecomunicaciones.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="about.html">Perfil</a></li>
+                        <li><a href="skills.html">Competencias</a></li>
+                        <li><a href="projects.html">Proyectos</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> r.mauricio.cabrera@gmail.com</li>
+                        <li><i class="fab fa-linkedin"></i> linkedin.com/in/mauricio-cabrera</li>
+                        <li><i class="fab fa-github"></i> github.com/rmauricio</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Mauricio Cabrera. Todos los derechos reservados. </p>
+            </div>
+        </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="scripts.js"></script>
+    
+    <!-- Script para mejorar interacción de proyectos -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Smooth scroll para enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // Efecto hover en project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-4px)';
+                this.style.boxShadow = '0 8px 24px rgba(0,0,0,0.15)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+                this.style.boxShadow = '';
+            });
+        });
+    });
+    </script>
 </body>
 </html>
