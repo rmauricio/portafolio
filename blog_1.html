@@ -3,139 +3,855 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Optimización de Red LTE</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Tutorial paso a paso: Cómo crear sectores RF con mapa de fondo en QGIS para optimización de redes móviles. Incluye descarga de plantilla CSV y configuración de complementos.">
+    <meta name="keywords" content="QGIS, RF Planning, Sectores de Antena, GIS, Telecomunicaciones, Tutorial, Open Source">
+    <meta name="author" content="Mauricio Cabrera">
+    
+    <!-- Open Graph / LinkedIn Sharing -->
+    <meta property="og:title" content="Crear sectores RF con mapa de fondo en QGIS | Blog Técnico">
+    <meta property="og:description" content="Aprende a visualizar sectores de antena en QGIS con mapas de Google Satellite. Tutorial completo con plantilla CSV descargable.">
+    <meta property="og:image" content="https://tu-dominio.com/images/project2.jpg">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2022-08-02">
+    <meta property="article:author" content="Mauricio Cabrera">
+    
+    <title>Crear sectores RF con mapa de fondo en QGIS | Blog Técnico - Mauricio Cabrera</title>
+    
+    <!-- Fuentes y Iconos (Consistente con todas las páginas) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
+    
+    <!-- Schema.org para Artículo de Blog -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Crear sectores RF con mapa de fondo en QGIS",
+      "description": "Tutorial paso a paso para visualizar sectores de antena en QGIS con mapas de fondo",
+      "author": {
+        "@type": "Person",
+        "name": "Mauricio Cabrera",
+        "url": "https://tu-dominio.com"
+      },
+      "datePublished": "2022-08-02",
+      "image": "https://tu-dominio.com/images/project2.jpg",
+      "publisher": {
+        "@type": "Person",
+        "name": "Mauricio Cabrera"
+      },
+      "articleSection": "GIS & RF Planning",
+      "keywords": ["QGIS", "RF Planning", "GIS", "Telecomunicaciones", "Tutorial"]
+    }
+    </script>
 </head>
 <body>
 
-    <!-- Menú de Navegación -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="about.html">Resumen</a></li>
-            <li><a href="skills.html">Habilidades</a></li>
-            <li><a href="projects.html">Proyectos</a></li>
-            <li><a href="blog.html" class="active">Blog</a></li>
-<!--            <li><a href="contact.html">Contacto</a></li> -->
-        </ul>
+    <!-- Barra de Navegación (IDÉNTICA a todas las páginas) -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-satellite-dish"></i> MCabrera<span>.RF</span>
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Inicio</a></li>
+                <li><a href="about.html" class="nav-link">Perfil</a></li>
+                <li><a href="skills.html" class="nav-link">Competencias</a></li>
+                <li><a href="projects.html" class="nav-link">Proyectos</a></li>
+                <li><a href="blog.html" class="nav-link active">Blog Técnico</a></li>
+            </ul>
+            
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
     </nav>
 
-    <!-- Encabezado -->
-    <header>
-
+    <!-- Header del Artículo -->
+    <header class="article-header">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html">Inicio</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="blog.html">Blog</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Crear sectores RF en QGIS</span>
+            </nav>
+            
+            <div class="article-meta">
+                <span class="article-category"><i class="fas fa-map-marked-alt"></i> QGIS & GIS</span>
+                <span class="article-date"><i class="far fa-calendar"></i> 2 de Agosto, 2022</span>
+                <span class="article-readtime"><i class="far fa-clock"></i> 8 min de lectura</span>
+            </div>
+            
+            <h1 class="article-title">Crear sectores RF con mapa de fondo en QGIS</h1>
+            <p class="article-subtitle">Tutorial paso a paso para visualizar sectores de antena con precisión geoespacial usando herramientas open-source</p>
+            
+            <!-- Autor y Acciones -->
+            <div class="article-actions-bar">
+                <div class="author-info">
+                    <img src="images/profile.jpg" alt="Mauricio Cabrera" class="author-avatar" onerror="this.src='https://ui-avatars.com/api/?name=Mauricio+Cabrera&size=64&background=0D8ABC&color=fff'">
+                    <div class="author-details">
+                        <span class="author-name">Mauricio Cabrera</span>
+                        <span class="author-role">RF Optimization Engineer | MBA</span>
+                    </div>
+                </div>
+                
+                <div class="share-buttons">
+                    <span>Compartir:</span>
+                    <button class="share-btn" onclick="sharePost('linkedin')" title="Compartir en LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </button>
+                    <button class="share-btn" onclick="sharePost('twitter')" title="Compartir en X/Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </button>
+                    <button class="share-btn" onclick="sharePost('whatsapp')" title="Compartir en WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </button>
+                    <button class="share-btn" onclick="copyLink()" title="Copiar enlace">
+                        <i class="fas fa-link"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <!-- Contenedor de Artículo -->
-    <div class="article-container">
-        <article class="article-card">
-            <div class="article-header">
-                <img src="images/project2.jpg" alt="Portada de artículo" />
-            </div>
-
-            <div class="article-body">
-                <h3>Crear sectores RF con mapa de fondo en QGIS</h3>
-                <p>Publicado el: 2 de Agosto de 2022</p>
-                <p> Actualmente es necesario explotar la utilización de herramientas gratuitas de Sistema de información geográfica una de estas es QGIS, donde podemos graficar una red de manera sencilla, poder realizar visualizaciones de sus sectores y diferentes análisis que también se realizan en herramientas como Map info o ArGIs.
-                    
-                    <ul class="specialization-list">
-                        <li>Tener instalado QGIS, les comparte el enlace si no lo tiene instalado https://qgis.org/es/site/forusers/download.html.
-                        </li>
-                        <li>Instalar el complemento SHAPE TOOLS, se instala de la sigiente manera :
-                            <div class="article-images">
-                                <img src="images/blog_1.1.png" alt="" />
-                                <img src="images/blog1.2.png" alt="" />
-                            </div>                           
-                        </li>
-                        <li> Ingresar a ->Complemento -> Administrador e instalador de complementos 
-
-                            -> “Buscar el complemento shape Tools” -> Instalar complemento.
-                        </li>
-                        <li>Tendremos que qenerar una plantilla en CSV. por celda con los parámetros de nuestra red. Esta tabla estara compuesta por los siguientes campos o culmnas :
-                            <div class="article-image-single">
-                                <img src="images/blog1.3.png" alt="" />
-                            </div>   
-                        </li>
-                        <li> SITE ID,NOMBRE ESTACIÓN, CELL ID, LATITUD, LONGITUD, ALTURA DE TORRE[M], ALTURA ANTENA - AGL, BANDWITH ANTENA ,AZIMUT, TILT ELÉCTRICO, TILIT MECÁNICO, PCI, AC, Carrier, SIZE
-                        </li>
-                        </li> Nota :. En caso de cargar más portadoras en una Tecnología sugiero agregar un campo de tamaño de celda para su visualización, en nuestro template adjunto lo denominaremos “SIZE”. También pueden agregar mayor cantidad de columnas a su necesidad los mismo pueden ser parámetros, KPIs, inventario o cualquier información que consideren de utilidad.
-                              A continuacion mostrare el cargado del este .CSV
-                        </li>                 
-                    </ul>
-                </p>
+    <!-- Contenido Principal del Artículo -->
+    <main class="article-layout">
+        <div class="container">
+            <div class="article-grid">
                 
-                <div class="article-image-single">
-                    <img src="images/blog1.4.png" alt="" />
-                 </div>         
+                <!-- Contenido del Artículo -->
+                <article class="article-content" id="articleContent">
+                    
+                    <!-- Imagen Destacada -->
+                    <figure class="featured-image">
+                        <img src="images/project2.jpg" 
+                             alt="Sectores RF visualizados en QGIS con mapa de fondo de Google Satellite"
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/800x400/1abc9c/ffffff?text=RF+Sectors+in+QGIS'">
+                        <figcaption>Figura 1: Visualización de sectores RF en QGIS con capa base de Google Satellite</figcaption>
+                    </figure>
+                    
+                    <!-- Introducción -->
+                    <div class="article-intro">
+                        <p>
+                            Actualmente es fundamental aprovechar herramientas gratuitas de <strong>Sistemas de Información Geográfica (SIG)</strong> como <strong>QGIS</strong> para graficar y analizar redes de telecomunicaciones de manera eficiente. 
+                        </p>
+                        <p>
+                            Con QGIS, puedes visualizar sectores de antena específicos, realizar análisis de cobertura, interferencia y planificación, con funcionalidades similares a herramientas propietarias como MapInfo o ArcGIS, pero con la flexibilidad y bajo costo del software open-source.
+                        </p>
+                        <div class="info-box">
+                            <i class="fas fa-lightbulb"></i>
+                            <div>
+                                <strong>💡 ¿Por qué QGIS para RF?</strong>
+                                <ul>
+                                    <li>✅ Gratuito y de código abierto</li>
+                                    <li>✅ Soporte multiplataforma (Windows, Mac, Linux)</li>
+                                    <li>✅ Amplia comunidad y plugins especializados</li>
+                                    <li>✅ Integración con PostgreSQL/PostGIS para análisis avanzado</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
-                <p>
-                    ->1. Texto delimitado-> 2.Nombre de archivo” buscar dirección de carpeta del .csv”
-                    -> 2.1. Codificación “ LATINO1” “ este punto opcional para reconoces caracteres especiales del lenguaje en este caso “Ñ”
-                    -> 3.Formato de archivo” seleccionar (; o ,) de acuerdo a la configuración separador decimal de su Widows o Mac.
-                    ->4.Definición de Geometría “seleccionar coordenada del punto y los campos latitud y longitud del documento .csv.”
-                    ->5.SRC de la geometría “seleccionar WGS 84”-> 6.verificar que la tabla se representada correctamente-> Añadir -> Cerrar
-                    Verifiquen se carguen los puntos de sus radio bases. En caso que no visualice como punto su tabla csv, “Deberán cambiar su configuración de separador de decimales de su computador como se muestra en la imagen."
-                </p>
-                <div class="article-image-single">
-                    <img src="images/blog1.5.png" alt="" />
+                    <!-- Índice de Contenidos -->
+                    <nav class="article-toc">
+                        <h3><i class="fas fa-list"></i> Contenido del Tutorial</h3>
+                        <ol>
+                            <li><a href="#step1">1. Instalación de QGIS</a></li>
+                            <li><a href="#step2">2. Instalación del complemento Shape Tools</a></li>
+                            <li><a href="#step3">3. Preparación de la plantilla CSV</a></li>
+                            <li><a href="#step4">4. Carga de datos en QGIS</a></li>
+                            <li><a href="#step5">5. Generación de sectores con Shape Tools</a></li>
+                            <li><a href="#step6">6. Agregar mapa de fondo con QuickMapServices</a></li>
+                            <li><a href="#step7">7. Resultado final y exportación</a></li>
+                            <li><a href="#download">📥 Descargar plantilla CSV</a></li>
+                        </ol>
+                    </nav>
+
+                    <!-- Paso 1 -->
+                    <section id="step1" class="article-section">
+                        <h2><span class="step-number">1</span> Instalación de QGIS</h2>
+                        <p>
+                            Si aún no tienes QGIS instalado, puedes descargarlo gratuitamente desde el sitio oficial:
+                        </p>
+                        <div class="code-block">
+                            <a href="https://qgis.org/es/site/forusers/download.html" target="_blank" class="download-link">
+                                <i class="fas fa-download"></i> https://qgis.org/es/site/forusers/download.html
+                            </a>
+                        </div>
+                        <p>
+                            Recomiendo descargar la versión <strong>Long Term Release (LTR)</strong> para mayor estabilidad en entornos de producción.
+                        </p>
+                    </section>
+
+                    <!-- Paso 2 -->
+                    <section id="step2" class="article-section">
+                        <h2><span class="step-number">2</span> Instalación del complemento Shape Tools</h2>
+                        <p>
+                            El plugin <strong>Shape Tools</strong> nos permitirá generar sectores circulares (pie wedges) a partir de parámetros de antena como azimut, tilt y radio.
+                        </p>
+                        
+                        <h3>Proceso de instalación:</h3>
+                        <ol class="step-list">
+                            <li>Abre QGIS y ve a <code>Complementos → Administrador e instalador de complementos</code></li>
+                            <li>En la pestaña "Todos", busca: <strong>Shape Tools</strong></li>
+                            <li>Selecciona el plugin y haz clic en <strong>Instalar complemento</strong></li>
+                        </ol>
+                        
+                        <div class="image-gallery">
+                            <figure>
+                                <img src="images/blog_1.1.jpg" 
+                                     alt="Buscador de complementos en QGIS"
+                                     loading="lazy"
+                                     onerror="this.src='https://via.placeholder.com/400x250/e0e0e0/666?text=Plugin+Manager'">
+                                <figcaption>Figura 2: Buscador de complementos en QGIS</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="images/blog1.2.png" 
+                                     alt="Instalación de Shape Tools"
+                                     loading="lazy"
+                                     onerror="this.src='https://via.placeholder.com/400x250/e0e0e0/666?text=Install+Shape+Tools'">
+                                <figcaption>Figura 3: Instalación del plugin Shape Tools</figcaption>
+                            </figure>
+                        </div>
+                        
+                        <div class="tip-box">
+                            <i class="fas fa-info-circle"></i>
+                            <p><strong>Nota:</strong> Si no encuentras el plugin, verifica que tengas habilitados los repositorios oficiales en <code>Configuración → Repositorios</code>.</p>
+                        </div>
+                    </section>
+
+                    <!-- Paso 3 -->
+                    <section id="step3" class="article-section">
+                        <h2><span class="step-number">3</span> Preparación de la plantilla CSV</h2>
+                        <p>
+                            Para generar los sectores, necesitamos un archivo CSV con los parámetros técnicos de cada celda. La estructura mínima requerida es:
+                        </p>
+                        
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Campo</th>
+                                        <th>Tipo</th>
+                                        <th>Descripción</th>
+                                        <th>Ejemplo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>SITE_ID</code></td>
+                                        <td>Texto</td>
+                                        <td>Identificador único del sitio</td>
+                                        <td>LA_PAZ_001</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>CELL_ID</code></td>
+                                        <td>Texto</td>
+                                        <td>Identificador de la celda</td>
+                                        <td>LA_PAZ_001_A</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>LATITUD</code></td>
+                                        <td>Decimal</td>
+                                        <td>Coordenada Y en WGS84</td>
+                                        <td>-16.500123</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>LONGITUD</code></td>
+                                        <td>Decimal</td>
+                                        <td>Coordenada X en WGS84</td>
+                                        <td>-68.150456</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>AZIMUT</code></td>
+                                        <td>Entero</td>
+                                        <td>Dirección principal de la antena (0-360°)</td>
+                                        <td>120</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>SIZE</code></td>
+                                        <td>Decimal</td>
+                                        <td>Radio del sector en metros</td>
+                                        <td>1500</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>PCI</code></td>
+                                        <td>Entero</td>
+                                        <td>Physical Cell Identity (LTE)</td>
+                                        <td>150</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>Carrier</code></td>
+                                        <td>Texto</td>
+                                        <td>Banda de frecuencia</td>
+                                        <td>Band3_1800</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="image-single">
+                            <img src="images/blog1.3.png" 
+                                 alt="Estructura de la plantilla CSV"
+                                 loading="lazy"
+                                 onerror="this.src='https://via.placeholder.com/800x300/e0e0e0/666?text=CSV+Template+Structure'">
+                            <figcaption>Figura 4: Estructura recomendada para el archivo CSV de celdas</figcaption>
+                        </div>
+                        
+                        <div class="info-box">
+                            <i class="fas fa-lightbulb"></i>
+                            <div>
+                                <strong>💡 Consejos para tu plantilla:</strong>
+                                <ul>
+                                    <li>Usa <strong>punto (.)</strong> como separador decimal, no coma</li>
+                                    <li>Guarda el archivo con codificación <strong>UTF-8</strong> para caracteres especiales</li>
+                                    <li>Para multi-portadora, agrega columnas adicionales como <code>EARFCN</code> o <code>Band</code></li>
+                                    <li>Incluye KPIs como <code>RSRP_avg</code> o <code>Throughput_DL</code> para visualización temática</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Botón de descarga -->
+                        <div id="download" class="download-section">
+                            <a href="downloads/RF_Sectors_Template.csv" class="btn btn-primary" download>
+                                <i class="fas fa-download"></i> Descargar Plantilla CSV de Ejemplo
+                            </a>
+                            <span class="download-note">Formato: CSV • Tamaño: ~2KB • Compatible con Excel y QGIS</span>
+                        </div>
+                    </section>
+
+                    <!-- Paso 4 -->
+                    <section id="step4" class="article-section">
+                        <h2><span class="step-number">4</span> Carga de datos en QGIS</h2>
+                        <p>
+                            Sigue estos pasos para importar tu archivo CSV como capa de puntos:
+                        </p>
+                        
+                        <ol class="step-list">
+                            <li>Ve a <code>Capa → Añadir capa → Añadir capa de texto delimitado</code></li>
+                            <li><strong>Nombre de archivo:</strong> Busca y selecciona tu archivo .csv</li>
+                            <li><strong>Codificación:</strong> Selecciona <code>UTF-8</code> o <code>ISO-8859-1</code> (para caracteres como Ñ)</li>
+                            <li><strong>Formato de archivo:</strong> Elige el delimitador correcto (<code>;</code> o <code>,</code>) según tu configuración regional</li>
+                            <li><strong>Definición de geometría:</strong> 
+                                <ul>
+                                    <li>Tipo de geometría: <strong>Coordenadas del punto</strong></li>
+                                    <li>Campo X: <code>LONGITUD</code></li>
+                                    <li>Campo Y: <code>LATITUD</code></li>
+                                </ul>
+                            </li>
+                            <li><strong>SRC de la geometría:</strong> Selecciona <code>EPSG:4326 - WGS 84</code></li>
+                            <li>Verifica la vista previa y haz clic en <strong>Añadir</strong> → <strong>Cerrar</strong></li>
+                        </ol>
+                        
+                        <div class="image-single">
+                            <img src="images/blog1.4.png" 
+                                 alt="Configuración de carga de CSV en QGIS"
+                                 loading="lazy"
+                                 onerror="this.src='https://via.placeholder.com/800x400/e0e0e0/666?text=CSV+Import+Settings'">
+                            <figcaption>Figura 5: Configuración del asistente de importación de CSV</figcaption>
+                        </div>
+                        
+                        <div class="warning-box">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <p><strong>⚠️ Solución de problemas:</strong> Si los puntos no se visualizan correctamente, verifica que el separador decimal de tu sistema operativo coincida con el del archivo CSV. En Windows: <code>Panel de Control → Región → Configuración adicional → Separador decimal</code>.</p>
+                        </div>
+                        
+                        <div class="image-single">
+                            <img src="images/blog1.5.png" 
+                                 alt="Configuración regional de separador decimal"
+                                 loading="lazy"
+                                 onerror="this.src='https://via.placeholder.com/800x300/e0e0e0/666?text=Decimal+Separator+Settings'">
+                            <figcaption>Figura 6: Configuración de separador decimal en Windows</figcaption>
+                        </div>
+                    </section>
+
+                    <!-- Paso 5 -->
+                    <section id="step5" class="article-section">
+                        <h2><span class="step-number">5</span> Generación de sectores con Shape Tools</h2>
+                        <p>
+                            Ahora crearemos los sectores circulares usando el plugin instalado:
+                        </p>
+                        
+                        <ol class="step-list">
+                            <li>Abre la <strong>Caja de herramientas de procesamiento</strong> (<code>Ctrl+Alt+T</code>)</li>
+                            <li>Navega a: <code>Shape Tools → Create Pie Wedge</code></li>
+                            <li>Configura los parámetros:
+                                <ul>
+                                    <li><strong>Input Point Layer:</strong> Selecciona tu capa de puntos CSV</li>
+                                    <li><strong>Azimuth Field:</strong> Selecciona el campo <code>AZIMUT</code></li>
+                                    <li><strong>Radius Field:</strong> Selecciona el campo <code>SIZE</code> (radio en metros)</li>
+                                    <li><strong>Ending Azimuth:</strong> Configura la apertura del sector (ej: <code>65</code> para 65°)</li>
+                                    <li><strong>Radius Units:</strong> Selecciona <code>Meters</code></li>
+                                </ul>
+                            </li>
+                            <li>Haz clic en <strong>Ejecutar</strong></li>
+                        </ol>
+                        
+                        <div class="image-gallery">
+                            <figure>
+                                <img src="images/blog1.6.png" 
+                                     alt="Herramienta Shape Tools en QGIS"
+                                     loading="lazy"
+                                     onerror="this.src='https://via.placeholder.com/400x250/e0e0e0/666?text=Shape+Tools+Menu'">
+                                <figcaption>Figura 7: Ubicación del plugin Shape Tools</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="images/blog1.7.png" 
+                                     alt="Configuración de Create Pie Wedge"
+                                     loading="lazy"
+                                     onerror="this.src='https://via.placeholder.com/400x250/e0e0e0/666?text=Pie+Wedge+Parameters'">
+                                <figcaption>Figura 8: Parámetros para generar sectores RF</figcaption>
+                            </figure>
+                        </div>
+                        
+                        <div class="image-single">
+                            <img src="images/blog1.8.png" 
+                                 alt="Sectores generados en QGIS"
+                                 loading="lazy"
+                                 onerror="this.src='https://via.placeholder.com/800x400/e0e0e0/666?text=Generated+RF+Sectors'">
+                            <figcaption>Figura 9: Sectores RF generados (sin mapa de fondo)</figcaption>
+                        </div>
+                        
+                        <h3>Estilización opcional:</h3>
+                        <p>
+                            Para mejorar la visualización, puedes aplicar reglas de estilo basadas en PCI, banda de frecuencia o KPIs:
+                        </p>
+                        <div class="code-block">
+                            <pre><code class="language-sql">-- Ejemplo: Color por banda de frecuencia
+CASE 
+  WHEN "Carrier" LIKE '%Band1%' THEN '#e74c3c'  -- Rojo para 2100 MHz
+  WHEN "Carrier" LIKE '%Band3%' THEN '#3498db'  -- Azul para 1800 MHz
+  WHEN "Carrier" LIKE '%Band7%' THEN '#2ecc71'  -- Verde para 2600 MHz
+  ELSE '#95a5a6'
+END</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- Paso 6 -->
+                    <section id="step6" class="article-section">
+                        <h2><span class="step-number">6</span> Agregar mapa de fondo con QuickMapServices</h2>
+                        <p>
+                            Para contextualizar los sectores con imágenes satelitales o mapas base:
+                        </p>
+                        
+                        <ol class="step-list">
+                            <li>Instala el plugin <strong>QuickMapServices</strong> (mismo proceso que Shape Tools)</li>
+                            <li>Ve a <code>Web → QuickMapServices → Settings → More services</code></li>
+                            <li>Haz clic en <strong>Get contributed pack</strong> y luego <strong>Guardar</strong></li>
+                            <li>Activa el mapa deseado: <code>Web → QuickMapServices → Google → Google Satellite</code></li>
+                        </ol>
+                        
+                        <div class="image-gallery">
+                            <figure>
+                                <img src="images/blog1.9.png" 
+                                     alt="Instalación de QuickMapServices"
+                                     loading="lazy"
+                                     onerror="this.src='https://via.placeholder.com/400x250/e0e0e0/666?text=QuickMapServices+Install'">
+                                <figcaption>Figura 10: Instalación del plugin QuickMapServices</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="images/blog1.10.png" 
+                                     alt="Activación de Google Satellite"
+                                     loading="lazy"
+                                     onerror="this.src='https://via.placeholder.com/400x250/e0e0e0/666?text=Enable+Google+Satellite'">
+                                <figcaption>Figura 11: Habilitación del paquete de servicios contribuidos</figcaption>
+                            </figure>
+                        </div>
+                        
+                        <div class="image-gallery">
+                            <figure>
+                                <img src="images/blog1.11.png" 
+                                     alt="Selección de Google Satellite"
+                                     loading="lazy"
+                                     onerror="this.src='https://via.placeholder.com/400x250/e0e0e0/666?text=Select+Google+Satellite'">
+                                <figcaption>Figura 12: Menú de mapas base disponibles</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="images/blog1.12.png" 
+                                     alt="Resultado final con mapa de fondo"
+                                     loading="lazy"
+                                     onerror="this.src='https://via.placeholder.com/400x250/1abc9c/ffffff?text=Final+Result+with+Satellite'">
+                                <figcaption>Figura 13: Resultado final con sectores RF sobre Google Satellite</figcaption>
+                            </figure>
+                        </div>
+                    </section>
+
+                    <!-- Paso 7 -->
+                    <section id="step7" class="article-section">
+                        <h2><span class="step-number">7</span> Resultado final y exportación</h2>
+                        <p>
+                            ¡Listo! Ahora tienes una visualización profesional de tus sectores RF con contexto geográfico. Puedes:
+                        </p>
+                        
+                        <ul class="check-list">
+                            <li><i class="fas fa-check-circle"></i> <strong>Exportar a imagen:</strong> <code>Proyecto → Importar/Exportar → Exportar mapa como imagen</code></li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Generar reporte PDF:</strong> Usa el Compositor de Impresión para layouts profesionales</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Compartir como proyecto:</strong> Guarda como <code>.qgz</code> para colaboración con tu equipo</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Automatizar:</strong> Usa PyQGIS para generar reportes masivos desde Python</li>
+                        </ul>
+                        
+                        <div class="success-box">
+                            <i class="fas fa-rocket"></i>
+                            <p><strong>🚀 Próximo nivel:</strong> Integra esta visualización con tus dashboards de KPIs usando <a href="projects.html#ondb">OptiNetDB</a> para análisis geoespacial automatizado.</p>
+                        </div>
+                    </section>
+
+                    <!-- Conclusión -->
+                    <section class="article-conclusion">
+                        <h2>Conclusión</h2>
+                        <p>
+                            QGIS es una herramienta poderosa y accesible para ingenieros de telecomunicaciones que necesitan visualizar y analizar redes RF sin depender de licencias costosas. Con los complementos adecuados y una estructura de datos bien definida, puedes crear visualizaciones profesionales que facilitan la toma de decisiones técnicas.
+                        </p>
+                        <p>
+                            Espero que este tutorial sea de utilidad para tu trabajo diario. Si tienes preguntas o sugerencias, ¡no dudes en compartirlo en tu red profesional o contactarme directamente!
+                        </p>
+                    </section>
+
+                    <!-- Tags y Compartir -->
+                    <div class="article-tags-share">
+                        <div class="article-tags">
+                            <span><i class="fas fa-tag"></i> Tags:</span>
+                            <a href="blog.html?tag=qgis" class="tag">QGIS</a>
+                            <a href="blog.html?tag=rf-planning" class="tag">RF Planning</a>
+                            <a href="blog.html?tag=gis" class="tag">GIS</a>
+                            <a href="blog.html?tag=tutorial" class="tag">Tutorial</a>
+                            <a href="blog.html?tag=open-source" class="tag">Open Source</a>
+                        </div>
+                        <div class="share-buttons">
+                            <span>Compartir:</span>
+                            <button class="share-btn" onclick="sharePost('linkedin')"><i class="fab fa-linkedin-in"></i></button>
+                            <button class="share-btn" onclick="sharePost('twitter')"><i class="fab fa-twitter"></i></button>
+                            <button class="share-btn" onclick="sharePost('whatsapp')"><i class="fab fa-whatsapp"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Navegación entre artículos -->
+                    <nav class="article-navigation">
+                        <a href="blog_2.html" class="nav-prev">
+                            <i class="fas fa-arrow-left"></i>
+                            <div>
+                                <span>Artículo anterior</span>
+                                <strong>Carga de archivos .Tap en QGIS</strong>
+                            </div>
+                        </a>
+                        <a href="blog_3.html" class="nav-next">
+                            <div>
+                                <span>Siguiente artículo</span>
+                                <strong>Visualización de Best Server LTE</strong>
+                            </div>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </nav>
+
+                    <!-- Sección de Autor -->
+                    <div class="author-box">
+                        <img src="images/profile.jpg" alt="Mauricio Cabrera" class="author-avatar-lg" onerror="this.src='https://ui-avatars.com/api/?name=Mauricio+Cabrera&size=128&background=0D8ABC&color=fff'">
+                        <div class="author-bio">
+                            <h4>Sobre el autor</h4>
+                            <p><strong>Mauricio Cabrera</strong> es Ingeniero en Telecomunicaciones con MBA, especializado en optimización de redes LTE/5G y automatización con Python. Ha liderado proyectos para operadores y vendors como Nokia, Huawei y ZTE en Latinoamérica.</p>
+                            <div class="author-links">
+                                <a href="https://www.linkedin.com/in/mauricio-cabrera-arias-361a4246" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                                <a href="https://github.com/rmauricio" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="about.html"><i class="fas fa-user"></i> Ver perfil completo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comentarios (Placeholder) -->
+                    <section class="comments-section">
+                        <h3><i class="fas fa-comments"></i> Comentarios</h3>
+                        <p class="comments-placeholder">
+                            <i class="fas fa-info-circle"></i> 
+                            Los comentarios están deshabilitados temporalmente. Para preguntas técnicas, contáctame directamente por 
+                            <a href="mailto:r.mauricio.cabrera@gmail.com">email</a> o 
+                            <a href="https://www.linkedin.com/in/mauricio-cabrera-arias-361a4246" target="_blank">LinkedIn</a>.
+                        </p>
+                    </section>
+
+                </article>
+
+                <!-- Sidebar del Artículo -->
+                <aside class="article-sidebar">
+                    
+                    <!-- Tabla de Contenidos Sticky -->
+                    <div class="sidebar-widget toc-sticky">
+                        <h4><i class="fas fa-list"></i> En este artículo</h4>
+                        <ul class="toc-list">
+                            <li><a href="#step1">Instalación de QGIS</a></li>
+                            <li><a href="#step2">Plugin Shape Tools</a></li>
+                            <li><a href="#step3">Plantilla CSV</a></li>
+                            <li><a href="#step4">Carga de datos</a></li>
+                            <li><a href="#step5">Generar sectores</a></li>
+                            <li><a href="#step6">Mapa de fondo</a></li>
+                            <li><a href="#step7">Exportación</a></li>
+                            <li><a href="#download" class="highlight">📥 Descargar CSV</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Recursos Relacionados -->
+                    <div class="sidebar-widget">
+                        <h4><i class="fas fa-link"></i> Recursos Útiles</h4>
+                        <ul class="resource-list">
+                            <li>
+                                <a href="https://qgis.org/es/site/" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i> Sitio oficial de QGIS
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://plugins.qgis.org/plugins/ShapeTools/" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i> Plugin Shape Tools
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/rmauricio/qgis-rf-scripts" target="_blank">
+                                    <i class="fab fa-github"></i> Scripts Python para RF en GitHub
+                                </a>
+                            </li>
+                            <li>
+                                <a href="projects.html#ondb">
+                                    <i class="fas fa-project-diagram"></i> OptiNetDB - Plataforma de optimización
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Artículos Relacionados -->
+                    <div class="sidebar-widget">
+                        <h4><i class="fas fa-bookmark"></i> También te puede interesar</h4>
+                        <div class="related-posts">
+                            <a href="blog_2.html" class="related-post">
+                                <span class="related-category">QGIS</span>
+                                <strong>Carga de archivos .Tap en QGIS</strong>
+                                <span class="related-meta"><i class="far fa-clock"></i> 6 min</span>
+                            </a>
+                            <a href="blog_3.html" class="related-post">
+                                <span class="related-category">Python + QGIS</span>
+                                <strong>Visualización de Best Server LTE</strong>
+                                <span class="related-meta"><i class="far fa-clock"></i> 8 min</span>
+                            </a>
+                            <a href="projects.html#qgis-lte" class="related-post">
+                                <span class="related-category">Proyecto</span>
+                                <strong>Dashboard de KPIs en QGIS</strong>
+                                <span class="related-meta"><i class="fas fa-folder-open"></i> Ver caso</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Newsletter -->
+                    <div class="sidebar-widget newsletter-widget">
+                        <h4><i class="fas fa-envelope"></i> Suscríbete al Blog</h4>
+                        <p>Recibe notificaciones cuando publique nuevos tutoriales de optimización RF y automatización.</p>
+                        <form class="newsletter-form" onsubmit="handleSubscribe(event); return false;">
+                            <input type="email" placeholder="tu@email.com" required>
+                            <button type="submit" class="btn btn-sm btn-primary">Suscribirme</button>
+                        </form>
+                    </div>
+                    
+                </aside>
+                
+            </div>
+        </div>
+    </main>
+
+    <!-- Sección: Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+         <!--    <h2>¿Encontraste útil este tutorial?</h2>
+            <p>Si trabajas en optimización RF y quieres profundizar en automatización con Python o análisis de datos, hablemos sobre cómo puedo aportar valor a tu equipo.</p>
+            -->
+            <div class="cta-actions">
+                <a href="mailto:r.mauricio.cabrera@gmail.com?subject=Consulta sobre tutorial QGIS" class="btn btn-primary btn-large">
+                    <i class="fas fa-envelope"></i> Contactar para Colaboración
+                </a>
+                <a href="projects.html" class="btn btn-secondary btn-large">
+                    <i class="fas fa-folder-open"></i> Ver Proyectos Relacionados
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Consistente con todas las páginas) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <i class="fas fa-satellite-dish"></i> MCabrera<span>.RF</span>
+                    </a>
+                    <p>Portafolio profesional de Mauricio Cabrera - Especialista en Optimización RF y Análisis de Datos para Telecomunicaciones.</p>
                 </div>
-                </p>->2 buscar el complementos SHAPE TOOL “En el set de herramienta de QGIS es representado por una Donut” ->3 Create pie Wedge
-                 </p>
-                <div class="article-images">
-                    <img src="images/blog1.6.png" alt="" />
-                    <img src="images/blog1.7.png" alt="" />
-                </div>       
-            </p>->4. Verificar que nuestra capa de puntos este selecionada correctamente.
-                ->5. Seleccionar el campo azimut de nuestra tabla de celdas.
-                ->6. Radio “seleccionamos el columna SIZE “
-                Pueden configurar la apertura de az de a cuerdo su antena en ENDING AZIMUTH, para ejercicio lo configuramos en 65°.
-                ->7. Radio Unit “metros” ->Ejecutar     
-            </p>
-
-            <div class="article-image-single">
-                <img src="images/blog1.8.png" alt="" />
-            </div>    
-            </p>
-            Para agregar una mapa de fondo instalaremos el complemento QuickMapServices, seguimos el mismo procedimiento como lo realizamos con el complmento shapeTool:
-             </p>    
-            </p>
-            <div class="article-images">
-                <img src="images/blog1.9.png" alt="" />
-                <img src="images/blog1.10.png" alt="" />
-            </div>       
-            </p>Luego de instalar el complemento habilitaremos los mapas gratiutos de la sigueinte manera
-            ->Web -> QuickMapServices-> Settings->More services->Get contributed Pack-> Guardar
-            Activamos el Mapa de fondo de Google:
-            ->Web -> QuickMapServices->Google->Google Satellite  
-            </p>
-            <div class="article-images">
-                <img src="images/blog1.11.png" alt="" />
-                <img src="images/blog1.12.png" alt="" />
-            </div>       
-            </p>Y como resultado final tenemos nuestras celdas con mapa de fondo de Google.
-            </p>
-            </p>Espero que sea de su utilidad y compártanlo en su red o con la gente que necesita realizar estas tareas con herramientas abiertas.
-            </p>
-
-                <!-- Enlaces a redes sociales y plataformas -->
-                <div class="social-links">
-                    <p>Además, puedes ver:</p>
+                
+                <div class="footer-links">
+                    <h4>Navegación</h4>
                     <ul>
-                        <li><a href="https://www.linkedin.com/pulse/crear-sectores-rf-con-mapa-de-fondo-en-qgis-mauricio-cabrera-arias/?trackingId=rh29FtEQRjmhfo0G2tePgg%3D%3D" target="_blank">LinkedIn</a></li>                        
-                        <li><a href="https://www.youtube.com/watch?v=6R29ntKiu5U" target="_blank">YouTube</a></li>
-
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="about.html">Perfil</a></li>
+                        <li><a href="skills.html">Competencias</a></li>
+                        <li><a href="projects.html">Proyectos</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> r.mauricio.cabrera@gmail.com</li>
+                        <li><i class="fab fa-linkedin"></i> linkedin.com/in/mauricio-cabrera</li>
+                        <li><i class="fab fa-github"></i> github.com/rmauricio</li>
                     </ul>
                 </div>
             </div>
-            <div class="article-footer">
-                <button><a href="blog.html">Regresar</a></button>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Mauricio Cabrera. Todos los derechos reservados.</p>
             </div>
-        </article>
-    </div>
-
-    <!-- Pie de Página -->
-    <footer>
-        <p>&copy; 2024 Mauricio Cabrera. Todos los derechos reservados.</p>
+        </div>
     </footer>
+
+    <!-- Scripts -->
+    <script src="scripts.js"></script>
+    
+    <!-- Script específico para artículo de blog -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        // ========================================
+        // FUNCIONALIDADES DEL ARTÍCULO
+        // ========================================
+        
+        // 1. Smooth scroll para enlaces del TOC
+        document.querySelectorAll('.article-toc a, .toc-list a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 100;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 2. Highlight del TOC según scroll
+        const sections = document.querySelectorAll('.article-section');
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        
+        function highlightTOC() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                if (window.pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            tocLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', highlightTOC);
+        
+        // 3. Funciones de compartir
+        window.sharePost = function(platform) {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            const text = encodeURIComponent('Tutorial útil sobre QGIS para RF: ');
+            
+            const shareUrls = {
+                linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
+                twitter: `https://twitter.com/intent/tweet?text=${text}&url=${url}`,
+                whatsapp: `https://wa.me/?text=${text}%20${url}`,
+                facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`
+            };
+            
+            if (shareUrls[platform]) {
+                window.open(shareUrls[platform], '_blank', 'width=600,height=400');
+            }
+        };
+        
+        // 4. Copiar enlace al portapapeles
+        window.copyLink = function() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                // Mostrar feedback visual
+                const btn = event.currentTarget;
+                const originalIcon = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check"></i>';
+                btn.style.background = '#10b981';
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalIcon;
+                    btn.style.background = '';
+                }, 2000);
+            });
+        };
+        
+        // 5. Suscripción al newsletter (demo)
+        window.handleSubscribe = function(e) {
+            e.preventDefault();
+            const email = e.target.querySelector('input[type="email"]').value;
+            alert(`✅ ¡Gracias por suscribirte!\nRecibirás actualizaciones en: ${email}\n\n📧 Próximamente: Nuevos tutoriales de automatización RF con Python`);
+            e.target.reset();
+        };
+        
+        // 6. Lazy loading para imágenes (fallback si el navegador no lo soporta)
+        if ('loading' in HTMLImageElement.prototype === false) {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            images.forEach(img => {
+                img.src = img.dataset.src;
+            });
+        }
+        
+        // 7. Animación de aparición para secciones
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.article-section, .image-gallery, .info-box').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(15px)';
+            el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            observer.observe(el);
+        });
+        
+        // 8. Console message para desarrolladores/recruiters
+        console.log('%c📡 Artículo: Crear sectores RF en QGIS', 'color: #1abc9c; font-size: 14px; font-weight: bold;');
+        console.log('%c🔧 Tags: QGIS, RF Planning, GIS, Tutorial, Open Source', 'color: #666;');
+        console.log('%c👨‍💻 Autor: Mauricio Cabrera | RF Optimization Engineer', 'color: #0D8ABC;');
+        console.log('%c📧 Contacto: r.mauricio.cabrera@gmail.com', 'color: #e67e22;');
+    });
+    </script>
+    
+<!-- Verificar que el footer esté FUERA del article-container -->
+</article>
+</div> <!-- Cierra .article-container -->
+
+<!-- Footer debe estar al mismo nivel que el contenedor principal -->
+<footer>
+    <p>&copy; 2024 Mauricio Cabrera. Todos los derechos reservados.</p>
+</footer>
 
 </body>
 </html>
