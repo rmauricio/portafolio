@@ -3,513 +3,670 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre mí - Mauricio Cabrera</title>
+    <meta name="description" content="Perfil profesional de Mauricio Cabrera - Ingeniero en Telecomunicaciones especializado en Optimización RF LTE/5G">
+    <meta name="keywords" content="RF Optimization, LTE, 5G, Telecomunicaciones, Liderazgo Técnico, MBA">
+    <meta name="author" content="Mauricio Cabrera">
+    <title>Perfil Ejecutivo | Mauricio Cabrera - RF Optimization Leader</title>
+    
+    <!-- Fuentes y Iconos (Mismos que index.html para consistencia) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
 </head>
 <body>
-    <!-- Menú de Navegación -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="about.html">Resumen</a></li>
-            <li><a href="skills.html">Habilidades</a></li>
-            <li><a href="projects.html">Proyectos</a></li>
-            <li><a href="blog.html">Blog</a></li>
-     <!--       <li><a href="contact.html">Contacto</a></li> -->
-        </ul>
+
+    <!-- Barra de Navegación (IDÉNTICA a index.html) -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-satellite-dish"></i> MCabrera<span>.RF</span>
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Inicio</a></li>
+                <li><a href="about.html" class="nav-link active">Perfil</a></li>
+                <li><a href="skills.html" class="nav-link">Competencias</a></li>
+                <li><a href="projects.html" class="nav-link">Proyectos</a></li>
+                <li><a href="blog.html" class="nav-link">Blog Técnico</a></li>
+            </ul>
+            
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
     </nav>
 
-    <!-- Sección "Sobre mí" -->
-    <section id="about" class="about-container">
-        <div class="about-content">
-            <!-- Texto de la sección "Sobre mí" -->
-            <div class="about-text">
-                <h1>Resumen</h1>
-                <p class="description">
-                    Soy Ingeniero en Telecomunicaciones con un MBA y certificaciones en LTE RF Planning & Optimización, SCRUM y CCNA de Cisco. Durante mi carrera profesional, he tenido el privilegio de trabajar en proyectos de alto impacto en el diseño, planificación y optimización de redes 2G/3G/LTE FDD-TDD para importantes proveedores como Nokia, Huawei y ZTE. He liderado equipos técnicos en la mejora de KPIs y la optimización de cobertura a través de Drive Tests, ajuste de parámetros y la automatización de procesos.
-                </p>
-                <p class="description">
-                    Mis principales áreas de especialización incluyen:
-                </p>
-                <ul class="specialization-list">
-                    <li>Optimización de Redes Móviles: Mejora de la calidad de redes 2G, 3G, LTE FDD/TDD y análisis avanzados para aumentar la eficiencia y reducir el consumo de recursos.</li>
-                    <li>Análisis de Capacidad y Rendimiento: Implementación de soluciones analíticas con Tableau, QGIS, Python y PostgreSQL para medir y prever la capacidad de redes.</li>
-                    <li>Automatización de Procesos: Integración de herramientas para automatizar flujos de trabajo, mejorando la eficiencia operativa.</li>
-                    <li>Gestión de Capex/Opex en diversos proyectos, optimizando presupuestos y asegurando una ejecución eficiente.</li>
-                </ul>
-                <p class="description">
-                    Estoy apasionado por la innovación tecnológica y busco aplicar mis conocimientos en telecomunicaciones y análisis de datos para resolver problemas complejos y mejorar el rendimiento de las infraestructuras de red.
-                </p>
-            </div>
-
-            <!-- Botones de descarga e imagen debajo -->
-        <!--    <div class="cv-section">
-                <div class="cv-buttons">
-                    <a href="cv/mi_cv_espanol.pdf" class="cv-button" download="CV_Mauricio_Cabrera_Espanol">Descargar CV en Español</a>
-                            <a href="cv/mi_cv_ingles.pdf" class="cv-button" download="CV_Mauricio_Cabrera_English">Descargar CV en Inglés</a> 
-                </div> -->
-                <!-- Imagen añadida debajo de los botones -->
-                <div class="cv-image">
-                    <img src="images/resumen.JPG" alt="Imagen de resumen" class="about-image">
-                </div>
-            </div>
+    <!-- Header de Página (Consistente con el diseño) -->
+    <header class="page-header">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html">Inicio</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Perfil Ejecutivo</span>
+            </nav>
+            <h1 class="page-title">Resumen Profesional</h1>
+            <p class="page-subtitle">+8 años liderando optimización de redes móviles con impacto medible en KPIs</p>
         </div>
+    </header>
 
-        <!-- Línea de Tiempo (Experiencia ) -->
-        <div class="timeline-container">
-            <div class="timeline-column">
-                <h2>"     "Mi Experiencia</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-year">2021 - Actual</div>
-                        <div class="timeline-content">
-                            <h3>Ingeniero de Planificación y Optimización de Acceso Radio - VIVA</h3>
-                            <p>Diseño y optimización de redes 3G/LTE FDD/TDD para Nokia, Huawei y ZTE, gestión de CAPEX/OPEX, análisis y mejora de KPIs, implementación de soluciones RF, supervisión de infraestructuras, optimización de cobertura y capacidad, análisis de Drive Tests, atención de reclamos VIP/B2B, y resolución de problemas de red mediante ajustes paramétricos y nuevas funcionalidades.</p>
+    <!-- Sección: Resumen Ejecutivo -->
+    <section class="section" id="executive-summary">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 1.5rem;">Perfil Profesional</h2>
+                    
+                    <p class="about-text">
+                        Soy <strong>Ingeniero en Telecomunicaciones con MBA</strong> y certificaciones en 
+                        <strong>LTE RF Planning & Optimization</strong>, <strong>SCRUM</strong> y 
+                        <strong>CCNA de Cisco</strong>. Durante mi carrera, he liderado proyectos de alto impacto 
+                        en diseño, planificación, optimización de redes <strong>2G/3G/LTE FDD-TDD</strong> 
+                        para proveedores globales como <strong>Nokia</strong> y operadores como <strong>Entel, Viva, Tigo</strong>.
+                    </p>
+                    
+                    <p class="about-text">
+                        Mi enfoque combina <strong>expertise técnico en RF</strong> con <strong>habilidades de gestión</strong> 
+                        para entregar resultados cuantificables: mejora de KPIs, optimización de CAPEX/OPEX y 
+                        automatización de procesos mediante Python, PostgreSQL y herramientas de visualización.
+                    </p>
+                    
+                    <!-- Áreas de Especialización -->
+                    <div class="specialization-grid">
+                        <div class="specialization-card">
+                            <i class="fas fa-signal"></i>
+                            <h4>Optimización RF</h4>
+                            <p>Mejora de calidad en redes 2G/3G/LTE/5G mediante análisis de Drive Test, ajuste paramétrico y planificación de cobertura.</p>
                         </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2020 - 2021</div>
-                        <div class="timeline-content">
-                            <h3>Optimizador de red de acceso - VIVA</h3>
-                            <p>Responsable de optimización de redes 2G/3G/LTE FDD-TDD, gestión de KPIs, planificación de cambios paramétricos, análisis de rendimiento, resolución de problemas de clientes VIP/B2B, optimización de cobertura y capacidad, implementación de nuevos features, auditoría y configuración de parámetros, y gestión de CAPEX/OPEX en redes de acceso.</p>
+                        <div class="specialization-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Análisis de Datos</h4>
+                            <p>Implementación de soluciones analíticas con Tableau, QGIS, Python y PostgreSQL para medición y predicción de capacidad.</p>
                         </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2019 - 2019</div>
-                        <div class="timeline-content">
-                            <h3>Expositor invitado - UPB</h3>
-                            <p>Colaboración en la implementación y formación de trabajos DriveTest en redes 2G/3G/LTE para alumnos de la Universidad Privada Boliviana del curso de Sistemas de Comunicaciones Móviles en Ingeniería Electrónica y Telecomunicaciones.</p>
+                        <div class="specialization-card">
+                            <i class="fas fa-robot"></i>
+                            <h4>Automatización</h4>
+                            <p>Desarrollo de pipelines ETL y scripts para automatizar flujos de trabajo, reduciendo tiempos de reporte en 70%.</p>
                         </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2019 - 2020</div>
-                        <div class="timeline-content">
-                            <h3>Modelador de datos - Viva </h3>
-                            <p>Modelado de datos, creación de bases de datos, generación de reportes regulatorios y de KPIs para proyectos UMTS/LTE, liderazgo en proyectos de automatización y análisis de red, generación de reportes en Tableau de capacidad y performance de redes 2G/3G/LTE, y auditoría de parámetros de red.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2017 - 2018</div>
-                        <div class="timeline-content">
-                            <h3>Especialista en análisis de red de acceso - VIVA</h3>
-                            <p>Responsable del análisis y optimización de redes GSM/UMTS/LTE en Cochabamba y ciudades capitales, gestión de problemas de red, ejecución de Drive Tests, monitoreo de alarmas y KPIs, optimización de parámetros Nokia/Huawei y atención de reclamos de clientes corporativos.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2015 - 2017</div>
-                        <div class="timeline-content">
-                            <h3>Ingeniero de  Acceso red móvil e internet rural - ENTEL</h3>
-                            <p>Responsable del Rollout de 551 sitios GSM/UMTS/HSDPA+, incluyendo planificación, integración, optimización, gestión de recursos, administración de costos, resolución de conflictos, análisis de documentación y evaluación de nuevos proyectos de expansión de cobertura.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2015 - 2015</div>
-                        <div class="timeline-content">
-                            <h3>RF Drivetest Team Leader - Mercy’s  servicios Integrales en Ingeniería - NOKIA</h3>
-                            <p>Liderar el equipo de proyecto nacional, gestionar contratistas, recolección de datos de redes de acceso inalámbrico, desarrollo de soluciones para medición y análisis de parámetros, acciones correctivas, elaboración de reportes de optimización y seguimiento de actividades, costes y riesgos en proyectos de Benchmarking.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2015 - 2015</div>
-                        <div class="timeline-content">
-                            <h3>Expositor invitado - UMSS</h3>
-                            <p>Invitación del Programa Elektro de la Universidad Mayor de San Simón para presentar el seminario "Aplicaciones de herramientas de Drive Test para optimización de redes móviles 2G y 3G" en el curso de Arquitectura y Protocolos de Comunicaciones Móviles.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2014 - 2015</div>
-                        <div class="timeline-content">
-                            <h3>Capacitador trainer - Mercy’s  servicios Integrales en Ingeniería - NOKIA</h3>
-                            <p>Capacitador de nuevo personal en el uso de TEMS Investigation v16 para recolección de datos, postprocesamiento y análisis de eventos en redes GSM, UMTS, HSDPA y LTE.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2014 - 2015</div>
-                        <div class="timeline-content">
-                            <h3>RF Drivetest Team Leader - Mercy’s  servicios Integrales en Ingeniería - NOKIA</h3>
-                            <p>Líder nacional del equipo de RF Drivetest y RF Drivetest Engineer para la recolección de datos y optimización de redes GSM, UMTS/WCDMA, HSDPA y LTE en diversas ciudades de Bolivia, para Mercys y Nokia Siemens Networks, en servicio para Viva - Nuevatel PCS Bolivia.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2014 - 2014</div>
-                        <div class="timeline-content">
-                            <h3>Capacitador trainer - Mercy’s  servicios Integrales en Ingeniería - NOKIA</h3>
-                            <p>Capacitador de nuevo personal en el uso de TEMS Investigation v9-13 para recolección de datos, postprocesamiento y análisis de eventos en redes GSM, UMTS, HSDPA y LTE.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2013 - 2013</div>
-                        <div class="timeline-content">
-                            <h3>Capacitador trainer - Mercy’s  servicios Integrales en Ingeniería - NOKIA</h3>
-                            <p>Capacitador de nuevo personal en el uso de TEMS Investigation v9-10 para recolección de datos y postprocesamiento de redes GSM, UMTS/WCDMA y HSDPA.</p>
-                        </div>
-                    </div>
-                    <var>                    
-                        <div class="timeline-item">
-                        <div class="timeline-year">2012 - 2013</div>
-                        <div class="timeline-content">
-                            <h3>Ingeniero de campo para el área de RF- Mercy’s  servicios Integrales en Ingeniería - NOKIA</h3>
-                            <p>Recolección de datos de DriveTest para optimización de redes GSM, UMTS/WCDMA, HSDPA y HSDPA+ para Nokia Siemens Networks, en servicio para Viva  Nuevatel PCS, Cochabamba, Bolivia.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2012 - 2012</div>
-                        <div class="timeline-content">
-                            <h3>Capacitador trainer - Mercy’s  servicios Integrales en Ingeniería - NOKIA</h3>
-                            <p>Capacitador de nuevo personal en el uso del software TEMS INVESTIGATION 9-10 para recolectar y procesar datos de redes GSM, UMTS/WCDMA y HSDPA en Mercy's Ingeniería en Cochabamba y Santa Cruz.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2012 - 2012</div>
-                        <div class="timeline-content">
-                            <h3>Ingeniero de campo para el área de RF - Mercy’s  servicios Integrales en Ingeniería - NOKIA</h3>
-                            <p>Recoleccion de datos de drivetest para optimizar las redes GSM, UMTS/WCDMA, HSDPA y HSDPA+ por encargo de Nokia Siemens Networks (NSN) Bolivia para su cliente Viva - Nuevatel PCS en Santa Cruz.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2012 - 2012</div>
-                        <div class="timeline-content">
-                            <h3>RF drivetest engineer - Mercy’s  servicios Integrales en Ingeniería</h3>
-                            <p>Jefe Técnico del equipo de drivetest y post-procesamiento de datos para el Proyecto de Benchmarking de Nuevatel PCS (Bolivia S.A.) en los ejes de Cochabamba, Santa Cruz y La Paz en 2012.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2011 - 2011</div>
-                        <div class="timeline-content">
-                            <h3>Practicante Access Optimización - TIGO</h3>
-                            <p>Ayuda en tareas de Optimización de cobertura, análisis de la calidad de servicio, recolección de datos (drivetest) y elaboración de informes para  GSM /UMTS como parte de las tareas de pasantía para la empresa Tigo.</p>
+                        <div class="specialization-card">
+                            <i class="fas fa-coins"></i>
+                            <h4>Gestión de Proyectos</h4>
+                            <p>Liderazgo en gestión de CAPEX/OPEX, coordinación de equipos técnicos y entrega de proyectos bajo metodologías ágiles.</p>
                         </div>
                     </div>
                     
-                </var>
+                    <!-- Botones de CV 
+                    <div class="cv-actions">
+                        <a href="cv/CV_Mauricio_Cabrera_ES.pdf" class="btn btn-primary" download>
+                            <i class="fas fa-download"></i> Descargar CV (Español)
+                        </a>
+                        <a href="cv/CV_Mauricio_Cabrera_EN.pdf" class="btn btn-secondary" download>
+                            <i class="fas fa-download"></i> Download CV (English)
+                        </a>
+                    </div>-->
                 </div>
-            </div>
-          
-        <!-- Línea de Tiempo (Educación) -->
-            <div class="timeline-column">
-                <h2>Educación</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-year">2020</div>
-                        <div class="timeline-content">
-                            <h3>Maestría en Dirección y Administración de Empresas MBA</h3>
-                            <p>Escuela Europea de Negocios</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2020</div>
-                        <div class="timeline-content">
-                            <h3>Diploma LTE RF Plannig LTE Optimization</h3>
-                            <p>Mobil Networks</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2020</div>
-                        <div class="timeline-content">
-                            <h3>SCRUM FUNDAMENTAL Certified</h3>
-                            <p>Scrum Study</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2020</div>
-                        <div class="timeline-content">
-                            <h3>Diploma en Docencia en educación superior: competencias</h3>
-                            <p>Universidad Católica Boliviana San Pablo </p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2019</div>
-                        <div class="timeline-content">
-                            <h3>Diploma Carrera Big Data y Data Science</h3>
-                            <p>Platzi  eLearning </p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2019</div>
-                        <div class="timeline-content">
-                            <h3>Diploma Carrera base de datos</h3>
-                            <p>Platzi  eLearning  </p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2017</div>
-                        <div class="timeline-content">
-                            <h3>Diploma Formulación Evaluación y Gestión de Proyectos Guía PMI</h3>
-                            <p>Universidad Católica Boliviana San Pablo</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2014</div>
-                        <div class="timeline-content">
-                            <h3>Licenciatura en Ingeniería de Telecomunicaciones</h3>
-                            <p>Universidad Católica Boliviana San Pablo</p>
-                        </div>
-                    </div>    
-                    <div class="timeline-item">
-                        <div class="timeline-year">2012</div>
-                        <div class="timeline-content">
-                            <h3>CCNA CISCO Certified Network Associate</h3>
-                            <p>Cisco Networking Academy</p>
-                        </div>
-                                      
-                    </div>
-                </var>
-            </div>
-        </div>
                 
-        <!-- Línea de Tiempo (Cursos) -->
-        <!-- Línea de Tiempo (Cursos) -->
-        <div class="timeline-column">
-            <h2>Cursos </h2>
-            <div class="timeline">
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2024</div> 
-                    <div class="timeline-content">
-                         <h3>QGIS Avanzado</h3> 
-                         <p>Udemy, São Paulo, Brasil</p> 
-                    </div> 
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2023</div> 
-                    <div class="timeline-content">
-                        <h3>Comienza con Airflow</h3>
-                        <p>Datamedia, Barcelona, España</p>
-                    </div> 
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2023</div> 
-                    <div class="timeline-content">
-                        <h3>LTE Accessibility - RF Optimization Nokia</h3> 
-                        <p>Udemy, São Paulo, Brasil</p>
-                    </div>
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2022</div> 
-                    <div class="timeline-content"> 
-                        <h3>IPA-Automatización de Procesos Inteligente con Python</h3>
-                        <p>Udemy, São Paulo, Brasil</p> 
-                    </div> 
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2022</div>
-                    <div class="timeline-content"> 
-                        <h3>LTE Drop Call - RF Optimization Nokia</h3>
-                        <p>Udemy, São Paulo, Brasil</p> 
-                    </div> 
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2022</div> 
-                    <div class="timeline-content"> 
-                        <h3>HSPA Optimiztion</h3>
-                        <p>Udemy, São Paulo, Brasil</p> 
-                    </div> 
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2022</div> 
-                    <div class="timeline-content"> 
-                        <h3>3G Optimization Basics</h3> 
-                        <p>Udemy, São Paulo, Brasil</p> 
-                    </div> 
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2022</div> 
-                    <div class="timeline-content">
-                         <h3>Geolocatin system &drivetest minization</h3> 
-                         <p>Mobil Networks, California, EE UU</p> 
-                    </div> 
-                </div>  
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2021</div> 
-                    <div class="timeline-content">
-                         <h3>Open RAN Enabling Wireless Networks</h3> 
-                         <p>Parallel Wireless, Nashua, NH, EE UU</p> 
+                <!-- Imagen de resumen profesional -->
+                <div class="about-image-container">
+                    <div class="image-card">
+                        <img src="images/resumen.JPG" 
+                             alt="Mauricio Cabrera - Resumen Profesional" 
+                             class="about-image"
+                             onerror="this.src='https://via.placeholder.com/400x500/0D8ABC/ffffff?text=Perfil+Profesional'">
+                        <div class="image-overlay">
+                            <span class="badge">🎯 Open to Leadership Roles</span>
+                        </div>
                     </div>
                 </div>
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2021</div> 
-                    <div class="timeline-content"> 
-                        <h3>HSDPA ADVANCED</h3> 
-                        <p>Mobil Networks, California, EE UU</p> 
-                    </div> 
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2021</div> 
-                    <div class="timeline-content"> 
-                        <h3>HSDPA OVERVIEW</h3> 
-                        <p>Mobil Networks, California, EE UU</p>
-                     </div> 
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2021</div> 
-                    <div class="timeline-content">
-                         <h3>WCDMA SWITCH AND POWER</h3> 
-                         <p>Mobil Networks, California, EE UU</p> 
-                    </div> 
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2021</div>
-                    <div class="timeline-content"> 
-                        <h3>WCDMA CAPACITY</h3>
-                         <p>Mobil Networks, California, EE UU</p> 
-                    </div> 
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2021</div>
-                    <div class="timeline-content"> 
-                        <h3>WCDMA HANDOVERS</h3> 
-                        <p>Mobil Networks, California, EE UU</p> 
-                    </div> 
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2021</div> 
-                    <div class="timeline-content"> 
-                        <h3>WCDMA RAB BEARERS</h3> 
-                        <p>Mobil Networks, California, EE UU</p> 
-                    </div> 
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2021</div> 
-                    <div class="timeline-content"> 
-                        <h3>WCDMA BASICS</h3> 
-                        <p>Mobil Networks, California, EE UU</p> 
-                    </div> 
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2021</div> 
-                    <div class="timeline-content"> 
-                        <h3>5G Hardware</h3> 
-                        <p>Telcoma Global, Mohali, India</p> 
-                    </div> 
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2021</div> 
-                    <div class="timeline-content"> 
-                        <h3>Ericcsson LTE parameters</h3> 
-                        <p>Mobil Networks, California, EE UU</p> 
-                    </div> 
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2021</div> 
-                    <div class="timeline-content">
-                        <h3>Comienza con Airflow</h3> 
-                        <p>Datamedia, Barcelona, España</p> 
-                    </div> 
-                </div> 
-                <div class="timeline-item">
-                    <div class="timeline-year">2021</div> 
-                    <div class="timeline-content"> 
-                        <h3>Ericsson LTE KPI & counters</h3>
-                        <p>Mobil Networks, California, EE UU</p>
-                    </div> 
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2021</div> 
-                    <div class="timeline-content"> 
-                        <h3>Ericcsson VoLTE optimization</h3> 
-                        <p>Mobil Networks, California, EE UU</p> 
-                    </div> 
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2021</div> 
-                    <div class="timeline-content"> 
-                        <h3>Ericcsson LTE optimization</h3> 
-                        <p>Mobil Networks, California, EE UU</p>
-                    </div> 
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2021</div>
-                    <div class="timeline-content">
-                        <h3>Integration and commissioning RBS/RNC/MSS Nokia</h3> 
-                        <p>Mobil Networks, California, EE UU</p> 
-                    </div> 
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2020</div> 
-                    <div class="timeline-content"> 
-                        <h3>Huawei LTE Parameters</h3> 
-                        <p>Mobil Networks, California, EE UU</p> 
-                    </div> 
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2020</div> 
-                    <div class="timeline-content"> 
-                        <h3>Huawei LTE Optimization</h3> 
-                        <p>Mobil Networks, California, EE UU</p> 
-                    </div> 
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2020</div> 
-                    <div class="timeline-content">
-                         <h3>Huawei LTE KPI's</h3> 
-                         <p>Mobil Networks, California, EE UU</p> 
-                    </div>
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2020</div> 
-                    <div class="timeline-content"> 
-                        <h3>Nokia LTE KPI's</h3> 
-                        <p>Mobil Networks, California, EE UU</p> 
-                    </div> 
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2020</div> 
-                    <div class="timeline-content"> 
-                        <h3>Nokia Optimization</h3> 
-                        <p>Mobil Networks, California, EE UU</p> 
-                    </div> 
-                </div>
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2017</div> 
-                    <div class="timeline-content">
-                        <h3>LTE Release 8/9 Technical Overview eLearning</h3> 
-                        <p>Qualcomm Wireless Academy, California, EE UU</p> 
-                    </div> 
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2017</div> 
-                    <div class="timeline-content"> 
-                        <h3>LTE Fundamentals for Engineers eLearning</h3> 
-                        <p>Qualcomm Wireless Academy, California, EE UU</p> 
-                    </div> 
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2016</div> 
-                    <div class="timeline-content"> 
-                        <h3>WCDMA RF Optimization Training</h3>
-                        <p>Huawei Technologies Co.Ltd., La Paz, Bolivia</p> 
-                    </div> 
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2016</div> 
-                    <div class="timeline-content"> 
-                        <h3>WCDMA Radio Network Design and Planning Training</h3> 
-                        <p>Huawei Technologies Co.Ltd., La Paz, Bolivia</p> 
-                    </div> 
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2016</div> 
-                    <div class="timeline-content"> 
-                        <h3>WCDMA RAN Principle Training</h3> 
-                        <p>Huawei Technologies Co.Ltd., La Paz, Bolivia</p> 
-                    </div> 
-                </div> 
-                <div class="timeline-item"> 
-                    <div class="timeline-year">2016</div> 
-                    <div class="timeline-content"> 
-                        <h3>Y mas cursos..........</h3> 
-                        <p> Descarga mi curriculum.........</p> 
-                    </div> 
-            </var>
             </div>
         </div>
+    </section>
 
-            </div>            
+    <!-- Sección: Línea de Tiempo (Experiencia, Educación, Cursos) -->
+    <section class="section section-light" id="timeline-section">
+        <div class="container">
+            <div class="timeline-header">
+                <h2 class="section-title">Trayectoria Profesional</h2>
+                <p class="section-subtitle"> Comparto algo de mi experiencia, formación y desarrollo continuo</p>
             </div>
-        </section>
+            
+            <!-- Tabs para navegación entre secciones -->
+            <div class="timeline-tabs">
+                <button class="tab-btn active" data-tab="experience">
+                    <i class="fas fa-briefcase"></i> Experiencia
+                </button>
+                <button class="tab-btn" data-tab="education">
+                    <i class="fas fa-graduation-cap"></i> Educación
+                </button>
+                <button class="tab-btn" data-tab="courses">
+                    <i class="fas fa-certificate"></i> Cursos
+                </button>
+            </div>
+            
+            <!-- Contenido de Tabs -->
+            <div class="timeline-content-wrapper">
+                
+                <!-- ========== EXPERIENCIA ========== -->
+                <div class="timeline-tab active" id="experience">
+                    <div class="timeline-grid">
+                        
+                        <!-- Columna 1: Experiencia Reciente -->
+                        <div class="timeline-column">
+                            <h3 class="timeline-column-title">Experiencia Reciente</h3>
 
-    <!-- Pie de Página -->
-    <footer>
-        <p>&copy; 2024 Mauricio Cabrera. Todos los derechos reservados.</p>
+                            <div class="timeline">
+
+                                <div class="timeline-item">
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-date">2025 - Actual</div>
+                                    <div class="timeline-card">
+                                        <h4>Ingeniero Sr. de Calidad de Red</h4>
+                                        <span class="timeline-company">TIGO | Ericsson, Huawei</span>
+                                        <ul class="timeline-bullets">
+                                            <li>Diseño y optimización de redes LTE FDD multi-vendor</li>
+                                            <li>Gestión de CAPEX/OPEX para servicios de Drive Test a nivel nacional</li>
+                                            <li>Gestión de contratistas y control de calidad de datos</li>
+                                            <li>Resolución de incidentes para clientes VIP/B2B</li>
+                                            <li>Liderazgo técnico en implementación de nuevas funcionalidades RF</li>
+                                            <li>Automatización de reportes y análisis mediante Python y PostgreSQL</li>
+                                        </ul>
+                                    </div>
+                                </div>                               
+
+                                <div class="timeline-item">
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-date">2021 - 2025</div>
+                                    <div class="timeline-card">
+                                        <h4>Ingeniero de Planificación y Optimización RF</h4>
+                                        <span class="timeline-company">VIVA | Nokia, Huawei, ZTE</span>
+                                        <ul class="timeline-bullets">
+                                            <li>Diseño y optimización de redes 3G/LTE FDD/TDD multi-vendor</li>
+                                            <li>Gestión de CAPEX/OPEX y mejora de KPIs de accesibilidad/retenibilidad</li>
+                                            <li>Liderazgo técnico en implementación de nuevas funcionalidades RF</li>
+                                            <li>Automatización de reportes con Python y PostgreSQL</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-date">2020 - 2021</div>
+                                    <div class="timeline-card">
+                                        <h4>Optimizador de Red de Acceso</h4>
+                                        <span class="timeline-company">VIVA | Nokia, Huawei, ZTE</span>
+                                        <ul class="timeline-bullets">
+                                            <li>Optimización end-to-end de redes 2G/3G/LTE FDD-TDD</li>
+                                            <li>Planificación de cambios paramétricos y análisis de rendimiento</li>
+                                            <li>Resolución de incidentes para clientes VIP/B2B</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+
+                            </div>
+                        </div>
+                        
+                        <!-- Columna 2: Experiencia Intermedia -->
+                        <div class="timeline-column">
+                            <h3 class="timeline-column-title">Experiencia Intermedia</h3>
+                            
+                            <div class="timeline">
+ 
+                                 <div class="timeline-item">
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-date">2019 - 2020</div>
+                                    <div class="timeline-card">
+                                        <h4>Modelador de Datos & Analista RF</h4>
+                                        <span class="timeline-company">VIVA </span>
+                                        <ul class="timeline-bullets">
+                                            <li>Modelado de bases de datos para reportes regulatorios y KPIs</li>
+                                            <li>Desarrollo de dashboards en Tableau para monitoreo de red</li>
+                                            <li>Liderazgo en proyectos de automatización de procesos RF</li>
+                                        </ul>
+                                    </div>
+                                </div> 
+ 
+                                <div class="timeline-item">
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-date">2017 - 2018</div>
+                                    <div class="timeline-card">
+                                        <h4>Especialista en Análisis de Red de Acceso</h4>
+                                        <span class="timeline-company">VIVA</span>
+                                        <ul class="timeline-bullets">
+                                            <li>Análisis y optimización de redes GSM/UMTS/LTE en Cochabamba</li>
+                                            <li>Ejecución de Drive Tests y monitoreo proactivo de alarmas</li>
+                                            <li>Optimización paramétrica multi-vendor (Nokia/Huawei)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-date">2015 - 2017</div>
+                                    <div class="timeline-card">
+                                        <h4>Ingeniero de Acceso - Internet Rural</h4>
+                                        <span class="timeline-company">ENTEL</span>
+                                        <ul class="timeline-bullets">
+                                            <li>Rollout de 551 sitios GSM/UMTS/HSDPA+</li>
+                                            <li>Planificación, integración y optimización de nueva infraestructura</li>
+                                            <li>Gestión de recursos y administración de costos de proyecto</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+
+                            </div>
+                        </div>
+                        
+                        <!-- Columna 3: Experiencia Temprana -->
+                        <div class="timeline-column">
+                            <h3 class="timeline-column-title">Inicios & Formación</h3>
+                            
+                            <div class="timeline">
+
+                                <div class="timeline-item">
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-date">2015</div>
+                                    <div class="timeline-card">
+                                        <h4>RF Drivetest Team Leader</h4>
+                                        <span class="timeline-company">Mercy's / Nokia</span>
+                                        <ul class="timeline-bullets">
+                                            <li>Liderazgo de equipo nacional de recolección de datos RF</li>
+                                            <li>Desarrollo de metodologías para benchmarking de redes</li>
+                                            <li>Gestión de contratistas y control de calidad de datos</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-date">2014 - 2015</div>
+                                    <div class="timeline-card">
+                                        <h4>Capacitador Técnico - TEMS Investigation</h4>
+                                        <span class="timeline-company">Mercy's / Nokia</span>
+                                        <ul class="timeline-bullets">
+                                            <li>Formación de nuevo personal en herramientas de Drive Test</li>
+                                            <li>Desarrollo de materiales didácticos para GSM/UMTS/LTE</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-date">2012 - 2013</div>
+                                    <div class="timeline-card">
+                                        <h4>Ingeniero de Campo RF</h4>
+                                        <span class="timeline-company">Mercy's / Nokia</span>
+                                        <ul class="timeline-bullets">
+                                            <li>Recolección y post-procesamiento de datos de Drive Test</li>
+                                            <li>Soporte técnico en proyectos de optimización multi-tecnología</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-date">2011</div>
+                                    <div class="timeline-card">
+                                        <h4>Practicante - Optimización de Acceso</h4>
+                                        <span class="timeline-company">TIGO</span>
+                                        <ul class="timeline-bullets">
+                                            <li>Soporte en análisis de cobertura y calidad de servicio</li>
+                                            <li>Elaboración de informes técnicos para GSM/UMTS</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <!-- ========== EDUCACIÓN ========== -->
+                <div class="timeline-tab" id="education">
+                    <div class="education-grid">
+                        
+                        <div class="education-card featured">
+                            <div class="education-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="education-content">
+                                <span class="education-year">2020</span>
+                                <h4>Maestría en Dirección y Administración de Empresas (MBA)</h4>
+                                <span class="education-institution">Escuela Europea de Negocios</span>
+                                <p class="education-description">Enfoque en gestión estratégica, liderazgo de equipos técnicos y toma de decisiones basada en datos.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="education-card">
+                            <div class="education-icon">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <div class="education-content">
+                                <span class="education-year">2020</span>
+                                <h4>LTE RF Planning & Optimization</h4>
+                                <span class="education-institution">Mobil Networks</span>
+                            </div>
+                        </div>
+                        
+                        <div class="education-card">
+                            <div class="education-icon">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <div class="education-content">
+                                <span class="education-year">2020</span>
+                                <h4>SCRUM Fundamentals Certified (SFC)</h4>
+                                <span class="education-institution">Scrum Study</span>
+                            </div>
+                        </div>
+                        
+                        <div class="education-card">
+                            <div class="education-icon">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <div class="education-content">
+                                <span class="education-year">2020</span>
+                                <h4>Diploma en Docencia en Educación Superior</h4>
+                                <span class="education-institution">Universidad Católica Boliviana</span>
+                            </div>
+                        </div>
+                        
+                        <div class="education-card">
+                            <div class="education-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="education-content">
+                                <span class="education-year">2019</span>
+                                <h4>Carrera: Big Data & Data Science</h4>
+                                <span class="education-institution">Platzi eLearning</span>
+                            </div>
+                        </div>
+                        
+                        <div class="education-card">
+                            <div class="education-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <div class="education-content">
+                                <span class="education-year">2019</span>
+                                <h4>Carrera: Bases de Datos</h4>
+                                <span class="education-institution">Platzi eLearning</span>
+                            </div>
+                        </div>
+                        
+                        <div class="education-card">
+                            <div class="education-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="education-content">
+                                <span class="education-year">2017</span>
+                                <h4>Formulación y Gestión de Proyectos (PMI)</h4>
+                                <span class="education-institution">Universidad Católica Boliviana</span>
+                            </div>
+                        </div>
+                        
+                        <div class="education-card">
+                            <div class="education-icon">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <div class="education-content">
+                                <span class="education-year">2014</span>
+                                <h4>Licenciatura en Ingeniería de Telecomunicaciones</h4>
+                                <span class="education-institution">Universidad Católica Boliviana</span>
+                            </div>
+                        </div>
+                        
+                        <div class="education-card">
+                            <div class="education-icon">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                            <div class="education-content">
+                                <span class="education-year">2012</span>
+                                <h4>CCNA - Cisco Certified Network Associate</h4>
+                                <span class="education-institution">Cisco Networking Academy</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <!-- ========== CURSOS ========== -->
+                <div class="timeline-tab" id="courses">
+                    <div class="courses-filter">
+                        <input type="text" id="courseSearch" placeholder="🔍 Buscar cursos..." class="search-input">
+                        <div class="filter-tags">
+                            <span class="filter-tag active" data-filter="all">Todos</span>
+                            <span class="filter-tag" data-filter="lte">LTE</span>
+                            <span class="filter-tag" data-filter="5g">5G</span>
+                            <span class="filter-tag" data-filter="python">Python</span>
+                            <span class="filter-tag" data-filter="gis">GIS</span>
+                        </div>
+                    </div>
+                    
+                    <div class="courses-grid">
+                        <!-- Cursos 2024 -->
+                        <div class="course-card" data-category="gis">
+                            <span class="course-year">2024</span>
+                            <h4>QGIS Avanzado</h4>
+                            <span class="course-provider">Udemy • São Paulo, Brasil</span>
+                            <p class="course-desc">Análisis geoespacial avanzado para visualización de cobertura RF y planificación de red.</p>
+                        </div>
+                        
+                        <div class="course-card" data-category="python">
+                            <span class="course-year">2023</span>
+                            <h4>Automatización con Apache Airflow</h4>
+                            <span class="course-provider">Datamedia • Barcelona, España</span>
+                            <p class="course-desc">Orquestación de pipelines ETL para procesamiento de datos de red a gran escala.</p>
+                        </div>
+                        
+                        <div class="course-card" data-category="lte">
+                            <span class="course-year">2023</span>
+                            <h4>LTE Accessibility - RF Optimization</h4>
+                            <span class="course-provider">Udemy • Nokia Specialist</span>
+                            <p class="course-desc">Estrategias avanzadas para mejora de accesibilidad en redes LTE multi-vendor.</p>
+                        </div>
+                        
+                        <div class="course-card" data-category="python">
+                            <span class="course-year">2022</span>
+                            <h4>IPA - Automatización Inteligente con Python</h4>
+                            <span class="course-provider">Udemy</span>
+                            <p class="course-desc">Desarrollo de scripts para automatización de reportes RF y análisis paramétrico.</p>
+                        </div>
+                        
+                        <div class="course-card" data-category="lte">
+                            <span class="course-year">2022</span>
+                            <h4>LTE Drop Call Analysis - Nokia</h4>
+                            <span class="course-provider">Udemy</span>
+                            <p class="course-desc">Metodologías para diagnóstico y resolución de caídas de llamada en LTE.</p>
+                        </div>
+                        
+                        <div class="course-card" data-category="lte">
+                            <span class="course-year">2021</span>
+                            <h4>Ericsson LTE Parameters & KPIs</h4>
+                            <span class="course-provider">Mobil Networks</span>
+                            <p class="course-desc">Configuración avanzada de parámetros y análisis de contadores en OSS-RC/ENM.</p>
+                        </div>
+                        
+                        <div class="course-card" data-category="lte">
+                            <span class="course-year">2021</span>
+                            <h4>Ericsson VoLTE Optimization</h4>
+                            <span class="course-provider">Mobil Networks</span>
+                            <p class="course-desc">Optimización de calidad de voz sobre LTE y prevención de fallback a 3G/GSM.</p>
+                        </div>
+                        
+                        <div class="course-card" data-category="5g">
+                            <span class="course-year">2021</span>
+                            <h4>Open RAN & 5G Hardware</h4>
+                            <span class="course-provider">Parallel Wireless / Telcoma</span>
+                            <p class="course-desc">Arquitecturas de red abiertas y componentes hardware para despliegue 5G.</p>
+                        </div>
+                        
+                        <div class="course-card" data-category="lte">
+                            <span class="course-year">2020</span>
+                            <h4>Huawei LTE Optimization & KPIs</h4>
+                            <span class="course-provider">Mobil Networks</span>
+                            <p class="course-desc">Optimización paramétrica y análisis de rendimiento en plataformas Huawei.</p>
+                        </div>
+                        
+                        <div class="course-card" data-category="gis">
+                            <span class="course-year">2022</span>
+                            <h4>Geolocation Systems & Drive Test Minimization</h4>
+                            <span class="course-provider">Mobil Networks</span>
+                            <p class="course-desc">Técnicas para reducción de Drive Tests mediante análisis geoespacial predictivo.</p>
+                        </div>
+                        
+                        <!-- Más cursos... -->
+                        <div class="course-card view-all">
+                            <a href="cv/CV_Mauricio_Cabrera_ES.pdf" class="btn btn-outline">
+                                <i class="fas fa-download"></i> Ver lista completa en mi CV
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+        <!-- <h2>¿Buscas un líder técnico para tu equipo de optimización RF?</h2>
+            <p>Combino expertise técnico en redes LTE/5G con habilidades de gestión para impulsar la calidad de red y la eficiencia operativa.</p> -->
+            <div class="cta-actions">
+             <!--<a href="mailto:r.mauricio.cabrera@gmail.com" class="btn btn-primary btn-large">
+                    <i class="fas fa-envelope"></i> Contactar para Oportunidades
+                </a>-->
+                <a href="projects.html" class="btn btn-secondary btn-large">
+                    <i class="fas fa-folder-open"></i> Ver Proyectos Destacados
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (IDÉNTICO a index.html) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <i class="fas fa-satellite-dish"></i> MCabrera<span>.RF</span>
+                    </a>
+                    <p>Portafolio profesional de Mauricio Cabrera - Especialista en Optimización RF y Análisis de Datos para Telecomunicaciones.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="about.html">Perfil</a></li>
+                        <li><a href="skills.html">Competencias</a></li>
+                        <li><a href="projects.html">Proyectos</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> r.mauricio.cabrera@gmail.com</li>
+                        <li><i class="fab fa-linkedin"></i> linkedin.com/in/mauricio-cabrera</li>
+                        <li><i class="fab fa-github"></i> github.com/rmauricio</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Mauricio Cabrera. Todos los derechos reservados.</p>
+            </div>
+        </div>
     </footer>
+
+    <!-- Scripts -->
+    <script src="scripts.js"></script>
+    
+    <!-- Script específico para about.html -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        // Funcionalidad de Tabs para línea de tiempo
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabs = document.querySelectorAll('.timeline-tab');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remover clase active de todos
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabs.forEach(t => t.classList.remove('active'));
+                
+                // Activar el seleccionado
+                btn.classList.add('active');
+                const tabId = btn.dataset.tab;
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Búsqueda y filtrado de cursos
+        const searchInput = document.getElementById('courseSearch');
+        const filterTags = document.querySelectorAll('.filter-tag');
+        const courseCards = document.querySelectorAll('.course-card:not(.view-all)');
+        
+        // Filtrado por tags
+        filterTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                filterTags.forEach(t => t.classList.remove('active'));
+                tag.classList.add('active');
+                
+                const filter = tag.dataset.filter;
+                filterCourses(filter, searchInput?.value || '');
+            });
+        });
+        
+        // Búsqueda por texto
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const activeFilter = document.querySelector('.filter-tag.active')?.dataset.filter || 'all';
+                filterCourses(activeFilter, e.target.value.toLowerCase());
+            });
+        }
+        
+        function filterCourses(category, searchTerm) {
+            courseCards.forEach(card => {
+                const cardCategory = card.dataset.category;
+                const cardText = card.textContent.toLowerCase();
+                
+                const matchesCategory = category === 'all' || cardCategory === category;
+                const matchesSearch = cardText.includes(searchTerm);
+                
+                card.style.display = (matchesCategory && matchesSearch) ? 'block' : 'none';
+            });
+        }
+        
+        // Animación de aparición al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Aplicar animación a elementos de timeline
+        document.querySelectorAll('.timeline-card, .education-card, .course-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+    });
+    </script>
 </body>
 </html>
