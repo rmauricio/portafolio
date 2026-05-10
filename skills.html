@@ -3,377 +3,526 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Habilidades - Mauricio Cabrera</title>
+    <meta name="description" content="Habilidades técnicas de Mauricio Cabrera - Optimización RF, Python, QGIS, Telecomunicaciones y Data Analytics">
+    <meta name="keywords" content="RF Optimization, Python, QGIS, LTE, 5G, Data Analytics, Telecomunicaciones">
+    <meta name="author" content="Mauricio Cabrera">
+    <title>Competencias Técnicas | Mauricio Cabrera - RF Optimization Leader</title>
+    
+    <!-- Fuentes y Iconos (Mismos que about.html para consistencia) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
+    
+    <!-- Chart.js para gráfico de habilidades -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
-    <!-- Menú de Navegación -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="about.html">Resumen</a></li>
-            <li><a href="skills.html">Habilidades</a></li>
-            <li><a href="projects.html">Proyectos</a></li>
-            <li><a href="blog.html">Blog</a></li>
-     <!--           <li><a href="contact.html">Contacto</a></li> -->
-        </ul>
+    <!-- Barra de Navegación (IDÉNTICA a about.html) -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-satellite-dish"></i> MCabrera<span>.RF</span>
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Inicio</a></li>
+                <li><a href="about.html" class="nav-link">Perfil</a></li>
+                <li><a href="skills.html" class="nav-link active">Competencias</a></li>
+                <li><a href="projects.html" class="nav-link">Proyectos</a></li>
+                <li><a href="blog.html" class="nav-link">Blog Técnico</a></li>
+            </ul>
+            
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
     </nav>
 
-    <header>
-
+    <!-- Header de Página (Consistente con about.html) -->
+    <header class="page-header">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html">Inicio</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Competencias Técnicas</span>
+            </nav>
+            <h1 class="page-title">Habilidades & Expertise</h1>
+            <p class="page-subtitle">Combinación de conocimiento técnico en telecomunicaciones con habilidades de programación y análisis de datos</p>
+        </div>
     </header>
-    </div>
 
-
-        <!-- Competencias Clave y Badges -->
-        <div class="skills-category">
-            <h2>Telecomunicaciones</h2>
-
-            <div class="competencias-container">
-                <div class="competencia-card">
-                    <h3>Comisionamiento e integracion de sitios E2E</h3>
-
-                </div>
-                <div class="competencia-card">
-                    <h3>Planificación de Cobertura y Capacidad</h3>
-
-                </div>
-                <div class="competencia-card">
-                    <h3>Planificación de frecuencias</h3>
-
-                </div>
-                <div class="competencia-card">
-                    <h3>Optimización de la calidad de la señal</h3>
-
-                </div>
-                <div class="competencia-card">
-                    <h3>Ajuste de parámetros de red</h3>
-
-                </div>
-                <div class="competencia-card">
-                    <h3>Análisis de KPIs</h3>
-
-                </div>
-                <div class="competencia-card">
-                    <h3>Drive Testing y Mediciones</h3>
-
-                </div>
-                <div class="competencia-card">
-                    <h3>Simulacion de red y herramientas de software</h3>
-
-                </div>
-
+    <!-- Sección: Gráfico de Habilidades -->
+    <section class="section section-light" id="skills-chart">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nivel de Competencia</h2>
+                <p class="section-subtitle">Evaluación basada en experiencia práctica y proyectos entregados</p>
             </div>
-
-
-            <!-- Repetir para las demás categorías -->
-        </div>
-
-        <section id="Planing and optmization tools">
-            <div class="skills-category">
-                <h2>Herramientas de Planificación y Optimización</h2>
-                <div class="skills-icons">
-                    <div class="skill-item">
-                        <a href="https://www.teoco.com//" target="_blank" rel="noreferrer">
-                            <img src="images/tool_teoco.jpg" alt="Asset" />
-                        </a>
-                        <p>Asset</p>
-                    </div>
-                    <div class="skill-item">
-                        <a href="https://www.infovista.com/products/tems-discovery/network-testing-analytics" target="_blank" rel="noreferrer">
-                            <img src="images/tool_infovista.jpg" alt="TEMS Discovery" />
-                        </a>
-                        <p>TEMS Discovery</p>
-                    </div>
-                    <div class="skill-item">
-                        <a href="https://www.keysight.com/us/en/product/NTN50046C/nemo-analyze-drive-test-post-processing-solution.html" target="_blank" rel="noreferrer">
-                            <img src="images/tool_nemo.jpg" alt="Nemo analyze" />
-                        </a>
-                        <p>Nemo analyze</p>
-                    </div>
-                    <div class="skill-item">
-                        <a href="https://telecom.dingli.com/product/pilot-pioneer-expert/" target="_blank" rel="noreferrer">
-                            <img src="images/tool_dingli.jpg" alt="Dingli Pilot Pioneer Expert" />
-                        </a>
-                        <p>Pilot Pioneer Expert</p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
- 
-        <section id="Drivetest tools">
-            <div class="skills-category">
-                <h2>Herramientas de Drivetest</h2>
-                <div class="skills-icons">
-                    <div class="skill-item">
-                        <a href="https://www.infovista.com/products/tems-investigation/network-testing-and-troubleshooting" target="_blank" rel="noreferrer">
-                            <img src="images/tool_infovista.jpg" alt="TEMS Investigation" />
-                        </a>
-                        <p>TEMS Investigation</p>
-                    </div>
-                    <div class="skill-item">
-                        <a href="https://www.infovista.com/products/tems-pocket/portable-mobile-network-testing" target="_blank" rel="noreferrer">
-                            <img src="images/tool_infovista.jpg" alt="TEMS Pocket" />
-                        </a>
-                        <p>TEMS Pocket</p>
-                    </div>
-                    <div class="skill-item">
-                        <a href="https://www.keysight.com/us/en/product/NTA50000B/nemo-outdoor-5g-nr-drive-test-solution.html" target="_blank" rel="noreferrer">
-                            <img src="images/tool_nemo.jpg" alt="Nemo  Outdoor" />
-                        </a>
-                        <p>Nemo  Outdoor</p>
-                    </div>
-                    <div class="skill-item">
-                        <a href="https://telecom.dingli.com/product/pilot-pioneer/" target="_blank" rel="noreferrer">
-                            <img src="images/tool_dingli.jpg" alt="Dingli Pilot Pioneer" />
-                        </a>
-                        <p>Pilot Pioneer</p>
-                    </div>
-
-                </div>
-            </div>
-        </section>        
-
-        <section id="Vendors OSS">
-            <div class="skills-category">
-                <h2>Wireless OSS</h2>
-                <div class="skills-icons">
-                    <div class="skill-item">
-                        <a href=" " target="_blank" rel="noreferrer">
-                            <img src="images/tool_huawei.jpg" alt="Huawei U2020" />
-                        </a>
-                        <p>Huawei U2020</p>
-                    </div>
-                    <div class="skill-item">
-                        <a href=" " target="_blank" rel="noreferrer">
-                            <img src="images/tool_huawei.jpg" alt="Huawei PRS(Maos)" />
-                        </a>
-                        <p>Huawei PRS(Maos)</p>
-                    </div>
-                    <div class="skill-item">
-                        <a href=" " target="_blank" rel="noreferrer">
-                            <img src="images/tool_nokia.jpg" alt="Nokia Netact" />
-                        </a>
-                        <p>Nokia Netact</p>
-                    </div>
-                    <div class="skill-item">
-                        <a href=" " target="_blank" rel="noreferrer">
-                            <img src="images/tool_nokia.jpg" alt="Nokia CLS" />
-                        </a>
-                        <p>Nokia CLS</p>
-                    </div>
-                    <div class="skill-item">
-                        <a href=" " target="_blank" rel="noreferrer">
-                            <img src="images/tool_zte.jpg" alt="ZTE U31" />
-                        </a>
-                        <p>ZTE U31</p>
-                    </div>
-                </div>
-            </div>
-        </section>  
-
-<section id="analytics-tools">
-    <div class="skills-category">
-        <h2>Herramientas de Análitica</h2>
-        <div class="skills-icons">
-            <div class="skill-item">
-                <a href="https://www.tableau.com/" target="_blank" rel="noreferrer">
-                    <img src="images/tableau.JPG" alt="Tableau" />
-                </a>
-                <p>Tableau</p>
-            </div>
-            <div class="skill-item">
-                <a href="https://powerbi.microsoft.com/" target="_blank" rel="noreferrer">
-                    <img src="images/PBI.JPG" alt="Power BI" />
-                </a>
-                <p>Power BI</p>
-            </div>
-            <div class="skill-item">
-                <a href="https://www.qlik.com/" target="_blank" rel="noreferrer">
-                    <img src="images/Qlik.JPG" alt="Qlik" />
-                </a>
-                <p>Qlik</p>
-            </div>
-            <div class="skill-item">
-                <a href="https://superset.apache.org/" target="_blank" rel="noreferrer">
-                    <img src="images/superset.JPG" alt="Apache Superset" />
-                </a>
-                <p>Apache Superset</p>
-            </div>
-            <div class="skill-item">
-                <a href="https://plotly.com/" target="_blank" rel="noreferrer">
-                    <img src="images/plotly.JPG" alt="Plotly" />
-                </a>
-                <p>Plotly</p>
-            </div>
-            <div class="skill-item">
-                <a href="https://airflow.apache.org/" target="_blank" rel="noreferrer">
-                    <img src="images/apache_airflow.JPG" alt="Apache Airflow" />
-                </a>
-                <p>Apache Airflow (ETL, pipeline, automation)</p>
-            </div>            
-        </div>
-    </div>
-</section>
-
-<section id="analytics-tools">
-    <div class="skills-category">
-        <h2>Herramientas GIS</h2>
-        <div class="skills-icons">
-            <div class="skill-item">
-                <a href="https://www.qgis.org/" target="_blank" rel="noreferrer">
-                    <img src="images/tool_Qgis.jpg" alt="QGIS" />
-                </a>
-                <p>QGIS</p>
-            </div>
-            <div class="skill-item">
-                <a href="https://www.google.com/intl/es/earth/about/" target="_blank" rel="noreferrer">
-                    <img src="images/google_earth.jpg" alt="Google Earth" />
-                </a>
-                <p>Google Earth</p>
-            </div>
-            <div class="skill-item">
-                <a href="https://www.geobis.com/es/mapinfo-gis-software/" target="_blank" rel="noreferrer">
-                    <img src="images/map info.JPG" alt="Mapinfo" />
-                </a>
-                <p>Mapinfo</p>
-            </div>
-            <div class="skill-item">
-                <a href="https://www.bluemarblegeo.com/global-mapper/" target="_blank" rel="noreferrer">
-                    <img src="images/global mapper.JPG" alt="Global mapper" />
-                </a>
-                <p>Global mapper</p>
-            </div>         
-        </div>
-    </div>
-</section>
-
-<section id="skills-list">
-    <div class="skills-category">
-        <h2>Programas de programación</h2>
-        <div class="skills-icons">
-            <div class="skill-item">
-                <a href="https://www.r-project.org/" target="_blank" rel="noreferrer">
-                    <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/rlang-colored.svg" alt="RLang" />
-                </a>
-                <p>R</p>
-            </div>
-            <div class="skill-item">
-                <a href="https://www.python.org/" target="_blank" rel="noreferrer">
-                    <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/python-colored.svg" alt="Python" />
-                </a>
-                <p>Python</p>
-            </div>
-            <div class="skill-item">
-                <a href="https://www.gnu.org/software/bash/" target="_blank" rel="noreferrer">
-                    <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/gnubash.svg" alt="GNU Bash" />
-                </a>
-                <p>GNU Bash</p>
-            </div>
-            <div class="skill-item">
-                <a href="https://code.visualstudio.com/" target="_blank" rel="noreferrer">
-                    <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/visualstudiocode.svg" alt="VS Code" />
-                </a>
-                <p>VS Code</p>
-            </div>
-            <div class="skill-item">
-                <a href="https://www.postgresql.org/" target="_blank" rel="noreferrer">
-                    <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/postgresql-colored.svg" alt="PostgreSQL" />
-                </a>
-                <p>PostgreSQL</p>
-            </div>
-            <div class="skill-item">
-                <a href="https://www.mysql.com/" target="_blank" rel="noreferrer">
-                    <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/mysql-colored.svg" alt="MySQL" />
-                </a>
-                <p>MySQL</p>
-            </div>
-            <div class="skill-item">
-                <a href="https://www.mongodb.com/" target="_blank" rel="noreferrer">
-                    <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/mongodb-colored.svg" alt="MongoDB" />
-                </a>
-                <p>MongoDB</p>
-            </div>
-            <div class="skill-item">
-                <a href="https://www.linux.org" target="_blank" rel="noreferrer">
-                    <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/linux-colored.svg" alt="Linux" />
-                </a>
-                <p>Linux</p>
-            </div>
-            <div class="skill-item">
-                <a href="https://www.tensorflow.org/" target="_blank" rel="noreferrer">
-                    <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/tensorflow-colored.svg" alt="TensorFlow" />
-                </a>
-                <p>TensorFlow</p>
-            </div>
-            <div class="skill-item">
-                <a href="https://pytorch.org/" target="_blank" rel="noreferrer">
-                    <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/pytorch-colored.svg" alt="PyTorch" />
-                </a>
-                <p>PyTorch</p>
+            
+            <div style="max-width: 500px; margin: 0 auto; background: var(--white); padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+                <canvas id="skillsChart"></canvas>
             </div>
         </div>
-    </div>
-</section>
-
- 
-<div class="skills-category">       
-        <h2>Competencias personales</h2>
-
-        <div class="competencias-container">
-            <div class="competencia-card">
-                <h3>Alta Iniciativa</h3>
-                <p>Proactivo en la identificación y ejecución de oportunidades.</p>
-            </div>
-            <div class="competencia-card">
-                <h3>Investigador</h3>
-                <p>Capacidad para analizar, experimentar y generar nuevas soluciones.</p>
-            </div>
-            <div class="competencia-card">
-                <h3>Trabajo en Equipo</h3>
-                <p>Colaborativo y eficiente en ambientes multidisciplinarios.</p>
-            </div>
-            <div class="competencia-card">
-                <h3>Responsable</h3>
-                <p>Compromiso con la calidad y los plazos establecidos.</p>
-            </div>
-            <div class="competencia-card">
-                <h3>Confiable</h3>
-                <p>Garantizo resultados consistentes y transparentes.</p>
-            </div>
-            <div class="competencia-card">
-                <h3>Honesto</h3>
-                <p>Actúo con integridad en todas las interacciones profesionales.</p>
-            </div>
-            <div class="competencia-card">
-                <h3>Íntegro</h3>
-                <p>Cumplo con los principios éticos en todas mis acciones.</p>
-            </div>
-            <div class="competencia-card">
-                <h3>Asertivo</h3>
-                <p>Expreso mis opiniones de manera clara y respetuosa.</p>
-            </div>
-            <div class="competencia-card">
-                <h3>Comunicativo</h3>
-                <p>Habilidades efectivas para transmitir ideas y escuchar a otros.</p>
-            </div>
-            <div class="competencia-card">
-                <h3>Motivado</h3>
-                <p>Comprometido con el crecimiento personal y profesional continuo.</p>
-            </div>
-            <div class="competencia-card">
-                <h3>Analítico</h3>
-                <p>Enfoque estructurado para resolver problemas y tomar decisiones informadas.</p>
-            </div>
-        </div>
-                 
     </section>
 
-    <!-- Pie de Página -->
-    <footer>
-        <p>&copy; 2024 Mauricio Cabrera. Todos los derechos reservados.</p>
+    <!-- Sección: Competencias de Telecomunicaciones -->
+    <section class="section" id="telecom-skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Telecomunicaciones</h2>
+                <p class="section-subtitle">Experiencia en diseño, planificación y optimización de redes móviles</p>
+            </div>
+            
+            <div class="specialization-grid">
+                <div class="specialization-card">
+                    <i class="fas fa-tower-broadcast"></i>
+                    <h4>Comisionamiento E2E</h4>
+                    <p>Integración de sitios desde planificación hasta puesta en servicio con vendors multi-tecnología.</p>
+                </div>
+                <div class="specialization-card">
+                    <i class="fas fa-signal"></i>
+                    <h4>Planificación de Cobertura</h4>
+                    <p>Diseño de redes para maximizar cobertura y capacidad mediante simulaciones predictivas.</p>
+                </div>
+                <div class="specialization-card">
+                    <i class="fas fa-wave-square"></i>
+                    <h4>Planificación de Frecuencias</h4>
+                    <p>Asignación óptima de espectro para minimizar interferencia y maximizar throughput.</p>
+                </div>
+                <div class="specialization-card">
+                    <i class="fas fa-sliders"></i>
+                    <h4>Optimización de Señal</h4>
+                    <p>Mejora de RSRP, RSRQ y SINR mediante ajuste paramétrico y análisis de KPIs.</p>
+                </div>
+                <div class="specialization-card">
+                    <i class="fas fa-cogs"></i>
+                    <h4>Ajuste de Parámetros</h4>
+                    <p>Configuración de handover, power control, mobility settings y features avanzados.</p>
+                </div>
+                <div class="specialization-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Análisis de KPIs</h4>
+                    <p>Monitoreo de accesibilidad, retenibilidad, throughput y experiencia de usuario.</p>
+                </div>
+                <div class="specialization-card">
+                    <i class="fas fa-car"></i>
+                    <h4>Drive Testing</h4>
+                    <p>Mediciones de campo con TEMS, Nemo y Dingli para validación de cobertura y calidad.</p>
+                </div>
+                <div class="specialization-card">
+                    <i class="fas fa-map"></i>
+                    <h4>Simulación de Red</h4>
+                    <p>Modelado predictivo con Asset Radio y herramientas GIS para planificación estratégica.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Herramientas de Planificación y Optimización -->
+    <section class="section section-light" id="planning-tools">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Herramientas de Planificación y Optimización</h2>
+                <p class="section-subtitle">Software especializado para análisis y diseño de redes</p>
+            </div>
+            
+            <div class="tools-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1.5rem; max-width: 800px; margin: 0 auto;">
+                <div class="tool-item" style="text-align: center; background: var(--white); padding: 1rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+                    <a href="https://www.teoco.com/" target="_blank" style="text-decoration: none;">
+                        <img src="images/tool_teoco.jpg" alt="Asset" style="width: 80px; height: 40px; object-fit: contain; margin-bottom: 0.5rem;" onerror="this.src='https://via.placeholder.com/80x40/0D8ABC/ffffff?text=Asset'">
+                    </a>
+                    <p style="font-size: 0.85rem; color: var(--gray); margin: 0;">Asset</p>
+                </div>
+                <div class="tool-item" style="text-align: center; background: var(--white); padding: 1rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+                    <a href="https://www.infovista.com/" target="_blank" style="text-decoration: none;">
+                        <img src="images/tool_infovista.jpg" alt="TEMS Discovery" style="width: 80px; height: 40px; object-fit: contain; margin-bottom: 0.5rem;" onerror="this.src='https://via.placeholder.com/80x40/1abc9c/ffffff?text=TEMS'">
+                    </a>
+                    <p style="font-size: 0.85rem; color: var(--gray); margin: 0;">TEMS Discovery</p>
+                </div>
+                <div class="tool-item" style="text-align: center; background: var(--white); padding: 1rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+                    <a href="https://www.keysight.com/" target="_blank" style="text-decoration: none;">
+                        <img src="images/tool_nemo.jpg" alt="Nemo Analyze" style="width: 80px; height: 40px; object-fit: contain; margin-bottom: 0.5rem;" onerror="this.src='https://via.placeholder.com/80x40/e67e22/ffffff?text=Nemo'">
+                    </a>
+                    <p style="font-size: 0.85rem; color: var(--gray); margin: 0;">Nemo Analyze</p>
+                </div>
+                <div class="tool-item" style="text-align: center; background: var(--white); padding: 1rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+                    <a href="https://telecom.dingli.com/" target="_blank" style="text-decoration: none;">
+                        <img src="images/tool_dingli.jpg" alt="Pilot Pioneer" style="width: 80px; height: 40px; object-fit: contain; margin-bottom: 0.5rem;" onerror="this.src='https://via.placeholder.com/80x40/9b59b6/ffffff?text=Dingli'">
+                    </a>
+                    <p style="font-size: 0.85rem; color: var(--gray); margin: 0;">Pilot Pioneer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Herramientas de Drive Test -->
+    <section class="section" id="drivetest-tools">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Herramientas de Drive Test</h2>
+                <p class="section-subtitle">Equipos y software para mediciones de campo</p>
+            </div>
+            
+            <div class="tools-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1.5rem; max-width: 800px; margin: 0 auto;">
+                <div class="tool-item" style="text-align: center; background: var(--white); padding: 1rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+                    <a href="https://www.infovista.com/products/tems-investigation" target="_blank" style="text-decoration: none;">
+                        <img src="images/tool_infovista.jpg" alt="TEMS Investigation" style="width: 80px; height: 40px; object-fit: contain; margin-bottom: 0.5rem;" onerror="this.src='https://via.placeholder.com/80x40/1abc9c/ffffff?text=TEMS'">
+                    </a>
+                    <p style="font-size: 0.85rem; color: var(--gray); margin: 0;">TEMS Investigation</p>
+                </div>
+                <div class="tool-item" style="text-align: center; background: var(--white); padding: 1rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+                    <a href="https://www.infovista.com/products/tems-pocket" target="_blank" style="text-decoration: none;">
+                        <img src="images/tool_infovista.jpg" alt="TEMS Pocket" style="width: 80px; height: 40px; object-fit: contain; margin-bottom: 0.5rem;" onerror="this.src='https://via.placeholder.com/80x40/1abc9c/ffffff?text=Pocket'">
+                    </a>
+                    <p style="font-size: 0.85rem; color: var(--gray); margin: 0;">TEMS Pocket</p>
+                </div>
+                <div class="tool-item" style="text-align: center; background: var(--white); padding: 1rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+                    <a href="https://www.keysight.com/" target="_blank" style="text-decoration: none;">
+                        <img src="images/tool_nemo.jpg" alt="Nemo Outdoor" style="width: 80px; height: 40px; object-fit: contain; margin-bottom: 0.5rem;" onerror="this.src='https://via.placeholder.com/80x40/e67e22/ffffff?text=Nemo'">
+                    </a>
+                    <p style="font-size: 0.85rem; color: var(--gray); margin: 0;">Nemo Outdoor</p>
+                </div>
+                <div class="tool-item" style="text-align: center; background: var(--white); padding: 1rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+                    <a href="https://telecom.dingli.com/" target="_blank" style="text-decoration: none;">
+                        <img src="images/tool_dingli.jpg" alt="Pilot Pioneer" style="width: 80px; height: 40px; object-fit: contain; margin-bottom: 0.5rem;" onerror="this.src='https://via.placeholder.com/80x40/9b59b6/ffffff?text=Dingli'">
+                    </a>
+                    <p style="font-size: 0.85rem; color: var(--gray); margin: 0;">Pilot Pioneer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Wireless OSS -->
+    <section class="section section-light" id="oss-tools">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Wireless OSS (Multi-Vendor)</h2>
+                <p class="section-subtitle">Plataformas de operación y mantenimiento de red</p>
+            </div>
+            
+            <div class="tools-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1.5rem; max-width: 900px; margin: 0 auto;">
+                <div class="tool-item" style="text-align: center; background: var(--white); padding: 1rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+                    <img src="images/tool_huawei.jpg" alt="Huawei" style="width: 80px; height: 40px; object-fit: contain; margin-bottom: 0.5rem;" onerror="this.src='https://via.placeholder.com/80x40/e74c3c/ffffff?text=Huawei'">
+                    <p style="font-size: 0.85rem; color: var(--gray); margin: 0;">Huawei U2020 / PRS</p>
+                </div>
+                <div class="tool-item" style="text-align: center; background: var(--white); padding: 1rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+                    <img src="images/tool_nokia.jpg" alt="Nokia" style="width: 80px; height: 40px; object-fit: contain; margin-bottom: 0.5rem;" onerror="this.src='https://via.placeholder.com/80x40/3498db/ffffff?text=Nokia'">
+                    <p style="font-size: 0.85rem; color: var(--gray); margin: 0;">Nokia NetAct / CLS</p>
+                </div>
+                <div class="tool-item" style="text-align: center; background: var(--white); padding: 1rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+                    <img src="images/tool_zte.jpg" alt="ZTE" style="width: 80px; height: 40px; object-fit: contain; margin-bottom: 0.5rem;" onerror="this.src='https://via.placeholder.com/80x40/2ecc71/ffffff?text=ZTE'">
+                    <p style="font-size: 0.85rem; color: var(--gray); margin: 0;">ZTE U31 / NetNumen</p>
+                </div>
+                <div class="tool-item" style="text-align: center; background: var(--white); padding: 1rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+                    <img src="images/tool_ericsson.jpg" alt="Ericsson" style="width: 80px; height: 40px; object-fit: contain; margin-bottom: 0.5rem;" onerror="this.src='https://via.placeholder.com/80x40/0D8ABC/ffffff?text=Ericsson'">
+                    <p style="font-size: 0.85rem; color: var(--gray); margin: 0;">Ericsson OSS-RC / ENM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Herramientas de Análitica -->
+    <section class="section" id="analytics-tools">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Herramientas de Análitica</h2>
+                <p class="section-subtitle">Plataformas para visualización y análisis de datos</p>
+            </div>
+            
+            <div class="tools-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1.5rem; max-width: 900px; margin: 0 auto;">
+                <div class="tool-item" style="text-align: center; background: var(--white); padding: 1rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+                    <a href="https://www.tableau.com/" target="_blank" style="text-decoration: none;">
+                        <img src="images/tableau.JPG" alt="Tableau" style="width: 80px; height: 40px; object-fit: contain; margin-bottom: 0.5rem;" onerror="this.src='https://via.placeholder.com/80x40/e67e22/ffffff?text=Tableau'">
+                    </a>
+                    <p style="font-size: 0.85rem; color: var(--gray); margin: 0;">Tableau</p>
+                </div>
+                <div class="tool-item" style="text-align: center; background: var(--white); padding: 1rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+                    <a href="https://powerbi.microsoft.com/" target="_blank" style="text-decoration: none;">
+                        <img src="images/PBI.JPG" alt="Power BI" style="width: 80px; height: 40px; object-fit: contain; margin-bottom: 0.5rem;" onerror="this.src='https://via.placeholder.com/80x40/3498db/ffffff?text=PowerBI'">
+                    </a>
+                    <p style="font-size: 0.85rem; color: var(--gray); margin: 0;">Power BI</p>
+                </div>
+                <div class="tool-item" style="text-align: center; background: var(--white); padding: 1rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+                    <a href="https://superset.apache.org/" target="_blank" style="text-decoration: none;">
+                        <img src="images/superset.JPG" alt="Superset" style="width: 80px; height: 40px; object-fit: contain; margin-bottom: 0.5rem;" onerror="this.src='https://via.placeholder.com/80x40/1abc9c/ffffff?text=Superset'">
+                    </a>
+                    <p style="font-size: 0.85rem; color: var(--gray); margin: 0;">Apache Superset</p>
+                </div>
+                <div class="tool-item" style="text-align: center; background: var(--white); padding: 1rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+                    <a href="https://airflow.apache.org/" target="_blank" style="text-decoration: none;">
+                        <img src="images/apache_airflow.JPG" alt="Airflow" style="width: 80px; height: 40px; object-fit: contain; margin-bottom: 0.5rem;" onerror="this.src='https://via.placeholder.com/80x40/9b59b6/ffffff?text=Airflow'">
+                    </a>
+                    <p style="font-size: 0.85rem; color: var(--gray); margin: 0;">Apache Airflow</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Herramientas GIS -->
+    <section class="section section-light" id="gis-tools">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Herramientas GIS</h2>
+                <p class="section-subtitle">Software para análisis geoespacial y visualización de red</p>
+            </div>
+            
+            <div class="tools-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1.5rem; max-width: 800px; margin: 0 auto;">
+                <div class="tool-item" style="text-align: center; background: var(--white); padding: 1rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+                    <a href="https://www.qgis.org/" target="_blank" style="text-decoration: none;">
+                        <img src="images/tool_Qgis.jpg" alt="QGIS" style="width: 80px; height: 40px; object-fit: contain; margin-bottom: 0.5rem;" onerror="this.src='https://via.placeholder.com/80x40/1abc9c/ffffff?text=QGIS'">
+                    </a>
+                    <p style="font-size: 0.85rem; color: var(--gray); margin: 0;">QGIS</p>
+                </div>
+                <div class="tool-item" style="text-align: center; background: var(--white); padding: 1rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+                    <a href="https://www.google.com/earth/" target="_blank" style="text-decoration: none;">
+                        <img src="images/google_earth.jpg" alt="Google Earth" style="width: 80px; height: 40px; object-fit: contain; margin-bottom: 0.5rem;" onerror="this.src='https://via.placeholder.com/80x40/4285f4/ffffff?text=Earth'">
+                    </a>
+                    <p style="font-size: 0.85rem; color: var(--gray); margin: 0;">Google Earth</p>
+                </div>
+                <div class="tool-item" style="text-align: center; background: var(--white); padding: 1rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+                    <a href="https://www.bluemarblegeo.com/" target="_blank" style="text-decoration: none;">
+                        <img src="images/global mapper.JPG" alt="Global Mapper" style="width: 80px; height: 40px; object-fit: contain; margin-bottom: 0.5rem;" onerror="this.src='https://via.placeholder.com/80x40/27ae60/ffffff?text=Mapper'">
+                    </a>
+                    <p style="font-size: 0.85rem; color: var(--gray); margin: 0;">Global Mapper</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Lenguajes de Programación -->
+    <section class="section" id="programming-languages">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Lenguajes y Entornos</h2>
+                <p class="section-subtitle">Tecnologías para automatización y análisis de datos</p>
+            </div>
+            
+            <div class="tools-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1.5rem; max-width: 900px; margin: 0 auto;">
+                <div class="tool-item" style="text-align: center; background: var(--white); padding: 1rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+                    <a href="https://www.python.org/" target="_blank" style="text-decoration: none;">
+                        <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/python-colored.svg" alt="Python" style="width: 60px; height: 60px; object-fit: contain; margin-bottom: 0.5rem;">
+                    </a>
+                    <p style="font-size: 0.85rem; color: var(--gray); margin: 0;">Python</p>
+                </div>
+                <div class="tool-item" style="text-align: center; background: var(--white); padding: 1rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+                    <a href="https://www.r-project.org/" target="_blank" style="text-decoration: none;">
+                        <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/rlang-colored.svg" alt="R" style="width: 60px; height: 60px; object-fit: contain; margin-bottom: 0.5rem;">
+                    </a>
+                    <p style="font-size: 0.85rem; color: var(--gray); margin: 0;">R</p>
+                </div>
+                <div class="tool-item" style="text-align: center; background: var(--white); padding: 1rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+                    <a href="https://www.postgresql.org/" target="_blank" style="text-decoration: none;">
+                        <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/postgresql-colored.svg" alt="PostgreSQL" style="width: 60px; height: 60px; object-fit: contain; margin-bottom: 0.5rem;">
+                    </a>
+                    <p style="font-size: 0.85rem; color: var(--gray); margin: 0;">PostgreSQL</p>
+                </div>
+                <div class="tool-item" style="text-align: center; background: var(--white); padding: 1rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+                    <a href="https://www.mysql.com/" target="_blank" style="text-decoration: none;">
+                        <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/mysql-colored.svg" alt="MySQL" style="width: 60px; height: 60px; object-fit: contain; margin-bottom: 0.5rem;">
+                    </a>
+                    <p style="font-size: 0.85rem; color: var(--gray); margin: 0;">MySQL</p>
+                </div>
+                <div class="tool-item" style="text-align: center; background: var(--white); padding: 1rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+                    <a href="https://code.visualstudio.com/" target="_blank" style="text-decoration: none;">
+                        <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/visualstudiocode.svg" alt="VS Code" style="width: 60px; height: 60px; object-fit: contain; margin-bottom: 0.5rem;">
+                    </a>
+                    <p style="font-size: 0.85rem; color: var(--gray); margin: 0;">VS Code</p>
+                </div>
+                <div class="tool-item" style="text-align: center; background: var(--white); padding: 1rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+                    <a href="https://www.linux.org/" target="_blank" style="text-decoration: none;">
+                        <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/linux-colored.svg" alt="Linux" style="width: 60px; height: 60px; object-fit: contain; margin-bottom: 0.5rem;">
+                    </a>
+                    <p style="font-size: 0.85rem; color: var(--gray); margin: 0;">Linux</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Competencias Personales -->
+    <section class="section section-light" id="personal-skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Competencias Personales</h2>
+                <p class="section-subtitle">Habilidades blandas que potencian el impacto técnico</p>
+            </div>
+            
+            <div class="specialization-grid">
+                <div class="specialization-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h4>Liderazgo Técnico</h4>
+                    <p>Coordinación de equipos multidisciplinarios en proyectos RF de alta complejidad.</p>
+                </div>
+                <div class="specialization-card">
+                    <i class="fas fa-comments"></i>
+                    <h4>Comunicación</h4>
+                    <p>Presentación efectiva de resultados técnicos a stakeholders no técnicos.</p>
+                </div>
+                <div class="specialization-card">
+                    <i class="fas fa-brain"></i>
+                    <h4>Resolución de Problemas</h4>
+                    <p>Enfoque analítico para diagnóstico y optimización de redes complejas.</p>
+                </div>
+                <div class="specialization-card">
+                    <i class="fas fa-tasks"></i>
+                    <h4>Gestión de Proyectos</h4>
+                    <p>Planificación, ejecución y control de iniciativas técnicas con metodologías ágiles.</p>
+                </div>
+                <div class="specialization-card">
+                    <i class="fas fa-sync-alt"></i>
+                    <h4>Adaptabilidad</h4>
+                    <p>Rápida adopción de nuevas tecnologías, vendors y metodologías de trabajo.</p>
+                </div>
+                <div class="specialization-card">
+                    <i class="fas fa-users"></i>
+                    <h4>Trabajo en Equipo</h4>
+                    <p>Colaboración efectiva en entornos multi-vendor y multi-cultural.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Call to Action (Consistente con about.html) -->
+    <section class="cta-section">
+        <div class="container">
+        <!--    <h2>¿Buscas un experto en optimización RF para tu equipo?</h2>
+            <p>Combino conocimiento técnico profundo en telecomunicaciones con habilidades de programación y análisis de datos.</p>
+            <div class="cta-actions">
+                <a href="mailto:r.mauricio.cabrera@gmail.com" class="btn btn-primary btn-large">
+                    <i class="fas fa-envelope"></i> Contactar para Oportunidades
+                </a>-->
+                <a href="projects.html" class="btn btn-secondary btn-large">
+                    <i class="fas fa-folder-open"></i> Ver Proyectos Destacados
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (IDÉNTICO a about.html) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <i class="fas fa-satellite-dish"></i> MCabrera<span>.RF</span>
+                    </a>
+                    <p>Portafolio profesional de Mauricio Cabrera - Especialista en Optimización RF y Análisis de Datos para Telecomunicaciones.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="about.html">Perfil</a></li>
+                        <li><a href="skills.html">Competencias</a></li>
+                        <li><a href="projects.html">Proyectos</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> r.mauricio.cabrera@gmail.com</li>
+                        <li><i class="fab fa-linkedin"></i> linkedin.com/in/mauricio-cabrera</li>
+                        <li><i class="fab fa-github"></i> github.com/rmauricio</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Mauricio Cabrera. Todos los derechos reservados.</p>
+            </div>
+        </div>
     </footer>
+
+    <!-- Scripts -->
+    <script src="scripts.js"></script>
+    
+    <!-- Script específico para skills.html -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // no se utiliza
+        // ========================================
+        // GRÁFICO DE HABILIDADES (Chart.js)
+        // ========================================
+        const ctx = document.getElementById('skillsChart');
+        if (ctx && typeof Chart !== 'undefined') {
+            new Chart(ctx.getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Optimización RF', 'Python', 'Tableau', 'Automatización'],
+                    datasets: [{
+                        label: 'Nivel de Competencia (%)',
+                        data: [95, 90, 85, 75],
+                        backgroundColor: [
+                            '#0D8ABC',  // Primary
+                            '#1abc9c',  // Secondary
+                            '#e67e22',  // Accent
+                            '#9b59b6'   // Purple
+                            
+                        ],
+                        borderWidth: 0,
+                        hoverOffset: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                font: {
+                                    size: 11,
+                                    family: "'Inter', sans-serif"
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.label}: ${context.parsed}%`;
+                                }
+                            }
+                        }
+                    },
+                    cutout: '70%'
+                }
+            });
+        }
+        
+        // ========================================
+        // ANIMACIONES AL SCROLL (Consistente con about.html)
+        // ========================================
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Aplicar animación a tarjetas de habilidades
+        document.querySelectorAll('.specialization-card, .tool-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+        
+    });
+    </script>
 </body>
 </html>
