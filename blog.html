@@ -3,101 +3,992 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Mauricio Cabrera</title>
+    <meta name="description" content="Blog técnico de Mauricio Cabrera - Artículos sobre optimización RF, Python, QGIS y análisis de datos en telecomunicaciones">
+    <meta name="keywords" content="RF Optimization Blog, Python Telecom, QGIS Tutorial, LTE Analysis, Technical Leadership">
+    <meta name="author" content="Mauricio Cabrera">
+    <title>Blog Técnico | Mauricio Cabrera - RF Optimization Leader</title>
+    
+    <!-- Fuentes y Iconos (Mismos que about.html para consistencia) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
+    
+    <!-- Estilos específicos para blog (sin interferir con styles.css) -->
+    <style>
+        /* Blog Header */
+        .page-header.blog-header {
+            background: linear-gradient(135deg, var(--dark-light) 0%, var(--dark) 100%);
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+        .page-header.blog-header .page-subtitle {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Blog Layout */
+        .blog-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 3rem;
+            align-items: start;
+            padding: 3rem 0;
+        }
+        
+        /* Sidebar */
+        .blog-sidebar {
+            position: sticky;
+            top: 100px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .sidebar-widget {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+        }
+        .sidebar-widget h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--light);
+        }
+        .category-list { list-style: none; padding: 0; }
+        .category-list li { margin-bottom: 0.5rem; }
+        .category-btn {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: none;
+            border: none;
+            border-radius: var(--radius);
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95rem;
+            color: var(--gray);
+            transition: var(--transition);
+        }
+        .category-btn:hover, .category-btn.active {
+            background: rgba(13,138,188,0.1);
+            color: var(--primary);
+        }
+        .category-count {
+            background: var(--light);
+            color: var(--gray);
+            padding: 0.25rem 0.625rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .category-btn.active .category-count {
+            background: var(--primary);
+            color: var(--white);
+        }
+        
+        /* Tag Cloud */
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .tag-cloud .tag {
+            padding: 0.375rem 0.875rem;
+            background: var(--light);
+            color: var(--gray);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .tag-cloud .tag:hover, .tag-cloud .tag.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+        
+        /* Newsletter */
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .newsletter-form input {
+            padding: 0.75rem 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: var(--radius);
+            font-size: 0.95rem;
+        }
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        /* Stats Widget */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            text-align: center;
+        }
+        .stat-item {
+            padding: 0.75rem;
+            background: var(--light);
+            border-radius: var(--radius);
+        }
+        .stat-value {
+            display: block;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--gray);
+        }
+        
+        /* Featured Post */
+        .featured-post {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border: 2px solid var(--secondary);
+        }
+        .featured-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--secondary);
+            color: var(--white);
+            padding: 0.375rem 0.875rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+        .featured-image {
+            position: relative;
+            height: 300px;
+        }
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .featured-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+        }
+        .read-time {
+            color: var(--white);
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+        }
+        .featured-content {
+            padding: 2rem;
+        }
+        .featured-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        .featured-title a {
+            color: var(--dark);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .featured-title a:hover {
+            color: var(--primary);
+        }
+        .featured-excerpt {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .featured-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        /* Posts Grid */
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        /* Post Card */
+        .post-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        .post-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+        .post-card.coming-soon {
+            opacity: 0.7;
+        }
+        .post-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        .post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .post-card:hover .post-image img {
+            transform: scale(1.05);
+        }
+        .post-category {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.375rem 0.875rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .post-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .post-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        .post-meta i {
+            margin-right: 0.375rem;
+        }
+        .post-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+        .post-title a {
+            color: var(--dark);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .post-title a:hover {
+            color: var(--primary);
+        }
+        .post-excerpt {
+            font-size: 0.95rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+            flex: 1;
+            line-height: 1.6;
+        }
+        .post-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--light);
+        }
+        .post-tags {
+            display: flex;
+            gap: 0.375rem;
+            flex-wrap: wrap;
+        }
+        .read-more {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+            transition: var(--transition);
+        }
+        .read-more:hover {
+            gap: 0.625rem;
+        }
+        .coming-soon-badge {
+            background: var(--accent);
+            color: var(--white);
+            padding: 0.25rem 0.625rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--gray);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        .no-results i {
+            font-size: 3rem;
+            color: var(--primary);
+            opacity: 0.5;
+        }
+        .no-results h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+        
+        /* Results Info */
+        .results-info {
+            text-align: center;
+            padding: 2rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .blog-layout {
+                grid-template-columns: 1fr;
+            }
+            .blog-sidebar {
+                position: static;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            .sidebar-widget {
+                flex: 1;
+                min-width: 200px;
+            }
+            .featured-content {
+                padding: 1.5rem;
+            }
+            .featured-title {
+                font-size: 1.5rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 4rem 0 2rem;
+                margin-top: 60px;
+            }
+            .page-title {
+                font-size: 2rem;
+            }
+            .blog-sidebar {
+                flex-direction: column;
+            }
+            .sidebar-widget {
+                min-width: 100%;
+            }
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+            .featured-actions {
+                flex-direction: column;
+            }
+            .featured-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        @media (max-width: 480px) {
+            .post-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.375rem;
+            }
+            .post-footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Menú de Navegación -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="about.html">Resumen</a></li>
-            <li><a href="skills.html">Habilidades</a></li>
-            <li><a href="projects.html">Proyectos</a></li>
-            <li><a href="blog.html">Blog</a></li>
-  <!--          <li><a href="contact.html">Contacto</a></li> -->
-        </ul>
+    <!-- Barra de Navegación (IDÉNTICA a about.html) -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-satellite-dish"></i> MCabrera<span>.RF</span>
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Inicio</a></li>
+                <li><a href="about.html" class="nav-link">Perfil</a></li>
+                <li><a href="skills.html" class="nav-link">Competencias</a></li>
+                <li><a href="projects.html" class="nav-link">Proyectos</a></li>
+                <li><a href="blog.html" class="nav-link active">Blog Técnico</a></li>
+            </ul>
+            
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
     </nav>
 
-    <!-- Encabezado -->
-    <header>
-
+    <!-- Header de Página (Consistente con about.html) -->
+    <header class="page-header blog-header">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html">Inicio</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Blog Técnico</span>
+            </nav>
+            <h1 class="page-title">Conocimiento Técnico Compartido</h1>
+            <p class="page-subtitle">Artículos, tutoriales y reflexiones sobre optimización RF, automatización con Python y análisis de datos para redes móviles</p>
+            
+            <!-- Barra de búsqueda -->
+            <div style="max-width: 500px; margin: 2rem auto 0;">
+                <input type="text" id="blogSearch" placeholder="🔍 Buscar artículos por tecnología, herramienta o tema..." style="width: 100%; padding: 0.75rem 1rem 0.75rem 2.5rem; border: none; border-radius: 50px; font-size: 1rem; background: rgba(255,255,255,0.95); box-shadow: var(--shadow-md);">
+                <i class="fas fa-search" style="position: absolute; left: 50%; transform: translateX(-260px); margin-top: 0.9rem; color: var(--gray); pointer-events: none;"></i>
+            </div>
+        </div>
     </header>
 
-    <!-- Contenedor Principal -->
-    <div class="blog-container">
-        <!-- Barra Lateral de Filtrado -->
-        <aside class="sidebar">
-            <h2>Categorías</h2>
-            <ul>
-                <li><a href="#" onclick="filterCategory('')">Todas</a></li>  
-                <li><a href="#" onclick="filterCategory('QGIS')">QGIS</a></li>
-<!-- Nueva categoría                <li><a href="#" onclick="filterCategory('nuevas-tecnologias')">Nuevas Tecnologías</a></li>
-                <li><a href="#" onclick="filterCategory('benchmarking')">Benchmarking</a></li>
-                <li><a href="#" onclick="filterCategory('gestion-proyectos')">Gestión de Proyectos</a></li> -->
-            </ul>
-        </aside>
+    <!-- Layout Principal: Sidebar + Contenido -->
+    <main class="container">
+        <div class="blog-layout">
+            
+            <!-- Sidebar: Filtros y Categorías -->
+            <aside class="blog-sidebar">
+                
+                <!-- Categorías -->
+                <div class="sidebar-widget">
+                    <h3><i class="fas fa-folder-open"></i> Categorías</h3>
+                    <ul class="category-list">
+                        <li>
+                            <button class="category-btn active" data-category="all">
+                                <span>Todos los artículos</span>
+                                <span class="category-count">3</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="category-btn" data-category="qgis">
+                                <i class="fas fa-map-marked-alt"></i> QGIS & GIS
+                                <span class="category-count">3</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="category-btn" data-category="python">
+                                <i class="fab fa-python"></i> Python & Automatización
+                                <span class="category-count">0</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="category-btn" data-category="lte">
+                                <i class="fas fa-signal"></i> LTE/5G Optimization
+                                <span class="category-count">0</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="category-btn" data-category="leadership">
+                                <i class="fas fa-users"></i> Liderazgo Técnico
+                                <span class="category-count">0</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Tags Populares -->
+                <div class="sidebar-widget">
+                    <h3><i class="fas fa-tags"></i> Tags Populares</h3>
+                    <div class="tag-cloud">
+                        <span class="tag" data-tag="qgis">QGIS</span>
+                        <span class="tag" data-tag="python">Python</span>
+                        <span class="tag" data-tag="lte">LTE</span>
+                        <span class="tag" data-tag="drivetest">Drive Test</span>
+                        <span class="tag" data-tag="postgresql">PostgreSQL</span>
+                        <span class="tag" data-tag="automation">Automatización</span>
+                        <span class="tag" data-tag="gis">GIS</span>
+                        <span class="tag" data-tag="rf">RF Optimization</span>
+                    </div>
+                </div>
+                
+                <!-- Newsletter / Suscripción 
+                <div class="sidebar-widget newsletter-widget">
+                    <h3><i class="fas fa-envelope"></i> Mantente Actualizado</h3>
+                    <p style="font-size: 0.9rem; color: var(--gray); margin-bottom: 1rem;">Recibe notificaciones cuando publique nuevos artículos sobre optimización RF y automatización.</p>
+                    <form class="newsletter-form" onsubmit="handleSubscribe(event); return false;">
+                        <input type="email" placeholder="tu@email.com" required>
+                        <button type="submit" class="btn btn-sm btn-primary">Suscribirme</button>
+                    </form>
+                </div>
+                -->
+                <!-- Stats del Blog 
+                <div class="sidebar-widget stats-widget">
+                    <h3><i class="fas fa-chart-bar"></i> Estadísticas</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-value">3</span>
+                            <span class="stat-label">Artículos</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">QGIS</span>
+                            <span class="stat-label">Tema Principal</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">2025</span>
+                            <span class="stat-label">Última Actualización</span>
+                        </div>
+                    </div>
+                </div>
+                -->
+            </aside>
 
-        <!-- Sección Principal de Artículos -->
-        <section id="blog-posts">
+            <!-- Contenido Principal: Lista de Artículos -->
+            <section class="blog-content" id="blogContent">
+                
+                <!-- Featured Post (Artículo Destacado) -->
+                <article class="featured-post" data-category="qgis python" data-tags="qgis,python,lte,drivetest">
+                    <div class="featured-badge">🔥 Artículo Destacado</div>
+                    <div class="featured-image">
+                        <img src="images/blog3.png" 
+                             alt="Visualización del Best Server LTE con Python y QGIS"
+                             onerror="this.src='https://via.placeholder.com/800x400/0D8ABC/ffffff?text=Best+Server+Visualization'">
+                        <div class="featured-overlay">
+                            <span class="read-time"><i class="far fa-clock"></i> 8 min de lectura</span>
+                        </div>
+                    </div>
+                    <div class="featured-content">
+                        <div class="post-meta">
+                            <span class="post-date"><i class="far fa-calendar"></i> Diciembre 2024</span>
+                            <div class="post-tags">
+                                <span class="tag tag-primary">QGIS</span>
+                                <span class="tag tag-secondary">Python</span>
+                                <span class="tag tag-outline">LTE</span>
+                            </div>
+                        </div>
+                        <h2 class="featured-title">
+                            <a href="blog_3.html">Visualización del Best Server y celdas LTE con Python y QGIS</a>
+                        </h2>
+                        <p class="featured-excerpt">
+                            En telecomunicaciones, identificar los "best servers" es esencial para optimizar la red. 
+                            Comparto un script que asigna colores dinámicos a muestras de PCI y celdas LTE en QGIS, 
+                            facilitando la interpretación visual de datos de Drive Test y acelerando el análisis de cobertura.
+                        </p>
+                        <div class="featured-actions">
+                            <a href="https://www.linkedin.com/pulse/visualizaci%25C3%25B3n-del-best-server-y-celdas-lte-partir-de-un-mauricio-zcije/?trackingId=xW%2BLy2KMQWmgjb56mFfdkg%3D%3D" class="btn btn-primary">
+                                <i class="fas fa-book-open"></i> Leer Artículo Completo
+                            </a>
+                            <a href="#" class="btn btn-outline" onclick="sharePost('blog_3.html', 'Visualización Best Server LTE'); return false;">
+                                <i class="fas fa-share-alt"></i> Compartir
+                            </a>
+                        </div>
+                    </div>
+                </article>
 
-            <div class="blog-card" data-category="QGIS">
-                <a href="blog_3.html">
-                    <img src="images/blog3.png" alt="Portada de artículo">
-                    <h3>Visualización del Best Server y celdas LTE a partir de un log de Drive Test utilizando Python y QGIS</h3>
+                <!-- Grid de Artículos -->
+                <div class="posts-grid" id="postsGrid">
+                    
+                    <!-- Artículo 1: Sectores RF en QGIS -->
+                    <article class="post-card" data-category="qgis" data-tags="qgis,gis,rf,planning">
+                        <div class="post-image">
+                            <img src="images/project2.jpg" 
+                                 alt="Crear sectores RF con mapa de fondo en QGIS"
+                                 onerror="this.src='https://via.placeholder.com/400x250/1abc9c/ffffff?text=RF+Sectors+QGIS'">
+                            <span class="post-category">QGIS</span>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-date"><i class="far fa-calendar"></i> 2024</span>
+                                <span class="read-time"><i class="far fa-clock"></i> 5 min</span>
+                            </div>
+                            <h3 class="post-title">
+                                <a href="blog_1.html">Crear sectores RF con mapa de fondo en QGIS</a>
+                            </h3>
+                            <p class="post-excerpt">
+                                Aprovecha herramientas gratuitas de SIG como QGIS para visualizar sectores de antena 
+                                y realizar análisis geoespaciales similares a MapInfo o ArcGIS, pero con flexibilidad open-source.
+                            </p>
+                            <div class="post-footer">
+                                <div class="post-tags">
+                                    <span class="tag tag-outline">GIS</span>
+                                    <span class="tag tag-outline">RF Planning</span>
+                                </div>
+                                <a href="https://www.linkedin.com/pulse/crear-sectores-rf-con-mapa-de-fondo-en-qgis-mauricio-cabrera-arias/?trackingId=xW%2BLy2KMQWmgjb56mFfdkg%3D%3D" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Artículo 2: Carga de archivos .Tap en QGIS -->
+                    <article class="post-card" data-category="qgis" data-tags="qgis,drivetest,lte,automation">
+                        <div class="post-image">
+                            <img src="images/project1.jpg" 
+                                 alt="Carga de archivos .Tap/.Shp de Drive Test a QGIS"
+                                 onerror="this.src='https://via.placeholder.com/400x250/e67e22/ffffff?text=DriveTest+QGIS'">
+                            <span class="post-category">QGIS</span>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-date"><i class="far fa-calendar"></i> 2024</span>
+                                <span class="read-time"><i class="far fa-clock"></i> 6 min</span>
+                            </div>
+                            <h3 class="post-title">
+                                <a href="blog_2.html">Carga de archivos .Tap/.Shp de Drive Test a QGIS</a>
+                            </h3>
+                            <p class="post-excerpt">
+                                Optimiza tu flujo de trabajo cargando archivos de Drive Test (.tap) directamente en QGIS. 
+                                Aprende a visualizar LTE-RSRP y generar reportes geoespaciales de forma eficiente.
+                            </p>
+                            <div class="post-footer">
+                                <div class="post-tags">
+                                    <span class="tag tag-outline">Drive Test</span>
+                                    <span class="tag tag-outline">LTE-RSRP</span>
+                                </div>
+                                <a href="https://www.linkedin.com/pulse/carga-de-archivos-tapshp-drivetes-qgis-mauricio-cabrera-arias/?trackingId=xW%2BLy2KMQWmgjb56mFfdkg%3D%3D" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </article>
+
+
+                    <!-- Artículo 3: Representar Sectores de antenas RF con PostGIS en PostgreSQL -->
+                    <article class="post-card" data-category="postgresql gis" data-tags="postgis,postgresql,rf,planning">
+                        <div class="post-image">
+                            <img src="images/project3.jpg" 
+                                alt="Representación de sectores RF con PostGIS en PostgreSQL"
+                                onerror="this.src='https://via.placeholder.com/400x250/9b59b6/ffffff?text=PostGIS+RF+Sectors'">
+                            <span class="post-category">PostgreSQL</span>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-date"><i class="far fa-calendar"></i> 2026</span>
+                                <span class="read-time"><i class="far fa-clock"></i> 6 min</span>
+                            </div>
+                            <h3 class="post-title">
+                                <a href="blog_4.html">Representar Sectores de antenas RF con PostGIS en PostgreSQL</a>
+                            </h3>
+                            <p class="post-excerpt">
+                                En las telecomunicaciones, los sectores de cobertura representan áreas donde una antena transmite señal. 
+                                Este concepto es fundamental para ingenieros de RF (Radiofrecuencia) que planifican y optimizan redes celulares. 
+                                Este artículo presenta una función en PostGIS que genera sectores de cobertura referenciales para análisis visuales iniciales.
+                            </p>
+                            <div class="post-footer">
+                                <div class="post-tags">
+                                    <span class="tag tag-outline">PostGIS</span>
+                                    <span class="tag tag-outline">RF Planning</span>
+                                </div>
+                                <a href="https://www.linkedin.com/pulse/c%25C3%25B3mo-representar-sectores-de-antenas-rf-con-postgis-en-cabrera-arias-bxc6e/?trackingId=xW%2BLy2KMQWmgjb56mFfdkg%3D%3D" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Placeholder para futuros artículos -->
+                    <article class="post-card coming-soon">
+                        <div class="post-image">
+                            <div class="placeholder-image" style="width: 100%; height: 100%; background: linear-gradient(135deg, var(--light) 0%, #e0e0e0 100%); display: flex; align-items: center; justify-content: center; color: var(--gray); font-size: 3rem;">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <span class="post-category" style="background: var(--accent);">Próximamente</span>
+                            <h3 class="post-title">Automatización de Reportes RF con Python y PostgreSQL</h3>
+                            <p class="post-excerpt">
+                                Pipeline ETL para procesamiento batch de datos de red, reducción de tiempos de reporte 
+                                y generación automática de dashboards ejecutivos.
+                            </p>
+                            <div class="post-footer">
+                                <span class="tag tag-outline">Python</span>
+                                <span class="tag tag-outline">PostgreSQL</span>
+                                <span class="coming-soon-badge">En desarrollo</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+                
+                <!-- Mensaje de "No se encontraron resultados" -->
+                <div class="no-results" id="noResults" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>No se encontraron artículos</h3>
+                    <p>Intenta con otros términos de búsqueda o explora todas las categorías.</p>
+                    <button class="btn btn-outline" onclick="resetFilters()">
+                        <i class="fas fa-sync-alt"></i> Ver todos los artículos
+                    </button>
+                </div>
+                
+                <!-- Contador de resultados -->
+                <div class="results-info">
+                    Mostrando <span id="visibleCount">3</span> de <span id="totalCount">3</span> artículos
+                </div>
+                
+            </section>
+            
+        </div>
+    </main>
+
+    <!-- Sección: Call to Action (Consistente con about.html) -->
+    <section class="cta-section">
+        <div class="container">
+        <!--<h2>¿Tienes una pregunta técnica o sugerencia para el blog?</h2>
+            <p>Me encanta compartir conocimiento y aprender de la comunidad RF. ¡Escríbeme!</p>
+            <div class="cta-actions">
+                <a href="mailto:r.mauricio.cabrera@gmail.com?subject=Consulta sobre el blog" class="btn btn-primary btn-large">
+                    <i class="fas fa-envelope"></i> Enviar Pregunta
                 </a>
-                <p>🚀 Visualización del Best Server y celdas LTE con Python y QGIS 🌐
-                    En telecomunicaciones, identificar los "best servers" es esencial para optimizar la red. Aquí comparto un script que asigna colores coincidentes a muestras de PCI y celdas LTE en QGIS, facilitando la interpretación de datos.
-                    Espero que les resulte útil. 
-                    hashtag#Telecomunicaciones hashtag#Python hashtag#QGIS hashtag#LTE
-                </p>
-                <button><a href="blog_3.html">Leer más</a></button>
-            </div>
-
-           
-            <div class="blog-card" data-category="QGIS">
-                <a href="blog_1.html">
-                    <img src="images/project2.jpg" alt="Portada de artículo">
-                    <h3>Crear sectores RF con mapa de fondo en QGIS</h3>
+                -->
+                <a href="projects.html" class="btn btn-secondary btn-large">
+                    <i class="fas fa-folder-open"></i> Ver Proyectos Relacionados
                 </a>
-                <p>Actualmente, es fundamental aprovechar herramientas gratuitas de Sistemas de Información Geográfica (SIG), como QGIS, para graficar y analizar redes de manera eficiente. Con QGIS, se pueden visualizar sectores específicos y realizar diversos análisis, funciones similares a las que ofrecen herramientas como MapInfo o ArcGIS. A continuación, te mostraré cómo realizar estos procesos en QGIS.</p>
-                <button><a href="blog_1.html">Leer más</a></button>
             </div>
+        </div>
+    </section>
 
-            <div class="blog-card" data-category="QGIS">
-                <a href="blog_2.html">
-                    <img src="images/project1.jpg" alt="Portada de artículo">
-                    <h3>Carga de archivos .Tap/.Shp de Drivetes a QGIS</h3>
-                </a>
-                <p>Optimizaremos el uso de #QGIS cargando un archivo de Drive Test, que servirá como base para generar reportes completos. Esto permitirá a los ingenieros realizar un análisis rápido del estado de la red, siempre que la información esté previamente cargada en su herramienta o proyecto de QGIS.
-                    A continuación, procederemos a cargar un archivo .tap generado por una herramienta de Drive Test, en este caso, un archivo de LTE-RSRP.
-                </p>
-                <button><a href="blog_2.html">Leer más</a></button>
+    <!-- Footer (IDÉNTICO a about.html) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <i class="fas fa-satellite-dish"></i> MCabrera<span>.RF</span>
+                    </a>
+                    <p>Portafolio profesional de Mauricio Cabrera - Especialista en Optimización RF y Análisis de Datos para Telecomunicaciones.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="about.html">Perfil</a></li>
+                        <li><a href="skills.html">Competencias</a></li>
+                        <li><a href="projects.html">Proyectos</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> r.mauricio.cabrera@gmail.com</li>
+                        <li><i class="fab fa-linkedin"></i> linkedin.com/in/mauricio-cabrera</li>
+                        <li><i class="fab fa-github"></i> github.com/rmauricio</li>
+                    </ul>
+                </div>
             </div>
-
-
-        </section>
-    </div>
-
-    <!-- Pie de Página -->
-    <footer>
-        <p>&copy; 2024 Mauricio Cabrera. Todos los derechos reservados.</p>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Mauricio Cabrera. Todos los derechos reservados.</p>
+            </div>
+        </div>
     </footer>
 
-    <!-- Script para Filtrado -->
+    <!-- Scripts -->
+    <script src="scripts.js"></script>
+    
+    <!-- Script específico para blog.html -->
     <script>
-        function filterCategory(category) {
-            const posts = document.querySelectorAll('.blog-card');
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        // ========================================
+        // FILTRADO Y BÚSQUEDA DE ARTÍCULOS
+        // ========================================
+        const posts = document.querySelectorAll('.post-card, .featured-post');
+        const searchInput = document.getElementById('blogSearch');
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const tagBtns = document.querySelectorAll('.tag[data-tag]');
+        const visibleCountEl = document.getElementById('visibleCount');
+        const totalCountEl = document.getElementById('totalCount');
+        const noResults = document.getElementById('noResults');
+        
+        // Actualizar contador total
+        totalCountEl.textContent = posts.length;
+        
+        // Estado de filtros
+        let activeCategory = 'all';
+        let activeTag = null;
+        let searchTerm = '';
+        
+        // Función principal de filtrado
+        function filterPosts() {
+            let visible = 0;
+            
             posts.forEach(post => {
-                if (category === '' || post.dataset.category === category) {
-                    post.style.display = 'block';
-                } else {
+                // Saltar el placeholder "coming soon"
+                if (post.classList.contains('coming-soon')) {
                     post.style.display = 'none';
+                    return;
                 }
+                
+                const category = post.dataset.category;
+                const tags = post.dataset.tags;
+                const text = post.textContent.toLowerCase();
+                
+                // Filtro por categoría
+                const matchesCategory = activeCategory === 'all' || 
+                                       category.includes(activeCategory);
+                
+                // Filtro por tag
+                const matchesTag = !activeTag || 
+                                  tags?.includes(activeTag);
+                
+                // Búsqueda por texto
+                const matchesSearch = !searchTerm || 
+                                     text.includes(searchTerm.toLowerCase());
+                
+                // Mostrar/ocultar
+                const shouldShow = matchesCategory && matchesTag && matchesSearch;
+                post.style.display = shouldShow ? 'flex' : 'none';
+                
+                if (shouldShow) visible++;
+            });
+            
+            // Actualizar contador y mensaje de no resultados
+            visibleCountEl.textContent = visible;
+            noResults.style.display = visible === 0 ? 'flex' : 'none';
+        }
+        
+        // Event listeners para categorías
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeCategory = btn.dataset.category;
+                activeTag = null; // Resetear tag al cambiar categoría
+                tagBtns.forEach(t => t.classList.remove('active'));
+                filterPosts();
+            });
+        });
+        
+        // Event listeners para tags
+        tagBtns.forEach(tag => {
+            tag.addEventListener('click', () => {
+                // Toggle para tags
+                if (tag.classList.contains('active')) {
+                    tag.classList.remove('active');
+                    activeTag = null;
+                } else {
+                    tagBtns.forEach(t => t.classList.remove('active'));
+                    tag.classList.add('active');
+                    activeTag = tag.dataset.tag;
+                    // Resetear categoría al seleccionar tag
+                    activeCategory = 'all';
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    categoryBtns[0]?.classList.add('active');
+                }
+                filterPosts();
+            });
+        });
+        
+        // Búsqueda en tiempo real
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                searchTerm = e.target.value;
+                filterPosts();
             });
         }
+        
+        // Resetear filtros
+        window.resetFilters = function() {
+            activeCategory = 'all';
+            activeTag = null;
+            searchTerm = '';
+            
+            categoryBtns.forEach(b => b.classList.remove('active'));
+            categoryBtns[0]?.classList.add('active');
+            tagBtns.forEach(t => t.classList.remove('active'));
+            if (searchInput) searchInput.value = '';
+            
+            filterPosts();
+        };
+        
+        // ========================================
+        // FUNCIONALIDAD DE COMPARTIR
+        // ========================================
+        window.sharePost = function(url, title) {
+            const shareUrl = window.location.href.replace(/\/[^\/]*$/, '/') + url;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: title,
+                    text: `Artículo interesante: ${title}`,
+                    url: shareUrl
+                }).catch(console.error);
+            } else {
+                // Fallback: copiar al portapapeles
+                navigator.clipboard.writeText(shareUrl).then(() => {
+                    alert('🔗 Enlace copiado al portapapeles');
+                });
+            }
+        };
+        
+        // ========================================
+        // ANIMACIONES AL SCROLL
+        // ========================================
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        posts.forEach((post, index) => {
+            if (!post.classList.contains('coming-soon')) {
+                post.style.opacity = '0';
+                post.style.transform = 'translateY(20px)';
+                post.style.transition = `opacity 0.4s ease ${index * 0.1}s, transform 0.4s ease ${index * 0.1}s`;
+                observer.observe(post);
+            }
+        });
+        
+        // ========================================
+        // NEWSLETTER FORM (Demo)
+        // ========================================
+        const newsletterForm = document.querySelector('.newsletter-form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = newsletterForm.querySelector('input[type="email"]').value;
+                alert(`✅ ¡Gracias por suscribirte!\nRecibirás actualizaciones en: ${email}`);
+                newsletterForm.reset();
+            });
+        }
+        
+    });
     </script>
-
 </body>
 </html>
